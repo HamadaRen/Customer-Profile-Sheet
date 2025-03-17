@@ -53,13 +53,15 @@ const CustomerEntryPage = () => {
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, lastName: e.target.value }))}
               placeholder="姓"
-              value={userDetails.lastName}
+              value={userDetails.lastName} 
+              style={{"width": 180, "height": 30}}
             />
             <input
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, firstName: e.target.value }))}
               placeholder="名"
               value={userDetails.firstName}
+              style={{"width": 180, "height": 30}}
             />
           </label>
         </NameForm>
@@ -72,12 +74,14 @@ const CustomerEntryPage = () => {
               onChange={(e) => setUserDetails((prev) => ({ ...prev, lastNameKana: e.target.value }))}
               placeholder="セイ"
               value={userDetails.lastNameKana}
+              style={{"width": 180, "height": 30}}
             />
             <input
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, firstNameKana: e.target.value }))}
               placeholder="メイ"
               value={userDetails.firstNameKana}
+              style={{"width": 180, "height": 30}}
             />
           </label>
         </KanaForm>
@@ -89,6 +93,7 @@ const CustomerEntryPage = () => {
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: e.target.value }))}
               placeholder="2001/12/04"
+              style={{"width": 250, "height": 30}}
             />
           </label>
         </BirthdayForm>
@@ -101,6 +106,7 @@ const CustomerEntryPage = () => {
               onChange={(e) => setUserDetails((prev) => ({ ...prev, gender: e.target.value }))}
               placeholder="性別"
               value={userDetails.gender}
+              style={{"width": 200, "height": 30}}
             />
           </label>
         </GenderForm>
@@ -113,6 +119,7 @@ const CustomerEntryPage = () => {
               onChange={(e) => setUserDetails((prev) => ({ ...prev, telephone: e.target.value }))}
               placeholder="電話番号"
               value={userDetails.telephone}
+              style={{"width": 250, "height": 30}}
             />
           </label>
         </TelephoneForm>
@@ -125,6 +132,7 @@ const CustomerEntryPage = () => {
               onChange={(e) => setUserDetails((prev) => ({ ...prev, email: e.target.value }))}
               placeholder="メールアドレス"
               value={userDetails.email}
+              style={{"width": 320, "height": 30}}
             />
           </label>
         </EmailForm>
@@ -137,6 +145,7 @@ const CustomerEntryPage = () => {
               onChange={(e) => setUserDetails((prev) => ({ ...prev, address: e.target.value }))}
               placeholder="住所"
               value={userDetails.address}
+              style={{"width": 370, "height": 30}}
             />
           </label>
         </AddressForm>
@@ -164,7 +173,7 @@ const RegistrationButton = styled.button`
   border-radius: 3px;
   border: 0px;
   position: relative;
-  top: 24.5rem;
+  top: 20rem;
   height: 30px;
   box-shadow: 0.5px 1px 1px #000;
   
@@ -175,37 +184,37 @@ const RegistrationButton = styled.button`
 
 const NameForm = styled.div`
   position: relative;
-  top: 3rem;
+  top: 2rem;
 `;
 
 const KanaForm = styled.div`
   position: relative;
-  top: 6rem;
+  top: 4.5rem;
 `;
 
 const BirthdayForm = styled.div`
   position: relative;
-  top: 9rem;
+  top: 7rem;
 `;
 
 const GenderForm = styled.div`
   position: relative;
-  top: 12rem;
+  top: 9.5rem;
 `;
 
 const TelephoneForm = styled.div`
   position: relative;
-  top: 15rem;
+  top: 12rem;
 `;
 
 const EmailForm = styled.div`
   position: relative;
-  top: 18rem;
+  top: 14.5rem;
 `;
 
 const AddressForm = styled.div`
   position: relative;
-  top: 21rem;
+  top: 17rem;
 `;
 
 
