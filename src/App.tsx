@@ -4,7 +4,7 @@ import CustomerEntryPage from './components/CustomerEntryPage';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <CustomerEntryPage />
     </div>
   );
