@@ -3,7 +3,7 @@ import React from 'react'
 const CustomerManagementPage = () => {
 
   const dataArray = [
-    {lastName: "濵田", firstName: "錬", lastNameKana: "ハマダ", firstNameKana: "レン", age: "23", gender: "男性", tel: ""}
+    {lastName: "濵田", firstName: "錬", lastNameKana: "ハマダ", firstNameKana: "レン", age: "23", gender: "男性", tel: "07021544164", }
   ]
 
   return (
