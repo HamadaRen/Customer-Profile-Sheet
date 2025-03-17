@@ -1,12 +1,11 @@
-import React from 'react';
-import './App.css';
-import CustomerEntryPage from './components/CustomerEntryPage';
+import CustomerEntryPage from "./components/CustomerEntryPage";
+import { MainLayout } from "./layouts/MainLayout";
 
 function App() {
   return (
-    <div>
+    <MainLayout>
       <CustomerEntryPage />
-    </div>
+    </MainLayout>
   );
 }
 

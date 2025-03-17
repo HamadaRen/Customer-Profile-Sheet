@@ -158,12 +158,10 @@ const CustomerEntryPage = () => {
 };
 
 const Container = styled.div`
-  margin-left: 10%;
   text-align: center;
-  width: 80%;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: #efefef;
-  position: absolute;
 `;
 
 const RegistrationButton = styled.button`
