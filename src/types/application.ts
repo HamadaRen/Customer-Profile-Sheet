@@ -1,0 +1,1 @@
+export type SidebarItemsType = 'customer' | 'treatment' | 'reservation';
