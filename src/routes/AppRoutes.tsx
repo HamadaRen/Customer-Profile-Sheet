@@ -1,6 +1,19 @@
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import CustomerManagement from '../components/customer/Index';
+import CustomerEntryPage from '../components/customer/CustomerEntryPage';
+
+type UserDetailsType = {
+  name: string;
+  // firstName: string;
+  nameKana: string;
+  // firstNameKana: string;
+  birthday: string;
+  gender: string;
+  tel: string;
+  email: string;
+  address: string;
+};
 
 const AppRoutes: React.FC = () => {
   return (
@@ -15,6 +28,7 @@ const AppRoutes: React.FC = () => {
             </MainLayout>
           }
         >
+          <Route path="/customer" element={<CustomerEntryPage />}></Route>
           <Route path="/" element={<CustomerManagement />}></Route>
         </Route>
       </Routes>

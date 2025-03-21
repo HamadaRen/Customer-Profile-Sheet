@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 type UserDetailsType = {
-  lastName: string;
-  firstName: string;
-  lastNameKana: string;
-  firstNameKana: string;
+  name: string;
+  // firstName: string;
+  // lastNameKana: string;
+  nameKana: string;
   birthday: string;
   gender: string;
-  telephone: string;
+  tel: string;
   email: string;
   address: string;
 };
@@ -18,50 +19,51 @@ type CustomerEntryPageProps = {
   userDataArray: UserDetailsType[];
 };
 
-const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPageProps) => {
+const CustomerEntryPage = () => {
   const [userDetails, setUserDetails] = useState<UserDetailsType>({
-    lastName: '',
-    firstName: '',
-    lastNameKana: '',
-    firstNameKana: '',
+    name: '',
+    // firstName: '',
+    // lastNameKana: '',
+    nameKana: '',
     birthday: '',
     gender: '',
-    telephone: '',
+    tel: '',
     email: '',
     address: '',
   });
 
   //userDetailsを登録欄に表示したい
-  const handleRegistration = (e: { preventDefault: () => void }) => {
+  const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (
-      userDetails.lastName === '' ||
-      userDetails.firstName === '' ||
-      userDetails.lastNameKana === '' ||
-      userDetails.firstNameKana === '' ||
+      userDetails.name === '' ||
+      // userDetails.firstName === '' ||
+      // userDetails.lastNameKana === '' ||
+      userDetails.nameKana === '' ||
       userDetails.birthday === '' ||
       userDetails.gender === '' ||
-      userDetails.telephone === '' ||
+      userDetails.tel === '' ||
       userDetails.email === ''
     ) {
       alert('入力していない項目があります');
       return;
     }
-    setUserDataArray([...userDataArray, userDetails]);
+    //ここまでオッケーこの下をAPIに修正
+
+    await axios.post('http://localhost:3010/add', { userDetails });
+
     setUserDetails({
-      lastName: '',
-      firstName: '',
-      lastNameKana: '',
-      firstNameKana: '',
+      name: '',
+      // firstName: '',
+      // lastNameKana: '',
+      nameKana: '',
       birthday: '',
       gender: '',
-      telephone: '',
+      tel: '',
       email: '',
       address: '',
     });
   };
-
-  console.log('Entryのデータを入力したオブジェクト配列', userDataArray);
 
   return (
     <Container>
@@ -71,17 +73,10 @@ const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPag
             名前：
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, lastName: e.target.value }))}
-              placeholder="姓"
-              value={userDetails.lastName}
-              style={{ width: 180, height: 30 }}
-            />
-            <input
-              type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstName: e.target.value }))}
-              placeholder="名"
-              value={userDetails.firstName}
-              style={{ width: 180, height: 30 }}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, name: e.target.value }))}
+              placeholder="山田　太郎"
+              value={userDetails.name}
+              style={{ width: 250, height: 30 }}
             />
           </label>
         </NameForm>
@@ -91,17 +86,10 @@ const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPag
             カナ：
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, lastNameKana: e.target.value }))}
-              placeholder="セイ"
-              value={userDetails.lastNameKana}
-              style={{ width: 180, height: 30 }}
-            />
-            <input
-              type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstNameKana: e.target.value }))}
-              placeholder="メイ"
-              value={userDetails.firstNameKana}
-              style={{ width: 180, height: 30 }}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, nameKana: e.target.value }))}
+              placeholder="ヤマダ　タロウ"
+              value={userDetails.nameKana}
+              style={{ width: 250, height: 30 }}
             />
           </label>
         </KanaForm>
@@ -112,7 +100,7 @@ const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPag
             <input
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: e.target.value }))}
-              placeholder="2001/12/04"
+              placeholder="2001-12-04"
               value={userDetails.birthday}
               style={{ width: 250, height: 30 }}
             />
@@ -125,7 +113,7 @@ const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPag
             <input
               type="text"
               onChange={(e) => setUserDetails((prev) => ({ ...prev, gender: e.target.value }))}
-              placeholder="性別"
+              placeholder="男性/女性/その他"
               value={userDetails.gender}
               style={{ width: 200, height: 30 }}
             />
@@ -137,9 +125,9 @@ const CustomerEntryPage = ({ setUserDataArray, userDataArray }: CustomerEntryPag
             電話番号：
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, telephone: e.target.value }))}
-              placeholder="電話番号"
-              value={userDetails.telephone}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, tel: e.target.value }))}
+              placeholder="電話番号(ハイフンなし)"
+              value={userDetails.tel}
               style={{ width: 250, height: 30 }}
             />
           </label>

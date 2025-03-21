@@ -21,6 +21,9 @@ export const SideBar = () => {
 
   return (
     <StyledSideBar $animation={sideBarAnimationType}>
+      <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
+        HOME
+      </StyledRow>
       <StyledRow $selected={location.pathname === '/customer'} as={Link} to="/customer">
         顧客マスタ
       </StyledRow>

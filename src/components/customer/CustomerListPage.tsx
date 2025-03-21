@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import CustomerListHeader from '../header/CustomerHeader';
+import axios from 'axios';
 
 type UserDetailsType = {
   lastName: string;
@@ -16,17 +18,25 @@ type CustomerListPage = {
   userDataArray: UserDetailsType[];
 };
 
-const CustomerListPage = ({ userDataArray }: CustomerListPage) => {
+const CustomerListPage = async ({ userDataArray }: CustomerListPage) => {
 
-  console.log('Listの方で受け取ったuserDataArray', userDataArray)
+  const customerData = await axios('http://localhost:3010/')
+  console.log('getした配列', customerData)
 
   return (
     <GridContainer>
-      <div>姓</div>
-      <div>名</div>
-      <div>セイ</div>
-      <div>メイ</div>
-      <div>次回予約日</div>
+      <CustomerListHeader />
+      <>
+        {/* {customerData.map((userData) => {
+          return (
+          <>
+          <SHeader>{userData.lastName + userData.firstName}</SHeader>
+          <SHeader>{userData.lastNameKana + userData.firstNameKana}</SHeader>
+          <SHeader>{userData.birthday}</SHeader>
+          </>
+          );
+        })} */}
+      </>
     </GridContainer>
   );
 };
@@ -37,9 +47,13 @@ const GridContainer = styled.div`
   text-align: center;
   background: #efefef;
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 4fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 4fr;
+  grid-auto-rows: 2rem;
   border: solid #000;
+`;
+const SHeader = styled.div`
+  height: 2rem;
+  border: 1px solid;
 `;
 
 export default CustomerListPage;
