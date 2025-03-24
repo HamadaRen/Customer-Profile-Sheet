@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -25,7 +25,7 @@ type CustomerEntryPageProps = {
   userDataArray: UserDetailsType[];
 };
 
-const CustomerEntryPage = () => {
+const CustomerInformationDetails = () => {
   const [userDetails, setUserDetails] = useState<UserDetailsType>({
     name: '',
     // firstName: '',
@@ -37,6 +37,16 @@ const CustomerEntryPage = () => {
     email: '',
     address: '',
   });
+
+  const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([])
+  const getCustomerData = async () => {
+    const customerData = await axios('http://localhost:3010/');
+    setCustomerDataArray(customerData.data);
+  };
+
+    useEffect(() => {
+      getCustomerData();
+    }, []);
 
   //初期値を当日にする
   const initialDate: Date = "2001-12-4" as unknown as Date;
@@ -85,7 +95,7 @@ const CustomerEntryPage = () => {
     }
     //ここまでオッケーこの下をAPIに修正
 
-    await axios.post('http://localhost:3010/add', { userDetails });
+    await axios.put('http://localhost:3010/add', { userDetails });
 
     setUserDetails({
       name: '',
@@ -271,4 +281,4 @@ const AddressForm = styled.div`
   top: 24rem;
 `;
 
-export default CustomerEntryPage;
+export default CustomerInformationDetails;
