@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker, { registerLocale } from "react-datepicker"
-import {ja} from 'date-fns/locale/ja'
-
-
-
+import DatePicker, { registerLocale } from 'react-datepicker';
+import { ja } from 'date-fns/locale/ja';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 type UserDetailsType = {
+  id: string;
   name: string;
   // firstName: string;
   // lastNameKana: string;
@@ -20,16 +19,12 @@ type UserDetailsType = {
   address: string;
 };
 
-type CustomerEntryPageProps = {
-  setUserDataArray: React.Dispatch<React.SetStateAction<UserDetailsType[]>>;
-  userDataArray: UserDetailsType[];
-};
-
 const CustomerInformationDetails = () => {
+  const initialDate: Date = '2001-12-4' as unknown as Date;
+  const [birthday, setBirthday] = useState<Date | undefined>(initialDate);
   const [userDetails, setUserDetails] = useState<UserDetailsType>({
+    id: '',
     name: '',
-    // firstName: '',
-    // lastNameKana: '',
     nameKana: '',
     birthday: new Date(),
     gender: '',
@@ -38,42 +33,63 @@ const CustomerInformationDetails = () => {
     address: '',
   });
 
-  const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([])
+  const params = useParams();
+  const id = params.id;
+
+  //ここからGETメソッド
   const getCustomerData = async () => {
-    const customerData = await axios('http://localhost:3010/');
-    setCustomerDataArray(customerData.data);
+    const customerData = await axios.get(`http://localhost:3010/customer/${id}`);
+    const getCustomerDataArray = customerData.data;
+    const getCustomer = getCustomerDataArray.shift();
+    setUserDetails({
+      id: getCustomer.id,
+    name: getCustomer.name,
+    // firstName: '',
+    // lastNameKana: '',
+    nameKana: getCustomer.nameKana,
+    birthday: new Date(getCustomer.birthday),
+    gender: getCustomer.gender,
+    tel: getCustomer.tel,
+    email: getCustomer.email,
+    address: getCustomer.address,
+    })
+    console.log('id空取得できたデータ',getCustomer);
   };
 
-    useEffect(() => {
-      getCustomerData();
-    }, []);
+  
+  const location = useLocation();
+  
+  useEffect(() => {
+    getCustomerData();
+  }, []);
+  //ここまで
+
+  // console.log('getした配列!', customerData);
+  console.log('フォーム内の初期値', userDetails);
 
   //初期値を当日にする
-  const initialDate: Date = "2001-12-4" as unknown as Date;
-    const  [ birthday ,  setBirthday ]  =  useState<Date | undefined> (initialDate) ;
-    registerLocale('ja', ja)
+  registerLocale('ja', ja);
 
-    const endDate = new Date();
-    // endDate.setDate(endDate.getDate()+31);
+  // endDate.setDate(endDate.getDate()+31);
 
-    // console.log('startDate = '+ birthday);
-    // console.log('endDate = '+ endDate);
-    const handleChange = (date: Date | undefined) => {
-      setBirthday(date);
-    }
+  // console.log('startDate = '+ birthday);
+  // console.log('endDate = '+ endDate);
+  const handleChange = (date: Date | undefined) => {
+    setBirthday(date);
+  };
 
   const genderItems = [
     {
-      label: '男性',
-      value: '男性',
+      label: "男性",
+      value: "男性",
     },
     {
-      label: '女性',
-      value: '女性',
+      label: "女性",
+      value: "女性",
     },
     {
-      label: 'その他',
-      value: 'その他',
+      label: "その他",
+      value: "その他",
     },
   ];
 
@@ -82,34 +98,37 @@ const CustomerInformationDetails = () => {
     e.preventDefault();
     if (
       userDetails.name === '' ||
-      // userDetails.firstName === '' ||
-      // userDetails.lastNameKana === '' ||
       userDetails.nameKana === '' ||
-      userDetails.birthday === initialDate ||
       userDetails.gender === '' ||
       userDetails.tel === '' ||
       userDetails.email === ''
-    ) {
-      alert('入力していない項目があります');
-      return;
-    }
-    //ここまでオッケーこの下をAPIに修正
+    )
+      {
+        alert('入力していない項目があります');
+        return;
+      }
+      //ここまでオッケーこの下をAPIに修正
 
-    await axios.put('http://localhost:3010/add', { userDetails });
+      await axios.put('http://localhost:3010/put', { userDetails })
 
-    setUserDetails({
-      name: '',
-      // firstName: '',
-      // lastNameKana: '',
-      nameKana: '',
-      birthday: initialDate,
-      gender: '',
-      tel: '',
-      email: '',
-      address: '',
-    });
-    const genderCheckBox = document.querySelectorAll('genderChecked')
+      setUserDetails({
+        id: '',
+        name: '',
+        // firstName: '',
+        // lastNameKana: '',
+        nameKana: '',
+        birthday: initialDate,
+        gender: userDetails.gender,
+        tel: '',
+        email: '',
+        address: '',
+      });
   };
+
+  const handleDelete = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault()
+    
+  }
 
   return (
     <Container>
@@ -144,31 +163,32 @@ const CustomerInformationDetails = () => {
           <label>
             生年月日：
             <DatePicker
-            locale="ja"
-            selected={birthday}
-            dateFormat="yyyy-MM-dd"
-            onChange={selectedDate => {setBirthday(selectedDate || initialDate)}}
-            maxDate={endDate}
-            value={userDetails.birthday}
-            
-              />
+              locale="ja"
+              selected={birthday}
+              dateFormat="yyyy-MM-dd"
+              onChange={(selectedDate) => {
+                setBirthday(selectedDate || initialDate);
+              }}
+              maxDate={new Date()}
+              value={userDetails.birthday}
+            />
           </label>
         </BirthdayForm>
 
         <GenderForm>
           <label>
             性別：
-            {genderItems.map((item, index) => (
+            {genderItems.map((item) => (
               <label key={item.label}>
                 <input
                   type="radio"
-                  name='genderChecked'
+                  name="genderChecked"
                   // onChange={(e) => setUserDetails((prev) => ({ ...prev, gender: e.target.value }))}
                   value={item.value}
                   onChange={() => setUserDetails((prev) => ({ ...prev, gender: item.value }))}
                   style={{ width: 43, height: 28 }}
-                  defaultChecked={item.value==='男性'}
-                />
+                  defaultChecked={item.value === userDetails.gender}
+                  />
                 {item.label}
               </label>
             ))}
@@ -214,12 +234,13 @@ const CustomerInformationDetails = () => {
           </label>
         </AddressForm>
       </form>
-      <div>
-        <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
+      <div onClick={handleRegistration}>
+        <RegistrationButton as={Link} to={'/customer'}>
+          内容を確定する
+          </RegistrationButton>
       </div>
+        <DeleteButton onClick={handleDelete}>顧客情報を削除する</DeleteButton>
     </Container>
-
-    
   );
 };
 
@@ -230,15 +251,37 @@ const Container = styled.div`
   background: #efefef;
 `;
 
-const RegistrationButton = styled.button`
+const RegistrationButton = styled.div`
   cursor: pointer;
   background: #007bbb;
   color: white;
   border-radius: 3px;
   border: 0px;
-  position: relative;
-  top: 27rem;
-  height: 35px;
+  position: absolute;
+  top: 40rem;
+  left: 52rem;
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  box-shadow: 1px 1.6px 1px #000;
+  margin-right: 2%;
+  &:hover {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+`;
+const DeleteButton = styled.div`
+  cursor: pointer;
+  background: #ea553a;
+  color: white;
+  border-radius: 3px;
+  border: 0px;
+  position: absolute;
+  top: 40rem;
+  left: 66rem;
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
   box-shadow: 1px 1.6px 1px #000;
   &:hover {
     transform: translateY(1px);
@@ -263,22 +306,22 @@ const BirthdayForm = styled.div`
 
 const GenderForm = styled.div`
   position: relative;
-  top: 15rem;
+  top: 10rem;
 `;
 
 const TelephoneForm = styled.div`
   position: relative;
-  top: 18rem;
+  top: 13rem;
 `;
 
 const EmailForm = styled.div`
   position: relative;
-  top: 21rem;
+  top: 16rem;
 `;
 
 const AddressForm = styled.div`
   position: relative;
-  top: 24rem;
+  top: 19rem;
 `;
 
 export default CustomerInformationDetails;

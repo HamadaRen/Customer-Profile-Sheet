@@ -21,10 +21,10 @@ export const SideBar = () => {
 
   return (
     <StyledSideBar $animation={sideBarAnimationType}>
-      <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
+      <StyledRow $selected={location.pathname === '/customer'} as={Link} to="/customer">
         顧客リスト
       </StyledRow>
-      <StyledRow $selected={location.pathname === '/customer'} as={Link} to="/customer">
+      <StyledRow $selected={location.pathname === '/customer/entry'} as={Link} to="/customer/entry">
         顧客マスタ
       </StyledRow>
       <StyledRow

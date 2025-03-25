@@ -93,7 +93,7 @@ const CustomerEntryPage = () => {
       // lastNameKana: '',
       nameKana: '',
       birthday: initialDate,
-      gender: '',
+      gender: '男性',
       tel: '',
       email: '',
       address: '',
@@ -136,7 +136,7 @@ const CustomerEntryPage = () => {
             <DatePicker
             locale="ja"
             selected={birthday}
-            dateFormat="yyyy-MM-dd"
+            dateFormat="yyyyMMdd"
             onChange={selectedDate => {setBirthday(selectedDate || initialDate)}}
             maxDate={endDate}
             value={userDetails.birthday}
@@ -227,9 +227,10 @@ const RegistrationButton = styled.button`
   border-radius: 3px;
   border: 0px;
   position: relative;
-  top: 27rem;
+  top: 22rem;
   height: 35px;
   box-shadow: 1px 1.6px 1px #000;
+  font-weight: bold;
   &:hover {
     transform: translateY(1px);
     box-shadow: none;
@@ -253,22 +254,22 @@ const BirthdayForm = styled.div`
 
 const GenderForm = styled.div`
   position: relative;
-  top: 15rem;
+  top: 10rem;
 `;
 
 const TelephoneForm = styled.div`
   position: relative;
-  top: 18rem;
+  top: 13rem;
 `;
 
 const EmailForm = styled.div`
   position: relative;
-  top: 21rem;
+  top: 16rem;
 `;
 
 const AddressForm = styled.div`
   position: relative;
-  top: 24rem;
+  top: 19rem;
 `;
 
 export default CustomerEntryPage;

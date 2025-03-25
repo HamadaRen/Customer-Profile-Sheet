@@ -4,6 +4,7 @@ import CustomerManagement from '../components/customer/Index';
 import CustomerEntryPage from '../components/customer/CustomerEntryPage';
 import CustomerListPage from '../components/customer/CustomerListPage';
 import CustomerInformationDetails from '../components/customer/CustomerInformationDetails';
+import NotFound from '../components/customer/NotFound';
 
 type UserDetailsType = {
   name: string;
@@ -30,9 +31,10 @@ const AppRoutes: React.FC = () => {
             </MainLayout>
           }
         >
-          <Route path="/" element={<CustomerListPage />}></Route>
-          <Route path="/customer" element={<CustomerEntryPage />}></Route>
-          <Route path="/edit" element={<CustomerInformationDetails />}></Route>
+          <Route path="/customer" element={<CustomerListPage />}></Route>
+          <Route path="/customer/entry" element={<CustomerEntryPage />}></Route>
+          <Route path="/customer/:id" element={<CustomerInformationDetails />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

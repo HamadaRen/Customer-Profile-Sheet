@@ -3,6 +3,7 @@ import CustomerListHeader from '../header/CustomerHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import CustomerInformationDetails from './CustomerInformationDetails';
 
 type UserDetailsType = {
   id: string;
@@ -18,10 +19,11 @@ type UserDetailsType = {
 };
 
 const CustomerListPage = () => {
-  const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([])
-  
+  const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([]);
+  const [hoveredId, setHoveredId] = useState<string>('');
+
   const getCustomerData = async () => {
-    const customerData = await axios('http://localhost:3010/');
+    const customerData = await axios.get('http://localhost:3010/customer');
     setCustomerDataArray(customerData.data);
   };
 
@@ -31,22 +33,47 @@ const CustomerListPage = () => {
     getCustomerData();
   }, []);
 
+
   return (
     <GridContainer>
       <CustomerListHeader />
       <>
-      {customerDataArray.map((userData) => (
-        <>
-        <SHeader>{userData.name}</SHeader>
-        <SHeader>{userData.nameKana}</SHeader>
-        <SHeader>
-        <SButton $selected={location.pathname === '/edit'} as={Link} to="/edit">
-        詳細
-        </SButton>
-        </SHeader>
-        </>
-        // console.log('mapした配列の要素', userData)
-      ))}
+        {customerDataArray.map((userData) => (
+          <>
+            <SHeader
+              key={userData.id}
+              onMouseEnter={() => setHoveredId(userData.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === userData.id}
+            >
+              {userData.name}
+            </SHeader>
+            <SHeader
+              onMouseEnter={() => setHoveredId(userData.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === userData.id}
+            >
+              {userData.nameKana}
+            </SHeader>
+            <SHeader
+              onMouseEnter={() => setHoveredId(userData.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === userData.id}
+            >
+              {userData.gender}
+            </SHeader>
+            <SButton
+              onMouseEnter={() => setHoveredId(userData.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === userData.id}
+              as={Link}
+              to={`/customer/${userData.id}`}
+            >
+              詳細
+            </SButton>
+          </>
+          // console.log('mapした配列の要素', userData)
+        ))}
       </>
     </GridContainer>
   );
@@ -58,39 +85,25 @@ const GridContainer = styled.div`
   text-align: center;
   background: #efefef;
   display: grid;
-  grid-template-columns: 1fr 1fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr 3fr;
   grid-auto-rows: 2rem;
   border: solid #000;
 `;
-const SHeader = styled.div`
+
+const SHeader = styled.div<{ $selected?: boolean }>`
   height: 2rem;
   border: 1px solid;
   align-items: center;
-`;
-const SButton = styled.div<{ $selected?: boolean }>`
-/* text-decoration: none; */
+  background-color: ${({ $selected }) => ($selected ? '#b0c4de' : 'transparent')};
   color: inherit;
-  display: flex;
+`;
+
+const SButton = styled.div<{ $selected?: boolean }>`
+  height: 2rem;
+  border: 1px solid;
   align-items: center;
-  /* padding:0.2rem; */
-  cursor: pointer;
-  /* border-bottom: 1px solid #fafafa; */
-  /* background-color: ${({ $selected }) => ($selected ? '#526A8E' : 'transparent')};
-  &:hover {
-    background-color: #526a8e;
-  } */
-
-
-
-
-  width: 100%;
-  height: 100%;
-  background: #d3d3d3;
-  cursor: pointer;
-  &:hover {
-  background: #fff;
-  color: #000;
-}
-`
+  background-color: ${({ $selected }) => ($selected ? '#b0c4de' : '#dcdcdc')};
+  color: inherit;
+`;
 
 export default CustomerListPage;

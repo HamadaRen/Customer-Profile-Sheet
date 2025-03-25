@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import CustomerEntryPage from './CustomerEntryPage';
-import CustomerListPage from './CustomerListPage';
+import CustomerInformationDetails from './CustomerInformationDetails';
 
 type UserDetailsType = {
+  id: string;
   name: string;
   // firstName: string;
   nameKana: string;
@@ -15,14 +15,13 @@ type UserDetailsType = {
 };
 
 const CustomerManagement = () => {
-  const [userDataArray, setUserDataArray] = useState<UserDetailsType[]>([]);
 
-  console.log('Indexで定義したuserDataArray', userDataArray);
 
   return (
     <>
       {/* <CustomerEntryPage setUserDataArray={setUserDataArray} userDataArray={userDataArray} /> */}
       {/* <CustomerListPage userDataArray={userDataArray} /> */}
+      {/* <CustomerInformationDetails id={id} /> */}
     </>
   );
 };
