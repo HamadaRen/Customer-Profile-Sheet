@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -6,7 +6,7 @@ import DatePicker, { registerLocale } from "react-datepicker"
 import {ja} from 'date-fns/locale/ja'
 
 
-
+const NEW_DATE = new Date();
 
 type UserDetailsType = {
   name: string;
@@ -20,37 +20,33 @@ type UserDetailsType = {
   address: string;
 };
 
-type CustomerEntryPageProps = {
-  setUserDataArray: React.Dispatch<React.SetStateAction<UserDetailsType[]>>;
-  userDataArray: UserDetailsType[];
-};
-
 const CustomerEntryPage = () => {
-  const [userDetails, setUserDetails] = useState<UserDetailsType>({
-    name: '',
-    // firstName: '',
-    // lastNameKana: '',
-    nameKana: '',
-    birthday: new Date(),
-    gender: '男性',
-    tel: '',
-    email: '',
-    address: '',
-  });
-
+  // const initialDate: Date = "2001-12-4" as unknown as Date;
+    const  [ birthday ,  setBirthday ]  =  useState<Date | null>(new Date('2001-12-04')) ;
+    const [userDetails, setUserDetails] = useState<UserDetailsType>({
+      name: '',
+      // firstName: '',
+      // lastNameKana: '',
+      nameKana: '',
+      birthday: birthday || new Date(),
+      gender: '男性',
+      tel: '',
+      email: '',
+      address: '',
+    });
+    console.log('birthday', birthday)
+    console.log('birthday', userDetails.birthday)
+    
   //初期値を当日にする
-  const initialDate: Date = "2001-12-4" as unknown as Date;
-    const  [ birthday ,  setBirthday ]  =  useState<Date | undefined> (initialDate) ;
+    // useEffect(() => {
+    //   setUserDetails((prev) => ({ ...prev, birthday: birthday }))
+    // },[setBirthday])
     registerLocale('ja', ja)
 
-    const endDate = new Date();
     // endDate.setDate(endDate.getDate()+31);
 
     // console.log('startDate = '+ birthday);
     // console.log('endDate = '+ endDate);
-    const handleChange = (date: Date | undefined) => {
-      setBirthday(date);
-    }
 
   const genderItems = [
     {
@@ -75,7 +71,6 @@ const CustomerEntryPage = () => {
       // userDetails.firstName === '' ||
       // userDetails.lastNameKana === '' ||
       userDetails.nameKana === '' ||
-      userDetails.birthday === initialDate ||
       userDetails.gender === '' ||
       userDetails.tel === '' ||
       userDetails.email === ''
@@ -92,7 +87,7 @@ const CustomerEntryPage = () => {
       // firstName: '',
       // lastNameKana: '',
       nameKana: '',
-      birthday: initialDate,
+      birthday: birthday || new Date(),
       gender: '男性',
       tel: '',
       email: '',
@@ -100,6 +95,29 @@ const CustomerEntryPage = () => {
     });
     const genderCheckBox = document.querySelectorAll('genderChecked')
   };
+
+
+  const handleRawChange = (e: any) => {
+    const target = e.target as HTMLInputElement; // 型アサーションで修正
+    const rawValue = target.value;
+    if(!rawValue){
+      return;
+    }
+    console.log('object', rawValue)
+  
+    const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
+    if (match) {
+      const year = parseInt(match[1]);
+      const month = parseInt(match[2]) - 1;
+      const day = parseInt(match[3]);
+      const newDate = new Date(year, month, day);
+  
+      if (!isNaN(newDate.getTime())) {
+        setBirthday(newDate);
+      }
+    }
+  };
+
 
   return (
     <Container>
@@ -136,10 +154,12 @@ const CustomerEntryPage = () => {
             <DatePicker
             locale="ja"
             selected={birthday}
-            dateFormat="yyyyMMdd"
-            onChange={selectedDate => {setBirthday(selectedDate || initialDate)}}
-            maxDate={endDate}
-            value={userDetails.birthday}
+            dateFormat="yyyy年MM月dd日"
+            onChange={(date) => setBirthday(date)}
+            //onChangeRawで手入力時の処理を走らせる関数を呼び出す
+            onChangeRaw={handleRawChange}
+            // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
+            maxDate={NEW_DATE}
             
               />
           </label>
