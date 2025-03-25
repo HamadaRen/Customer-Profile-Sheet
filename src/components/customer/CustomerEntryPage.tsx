@@ -32,7 +32,7 @@ const CustomerEntryPage = () => {
     // lastNameKana: '',
     nameKana: '',
     birthday: new Date(),
-    gender: '',
+    gender: '男性',
     tel: '',
     email: '',
     address: '',
@@ -157,7 +157,7 @@ const CustomerEntryPage = () => {
                   value={item.value}
                   onChange={() => setUserDetails((prev) => ({ ...prev, gender: item.value }))}
                   style={{ width: 43, height: 28 }}
-                  defaultChecked={item.value==='男性'}
+                  defaultChecked={item.value==="男性"}
                 />
                 {item.label}
               </label>
@@ -208,8 +208,6 @@ const CustomerEntryPage = () => {
         <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
       </div>
     </Container>
-
-    
   );
 };
 

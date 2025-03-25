@@ -9,8 +9,6 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 type UserDetailsType = {
   id: string;
   name: string;
-  // firstName: string;
-  // lastNameKana: string;
   nameKana: string;
   birthday: Date;
   gender: string;
@@ -40,25 +38,13 @@ const CustomerInformationDetails = () => {
   const getCustomerData = async () => {
     const customerData = await axios.get(`http://localhost:3010/customer/${id}`);
     const getCustomerDataArray = customerData.data;
-    const getCustomer = getCustomerDataArray.shift();
-    setUserDetails({
-      id: getCustomer.id,
-    name: getCustomer.name,
-    // firstName: '',
-    // lastNameKana: '',
-    nameKana: getCustomer.nameKana,
-    birthday: new Date(getCustomer.birthday),
-    gender: getCustomer.gender,
-    tel: getCustomer.tel,
-    email: getCustomer.email,
-    address: getCustomer.address,
-    })
-    console.log('id空取得できたデータ',getCustomer);
+    const getCustomer: UserDetailsType = getCustomerDataArray.shift();
+    setUserDetails(getCustomer);
+    console.log(getCustomer.gender);
   };
 
-  
   const location = useLocation();
-  
+
   useEffect(() => {
     getCustomerData();
   }, []);
@@ -80,16 +66,16 @@ const CustomerInformationDetails = () => {
 
   const genderItems = [
     {
-      label: "男性",
-      value: "男性",
+      label: '男性',
+      value: '男性',
     },
     {
-      label: "女性",
-      value: "女性",
+      label: '女性',
+      value: '女性',
     },
     {
-      label: "その他",
-      value: "その他",
+      label: 'その他',
+      value: 'その他',
     },
   ];
 
@@ -102,33 +88,32 @@ const CustomerInformationDetails = () => {
       userDetails.gender === '' ||
       userDetails.tel === '' ||
       userDetails.email === ''
-    )
-      {
-        alert('入力していない項目があります');
-        return;
-      }
-      //ここまでオッケーこの下をAPIに修正
+    ) {
+      alert('入力していない項目があります');
+      return;
+    }
+    //ここまでオッケーこの下をAPIに修正
 
-      await axios.put('http://localhost:3010/put', { userDetails })
+    await axios.put('http://localhost:3010/put', { userDetails });
 
-      setUserDetails({
-        id: '',
-        name: '',
-        // firstName: '',
-        // lastNameKana: '',
-        nameKana: '',
-        birthday: initialDate,
-        gender: userDetails.gender,
-        tel: '',
-        email: '',
-        address: '',
-      });
+    // setUserDetails({
+    //   id: '',
+    //   name: '',
+    //   // firstName: '',
+    //   // lastNameKana: '',
+    //   nameKana: '',
+    //   birthday: initialDate,
+    //   gender: userDetails.gender,
+    //   tel: '',
+    //   email: '',
+    //   address: '',
+    // });
   };
 
-  const handleDelete = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-    
-  }
+  const handleDelete = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    await axios.put(`http://localhost:3010/put/delete/${id}`, {id});
+  };
 
   return (
     <Container>
@@ -187,8 +172,8 @@ const CustomerInformationDetails = () => {
                   value={item.value}
                   onChange={() => setUserDetails((prev) => ({ ...prev, gender: item.value }))}
                   style={{ width: 43, height: 28 }}
-                  defaultChecked={item.value === userDetails.gender}
-                  />
+                  checked={item.value === userDetails.gender}
+                />
                 {item.label}
               </label>
             ))}
@@ -234,12 +219,18 @@ const CustomerInformationDetails = () => {
           </label>
         </AddressForm>
       </form>
+      <div>
       <div onClick={handleRegistration}>
         <RegistrationButton as={Link} to={'/customer'}>
           内容を確定する
-          </RegistrationButton>
+        </RegistrationButton>
       </div>
-        <DeleteButton onClick={handleDelete}>顧客情報を削除する</DeleteButton>
+      <div onClick={handleDelete}>
+        <DeleteButton as={Link} to={'/customer'}>
+          顧客情報を削除する
+        </DeleteButton>
+      </div>
+      </div>
     </Container>
   );
 };
@@ -254,12 +245,12 @@ const Container = styled.div`
 const RegistrationButton = styled.div`
   cursor: pointer;
   background: #007bbb;
-  color: white;
+  color: #fff;
   border-radius: 3px;
   border: 0px;
-  position: absolute;
-  top: 40rem;
-  left: 52rem;
+  position: relative;
+  top: 21rem;
+  right: 7rem;
   display: inline-block;
   padding: 0.8rem 2rem;
   font-weight: bold;
@@ -273,12 +264,12 @@ const RegistrationButton = styled.div`
 const DeleteButton = styled.div`
   cursor: pointer;
   background: #ea553a;
-  color: white;
+  color: #fff;
   border-radius: 3px;
   border: 0px;
-  position: absolute;
-  top: 40rem;
-  left: 66rem;
+  position: relative;
+  top: 17.9rem;
+  left: 9rem;
   display: inline-block;
   padding: 0.8rem 1.5rem;
   font-weight: bold;

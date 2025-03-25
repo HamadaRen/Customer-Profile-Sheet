@@ -16,6 +16,7 @@ type UserDetailsType = {
   address: string;
   created_at: string;
   update_at: string;
+  delete_at: string;
 };
 
 const CustomerListPage = () => {
@@ -25,6 +26,7 @@ const CustomerListPage = () => {
   const getCustomerData = async () => {
     const customerData = await axios.get('http://localhost:3010/customer');
     setCustomerDataArray(customerData.data);
+    console.log('getするデータ',customerData)
   };
 
   const location = useLocation();
@@ -45,6 +47,8 @@ const CustomerListPage = () => {
               onMouseEnter={() => setHoveredId(userData.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === userData.id}
+              as={Link}
+              to={`/customer/${userData.id}`}
             >
               {userData.name}
             </SHeader>
@@ -52,6 +56,8 @@ const CustomerListPage = () => {
               onMouseEnter={() => setHoveredId(userData.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === userData.id}
+              as={Link}
+              to={`/customer/${userData.id}`}
             >
               {userData.nameKana}
             </SHeader>
@@ -59,6 +65,8 @@ const CustomerListPage = () => {
               onMouseEnter={() => setHoveredId(userData.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === userData.id}
+              as={Link}
+              to={`/customer/${userData.id}`}
             >
               {userData.gender}
             </SHeader>
