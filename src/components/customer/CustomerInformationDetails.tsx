@@ -17,53 +17,57 @@ type UserDetailsType = {
   address: string;
 };
 
+const NEW_DATE = new Date()
+
 const CustomerInformationDetails = () => {
-  const initialDate: Date = '2001-12-4' as unknown as Date;
-  const [birthday, setBirthday] = useState<Date | undefined>(initialDate);
-  const [userDetails, setUserDetails] = useState<UserDetailsType>({
-    id: '',
-    name: '',
-    nameKana: '',
-    birthday: new Date(),
-    gender: '',
-    tel: '',
-    email: '',
-    address: '',
-  });
-
-  const params = useParams();
-  const id = params.id;
-
   //ここからGETメソッド
   const getCustomerData = async () => {
     const customerData = await axios.get(`http://localhost:3010/customer/${id}`);
     const getCustomerDataArray = customerData.data;
     const getCustomer: UserDetailsType = getCustomerDataArray.shift();
-    setUserDetails(getCustomer);
-    console.log(getCustomer.gender);
+    setUserDetails({
+    id: getCustomer.id,
+    name: getCustomer.name,
+    nameKana: getCustomer.nameKana,
+    birthday: new Date(getCustomer.birthday),
+    gender: getCustomer.gender,
+    tel: getCustomer.tel,
+    email: getCustomer.email,
+    address: getCustomer.address,
+    });
   };
+  // const initialDate: Date = '2001-12-4' as unknown as Date;
+  const [birthday, setBirthday] = useState<Date | null>(new Date());
+  const [userDetails, setUserDetails] = useState<UserDetailsType>({
+    id: '',
+    name: '',
+    nameKana: '',
+    birthday: birthday || new Date(),
+    gender: '',
+    tel: '',
+    email: '',
+    address: '',
+  });
+  
+  const params = useParams();
+  const id = params.id;
+
 
   const location = useLocation();
 
-  useEffect(() => {
-    getCustomerData();
-  }, []);
-  //ここまで
-
+  
   // console.log('getした配列!', customerData);
-  console.log('フォーム内の初期値', userDetails);
-
   //初期値を当日にする
   registerLocale('ja', ja);
-
+  
   // endDate.setDate(endDate.getDate()+31);
-
+  
   // console.log('startDate = '+ birthday);
   // console.log('endDate = '+ endDate);
-  const handleChange = (date: Date | undefined) => {
+  const handleChange = (date: Date | null) => {
     setBirthday(date);
   };
-
+  
   const genderItems = [
     {
       label: '男性',
@@ -78,7 +82,7 @@ const CustomerInformationDetails = () => {
       value: 'その他',
     },
   ];
-
+  
   //userDetailsを登録欄に表示したい
   const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -93,30 +97,64 @@ const CustomerInformationDetails = () => {
       return;
     }
     //ここまでオッケーこの下をAPIに修正
-
+    
     await axios.put('http://localhost:3010/put', { userDetails });
-
+    
     // setUserDetails({
-    //   id: '',
-    //   name: '',
-    //   // firstName: '',
-    //   // lastNameKana: '',
-    //   nameKana: '',
-    //   birthday: initialDate,
-    //   gender: userDetails.gender,
-    //   tel: '',
-    //   email: '',
-    //   address: '',
-    // });
-  };
+      //   id: '',
+      //   name: '',
+      //   // firstName: '',
+      //   // lastNameKana: '',
+      //   nameKana: '',
+      //   birthday: initialDate,
+      //   gender: userDetails.gender,
+      //   tel: '',
+      //   email: '',
+      //   address: '',
+      // });
+    };
 
-  const handleDelete = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    await axios.put(`http://localhost:3010/put/delete/${id}`, {id});
-  };
+    const handleRawChange = (e: any) => {
+      const rawTarget = e.target as HTMLInputElement;
+      const rawValue = rawTarget.value;
+      if(!rawValue){
+        return;
+      }
+      console.log('hakka+ろーばりゅー', rawValue)
+      const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/)
+      console.log('まっち', match)
+      if (match) {
+        const year = parseInt(match[1]);
+        const month = parseInt(match[2]) - 1;
+        const day = parseInt(match[3]);
+        const newDate = new Date(year, month, day);
+        
+        if (!isNaN(newDate.getTime())) {
+          setBirthday(newDate);
+        }
+      }
+    }
+    
+    const handleDelete = async (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+      await axios.put(`http://localhost:3010/put/delete/${id}`, {id});
+    };
 
-  return (
-    <Container>
+    useEffect(() => {
+      getCustomerData();
+    }, []);
+  
+    //birthdayの値が変わったときに発火するuseEffect
+    useEffect(() => {
+      if(birthday===null){
+        return;
+      }
+        setUserDetails((prev) => ({ ...prev, birthday: birthday }))
+    }, [birthday]);
+
+    
+    return (
+      <Container>
       <form>
         <NameForm>
           <label>
@@ -149,13 +187,12 @@ const CustomerInformationDetails = () => {
             生年月日：
             <DatePicker
               locale="ja"
-              selected={birthday}
-              dateFormat="yyyy-MM-dd"
-              onChange={(selectedDate) => {
-                setBirthday(selectedDate || initialDate);
-              }}
-              maxDate={new Date()}
-              value={userDetails.birthday}
+              selected={userDetails.birthday}
+              dateFormat="yyyy年MM月dd日"
+              onChange={(date) => setBirthday(date)}
+              onChangeRaw={handleRawChange}
+              maxDate={NEW_DATE}
+              // value={userDetails.birthday}
             />
           </label>
         </BirthdayForm>
@@ -221,12 +258,12 @@ const CustomerInformationDetails = () => {
       </form>
       <div>
       <div onClick={handleRegistration}>
-        <RegistrationButton as={Link} to={'/customer'}>
+        <RegistrationButton as={Link} to={'/'}>
           内容を確定する
         </RegistrationButton>
       </div>
       <div onClick={handleDelete}>
-        <DeleteButton as={Link} to={'/customer'}>
+        <DeleteButton as={Link} to={'/'}>
           顧客情報を削除する
         </DeleteButton>
       </div>

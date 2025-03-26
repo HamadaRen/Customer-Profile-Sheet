@@ -31,7 +31,7 @@ const AppRoutes: React.FC = () => {
             </MainLayout>
           }
         >
-          <Route path="/customer" element={<CustomerListPage />}></Route>
+          <Route path="/" element={<CustomerListPage />}></Route>
           <Route path="/customer/entry" element={<CustomerEntryPage />}></Route>
           <Route path="/customer/:id" element={<CustomerInformationDetails />}></Route>
           <Route path="/*" element={<NotFound />}></Route>

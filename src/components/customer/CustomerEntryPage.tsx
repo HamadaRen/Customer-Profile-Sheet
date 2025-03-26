@@ -4,6 +4,7 @@ import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from "react-datepicker"
 import {ja} from 'date-fns/locale/ja'
+import { Link } from 'react-router-dom';
 
 
 const NEW_DATE = new Date();
@@ -96,16 +97,16 @@ const CustomerEntryPage = () => {
     const genderCheckBox = document.querySelectorAll('genderChecked')
   };
 
-
   const handleRawChange = (e: any) => {
-    const target = e.target as HTMLInputElement; // 型アサーションで修正
+    const target = e.target as HTMLInputElement; // 型をアサーション(as)で修正
     const rawValue = target.value;
     if(!rawValue){
       return;
     }
-    console.log('object', rawValue)
-  
+    console.log('ろーばりゅー', rawValue)
+    
     const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
+    console.log('まっち', match)
     if (match) {
       const year = parseInt(match[1]);
       const month = parseInt(match[2]) - 1;
@@ -224,8 +225,8 @@ const CustomerEntryPage = () => {
           </label>
         </AddressForm>
       </form>
-      <div>
-        <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
+      <div onClick={handleRegistration}>
+        <RegistrationButton as={Link} to={'/'}>この内容で登録する</RegistrationButton>
       </div>
     </Container>
   );
@@ -238,10 +239,12 @@ const Container = styled.div`
   background: #efefef;
 `;
 
-const RegistrationButton = styled.button`
+const RegistrationButton = styled.div`
   cursor: pointer;
   background: #007bbb;
   color: white;
+  display: inline-block;
+  padding: 0.8rem 1.5rem 0.5rem 1.5rem;
   border-radius: 3px;
   border: 0px;
   position: relative;
