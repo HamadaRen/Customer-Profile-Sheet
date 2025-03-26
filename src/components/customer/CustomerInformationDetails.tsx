@@ -56,17 +56,8 @@ const CustomerInformationDetails = () => {
   const location = useLocation();
 
   
-  // console.log('getした配列!', customerData);
   //初期値を当日にする
   registerLocale('ja', ja);
-  
-  // endDate.setDate(endDate.getDate()+31);
-  
-  // console.log('startDate = '+ birthday);
-  // console.log('endDate = '+ endDate);
-  const handleChange = (date: Date | null) => {
-    setBirthday(date);
-  };
   
   const genderItems = [
     {
@@ -98,21 +89,7 @@ const CustomerInformationDetails = () => {
     }
     //ここまでオッケーこの下をAPIに修正
     
-    await axios.put('http://localhost:3010/put', { userDetails });
-    
-    // setUserDetails({
-      //   id: '',
-      //   name: '',
-      //   // firstName: '',
-      //   // lastNameKana: '',
-      //   nameKana: '',
-      //   birthday: initialDate,
-      //   gender: userDetails.gender,
-      //   tel: '',
-      //   email: '',
-      //   address: '',
-      // });
-    };
+    await axios.put('http://localhost:3010/put', { userDetails });};
 
     const handleRawChange = (e: any) => {
       const rawTarget = e.target as HTMLInputElement;
@@ -192,7 +169,6 @@ const CustomerInformationDetails = () => {
               onChange={(date) => setBirthday(date)}
               onChangeRaw={handleRawChange}
               maxDate={NEW_DATE}
-              // value={userDetails.birthday}
             />
           </label>
         </BirthdayForm>
@@ -205,7 +181,6 @@ const CustomerInformationDetails = () => {
                 <input
                   type="radio"
                   name="genderChecked"
-                  // onChange={(e) => setUserDetails((prev) => ({ ...prev, gender: e.target.value }))}
                   value={item.value}
                   onChange={() => setUserDetails((prev) => ({ ...prev, gender: item.value }))}
                   style={{ width: 43, height: 28 }}

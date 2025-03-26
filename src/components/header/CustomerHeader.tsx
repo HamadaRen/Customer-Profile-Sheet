@@ -17,4 +17,6 @@ export default CustomerListHeader;
 const SHeader = styled.div`
   height: 2rem;
   border: 1px solid;
+  background-color: #052B52;
+  color: #fff;
 `;

@@ -35,7 +35,6 @@ const CustomerListPage = () => {
     getCustomerData();
   }, []);
 
-
   return (
     <GridContainer>
       <CustomerListHeader />
@@ -80,7 +79,6 @@ const CustomerListPage = () => {
               詳細
             </SButton>
           </>
-          // console.log('mapした配列の要素', userData)
         ))}
       </>
     </GridContainer>
@@ -102,7 +100,7 @@ const SHeader = styled.div<{ $selected?: boolean }>`
   height: 2rem;
   border: 1px solid;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#b0c4de' : 'transparent')};
+  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#9baeca')};
   color: inherit;
 `;
 
@@ -110,7 +108,7 @@ const SButton = styled.div<{ $selected?: boolean }>`
   height: 2rem;
   border: 1px solid;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#b0c4de' : '#dcdcdc')};
+  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#778899')};
   color: inherit;
 `;
 

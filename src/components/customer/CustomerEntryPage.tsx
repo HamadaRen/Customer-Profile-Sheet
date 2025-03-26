@@ -11,8 +11,6 @@ const NEW_DATE = new Date();
 
 type UserDetailsType = {
   name: string;
-  // firstName: string;
-  // lastNameKana: string;
   nameKana: string;
   birthday: Date;
   gender: string;
@@ -22,12 +20,9 @@ type UserDetailsType = {
 };
 
 const CustomerEntryPage = () => {
-  // const initialDate: Date = "2001-12-4" as unknown as Date;
     const  [ birthday ,  setBirthday ]  =  useState<Date | null>(new Date('2001-12-04')) ;
     const [userDetails, setUserDetails] = useState<UserDetailsType>({
       name: '',
-      // firstName: '',
-      // lastNameKana: '',
       nameKana: '',
       birthday: birthday || new Date(),
       gender: '男性',
@@ -38,16 +33,7 @@ const CustomerEntryPage = () => {
     console.log('birthday', birthday)
     console.log('birthday', userDetails.birthday)
     
-  //初期値を当日にする
-    // useEffect(() => {
-    //   setUserDetails((prev) => ({ ...prev, birthday: birthday }))
-    // },[setBirthday])
     registerLocale('ja', ja)
-
-    // endDate.setDate(endDate.getDate()+31);
-
-    // console.log('startDate = '+ birthday);
-    // console.log('endDate = '+ endDate);
 
   const genderItems = [
     {
@@ -64,13 +50,15 @@ const CustomerEntryPage = () => {
     },
   ];
 
+
   //userDetailsを登録欄に表示したい
   const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    const getData = await axios.get('http://localhost:3010/customer/delete')
+      const getDataArray = getData.data
+      console.log('getしたデータ', getDataArray)
     if (
       userDetails.name === '' ||
-      // userDetails.firstName === '' ||
-      // userDetails.lastNameKana === '' ||
       userDetails.nameKana === '' ||
       userDetails.gender === '' ||
       userDetails.tel === '' ||
@@ -85,8 +73,6 @@ const CustomerEntryPage = () => {
 
     setUserDetails({
       name: '',
-      // firstName: '',
-      // lastNameKana: '',
       nameKana: '',
       birthday: birthday || new Date(),
       gender: '男性',
@@ -226,7 +212,7 @@ const CustomerEntryPage = () => {
         </AddressForm>
       </form>
       <div onClick={handleRegistration}>
-        <RegistrationButton as={Link} to={'/'}>この内容で登録する</RegistrationButton>
+        <RegistrationButton>この内容で登録する</RegistrationButton>
       </div>
     </Container>
   );

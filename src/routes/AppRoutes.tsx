@@ -8,9 +8,7 @@ import NotFound from '../components/customer/NotFound';
 
 type UserDetailsType = {
   name: string;
-  // firstName: string;
   nameKana: string;
-  // firstNameKana: string;
   birthday: string;
   gender: string;
   tel: string;
