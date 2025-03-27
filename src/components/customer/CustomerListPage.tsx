@@ -100,7 +100,7 @@ const SHeader = styled.div<{ $selected?: boolean }>`
   height: 2rem;
   border: 1px solid;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#9baeca')};
+  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#e7e7eb')};
   color: inherit;
 `;
 
@@ -108,7 +108,7 @@ const SButton = styled.div<{ $selected?: boolean }>`
   height: 2rem;
   border: 1px solid;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#778899')};
+  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#9baeca')};
   color: inherit;
 `;
 

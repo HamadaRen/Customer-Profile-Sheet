@@ -28,9 +28,9 @@ export const SideBar = () => {
         顧客マスタ
       </StyledRow>
       <StyledRow
-      // $selected={location.pathname === '/customer'}
-      // as={Link}
-      // to="/app/base-location"
+      $selected={location.pathname === '/treatmentMenu/entry'}
+      as={Link}
+      to="/treatmentMenu"
       >
         施術マスタ
       </StyledRow>

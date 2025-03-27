@@ -105,7 +105,6 @@ const CustomerEntryPage = () => {
     }
   };
 
-
   return (
     <Container>
       <form>
@@ -147,7 +146,6 @@ const CustomerEntryPage = () => {
             onChangeRaw={handleRawChange}
             // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
             maxDate={NEW_DATE}
-            
               />
           </label>
         </BirthdayForm>
