@@ -42,8 +42,8 @@ const TreatmentMenuList = () => {
         <ListItem>{listItem.price}</ListItem>
         <ListItem>{listItem.time}</ListItem>
         <ListItem>
-          <ModeEditRoundedIcon style={{fontSize: 40, marginRight: 20}} />
-          <DeleteForeverRoundedIcon style={{fontSize: 40, color: 'red'}} />
+          <ModeEditRoundedIcon style={{fontSize: 25, marginRight: 40}} />
+          <DeleteForeverRoundedIcon style={{fontSize: 25, color: 'red'}} />
           </ListItem>
           </>
       ))}
@@ -58,14 +58,14 @@ const GridContainer = styled.div`
   width: 100%;
   height: 100%;
   grid-template-columns: 5fr 3fr 2fr 2fr;
-  grid-auto-rows: 4rem;
+  grid-auto-rows: 2rem;
   border: 1px solid #000;
 `;
 const ListItem = styled.div<{$selected?: boolean}>`
   border: 1px solid #000;
   background-color: ${({$selected}) => ($selected ? '#bbc8e6' : '#efefef')};
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 1%;
 `;
 
 export default TreatmentMenuList

@@ -18,7 +18,7 @@ const SHeader = styled.div`
   background-color: #052B52;
   color: #fff;
   text-align: center;
-  padding-top: 1.3rem;
+  padding-top: 0.3rem;
 `;
 
 

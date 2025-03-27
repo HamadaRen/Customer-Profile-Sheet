@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const TreatmentAddPage = () => {
@@ -70,7 +71,7 @@ const TreatmentAddPage = () => {
         />
         </label>
         </Time>
-      <AddButton>ボタン</AddButton>
+      <AddButton as={Link} to={'/treatmentMenu'}>この内容で追加する</AddButton>
     </Container>
   );
 };
@@ -119,7 +120,7 @@ const AddButton = styled.div`
   background: #007bbb;
   color: white;
   display: inline-block;
-  padding: 1rem 5rem 0.5rem 5rem;
+  padding: 1rem 3rem 0.5rem 3rem;
   border-radius: 3px;
   border: 0px;
   position: relative;
