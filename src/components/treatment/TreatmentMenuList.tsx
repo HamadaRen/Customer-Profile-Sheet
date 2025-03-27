@@ -4,6 +4,7 @@ import TreatmentMenuHeader from '../header/TreatmentMenuHeader';
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import OperationHeaderButton from '../header/OperationHeaderButton';
+import IconButton from '@mui/material/IconButton';
 
 
 type ListItemAry = {
@@ -42,8 +43,12 @@ const TreatmentMenuList = () => {
         <ListItem>{listItem.price}</ListItem>
         <ListItem>{listItem.time}</ListItem>
         <ListItem>
-          <ModeEditRoundedIcon style={{fontSize: 25, marginRight: 40}} />
-          <DeleteForeverRoundedIcon style={{fontSize: 25, color: 'red'}} />
+        <IconButton style={{alignItems: 'center', paddingTop: 1, marginRight: 30}}>
+          <ModeEditRoundedIcon />
+        </IconButton>
+        <IconButton style={{alignItems: 'center', paddingTop: 1}}>
+          <DeleteForeverRoundedIcon style={{position: 'relative', color: 'red'}} />
+        </IconButton>
           </ListItem>
           </>
       ))}

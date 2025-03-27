@@ -50,6 +50,7 @@ const CustomerInformationDetails = () => {
   });
   
   const params = useParams();
+  console.log('パラムス', params)
   const id = params.id;
 
 
