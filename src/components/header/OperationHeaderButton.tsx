@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button } from '@mui/material';
+import { Box, Button, makeStyles, Paper, Tab, Tabs, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import TreatmentTab from './TreatmentTab';
+
+
+
 
 const OperationHeaderButton = () => {
+
+
   const handleClick = () => {
     window.location.href = 'http://localhost:3000/treatmentMenu/entry';
-  }
+  };
   return (
+    <>
     <AddButton>
+    <TreatmentTab />
       <h2 style={{ display: 'inline-block', position: 'relative', left: '5%' }}>施術リスト</h2>
       <Button
         variant="contained"
@@ -23,10 +31,11 @@ const OperationHeaderButton = () => {
           fontSize: '110%',
         }}
         onClick={handleClick}
-      >
+        >
         施術追加
       </Button>
     </AddButton>
+        </>
   );
 };
 

@@ -5,8 +5,9 @@ import CustomerEntryPage from '../components/customer/CustomerEntryPage';
 import CustomerListPage from '../components/customer/CustomerListPage';
 import CustomerInformationDetails from '../components/customer/CustomerInformationDetails';
 import NotFound from '../components/customer/NotFound';
-import TreatmentAddPage from '../components/treatment/TreatmentMenuAddPage';
+import TreatmentAddPage from '../components/treatment/TreatmentMenuEntryPage';
 import TreatmentMenuList from '../components/treatment/TreatmentMenuList';
+import TreatmentMenuEditPage from '../components/treatment/TreatmentMenuEditPage';
 
 type UserDetailsType = {
   name: string;
@@ -36,6 +37,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/customer/:id" element={<CustomerInformationDetails />}></Route>
           <Route path="/treatmentMenu/entry" element={<TreatmentAddPage />}></Route>
           <Route path="/treatmentMenu" element={<TreatmentMenuList />}></Route>
+          <Route path="/treatmentMenu/:id" element={<TreatmentMenuEditPage />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Route>
       </Routes>

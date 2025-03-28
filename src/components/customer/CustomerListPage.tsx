@@ -39,8 +39,24 @@ const CustomerListPage = () => {
   }, []);
 
   const handleEditClick = (id: string) => {
-    window.location.replace(`http://localhost:3000/customer/${id}`)
-  }
+    window.location.replace(`http://localhost:3000/customer/${id}`);
+  };
+
+
+  //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
+  const handleDelete = async (id: string) => {
+    console.log('id', id);
+    await axios
+      .put(`http://localhost:3010/delete/${id}`)
+      .then(() => {
+        getCustomerData();
+        console.log('@@@@@@')
+      })
+      .catch(() => {
+        console.log('キャッチエラー');
+      });
+  };
+  //ここまで
 
   return (
     <>
@@ -83,13 +99,13 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
               >
-                <IconButton 
-                style={{ alignItems: 'center', paddingTop: 1, marginRight: 30 }}
-                onClick={() => handleEditClick(userData.id)}
+                <IconButton
+                  style={{ alignItems: 'center', paddingTop: 1, marginRight: 30 }}
+                  onClick={() => handleEditClick(userData.id)}
                 >
                   <ModeEditRoundedIcon />
                 </IconButton>
-                <IconButton style={{ alignItems: 'center', paddingTop: 1 }}>
+                <IconButton style={{ alignItems: 'center', paddingTop: 1 }} onClick={() => handleDelete(userData.id)}>
                   <DeleteForeverRoundedIcon style={{ position: 'relative', color: 'red' }} />
                 </IconButton>
               </SButton>

@@ -24,11 +24,7 @@ export const SideBar = () => {
       <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
         顧客マスタ
       </StyledRow>
-      <StyledRow
-      $selected={location.pathname === '/treatmentMenu'}
-      as={Link}
-      to="/treatmentMenu"
-      >
+      <StyledRow $selected={location.pathname === '/treatmentMenu'} as={Link} to="/treatmentMenu">
         施術マスタ
       </StyledRow>
       <StyledRow
@@ -36,7 +32,7 @@ export const SideBar = () => {
       // as={Link}
       // to="/app/facility"
       >
-        予約マスタ
+        売上マスタ
       </StyledRow>
     </StyledSideBar>
   );
