@@ -6,8 +6,11 @@ import CustomerListPage from '../components/customer/CustomerListPage';
 import CustomerInformationDetails from '../components/customer/CustomerInformationDetails';
 import NotFound from '../components/customer/NotFound';
 import TreatmentAddPage from '../components/treatment/TreatmentMenuEntryPage';
-import TreatmentMenuList from '../components/treatment/TreatmentMenuList';
+import TreatmentMenuList from '../components/treatment/EstheSalonTreatmentMenuList';
 import TreatmentMenuEditPage from '../components/treatment/TreatmentMenuEditPage';
+import TreatmentTab from '../components/header/TreatmentTab';
+import Login from '../login/Login';
+import SalesManagement from '../sales/SalesManagement';
 
 type UserDetailsType = {
   name: string;
@@ -36,10 +39,12 @@ const AppRoutes: React.FC = () => {
           <Route path="/customer/entry" element={<CustomerEntryPage />}></Route>
           <Route path="/customer/:id" element={<CustomerInformationDetails />}></Route>
           <Route path="/treatmentMenu/entry" element={<TreatmentAddPage />}></Route>
-          <Route path="/treatmentMenu" element={<TreatmentMenuList />}></Route>
+          <Route path="/treatmentMenu" element={<TreatmentTab />}></Route>
           <Route path="/treatmentMenu/:id" element={<TreatmentMenuEditPage />}></Route>
+          <Route path="/sales" element={<SalesManagement />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Route>
+          <Route path="/login" element={<Login />}></Route>
       </Routes>
     </BrowserRouter>
   );

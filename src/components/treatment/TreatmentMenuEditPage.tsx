@@ -73,7 +73,7 @@ const TreatmentMenuEditPage = () => {
         </label>
       </Price>
       <Time>
-        <label>
+        {/* <label>
           回数券：
           <input
             type="number"
@@ -83,7 +83,7 @@ const TreatmentMenuEditPage = () => {
             min={1}
             max={100}
           />
-        </label>
+        </label> */}
       </Time>
       <div>
         <div onClick={handleRegistration}>

@@ -7,7 +7,7 @@ import TreatmentTab from './TreatmentTab';
 
 
 
-const OperationHeaderButton = () => {
+const HairSalonOperationHeaderButton = () => {
 
 
   const handleClick = () => {
@@ -16,8 +16,7 @@ const OperationHeaderButton = () => {
   return (
     <>
     <AddButton>
-    <TreatmentTab />
-      <h2 style={{ display: 'inline-block', position: 'relative', left: '5%' }}>施術リスト</h2>
+      <h2 style={{ display: 'inline-block', position: 'relative', left: '5%' }}>ヘアサロン施術リスト</h2>
       <Button
         variant="contained"
         style={{
@@ -50,4 +49,4 @@ const SHeader = styled.div`
   left: 40%;
 `;
 
-export default OperationHeaderButton;
+export default HairSalonOperationHeaderButton;

@@ -54,9 +54,9 @@ const CustomerEntryPage = () => {
   //userDetailsを登録欄に表示したい
   const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const getData = await axios.get('http://localhost:3010/customer/delete')
-      const getDataArray = getData.data
-      console.log('getしたデータ', getDataArray)
+    // const getData = await axios.get('http://localhost:3010/customer/delete')
+    //   const getDataArray = getData.data
+    //   console.log('getしたデータ', getDataArray)
     if (
       userDetails.name === '' ||
       userDetails.nameKana === '' ||
@@ -69,7 +69,7 @@ const CustomerEntryPage = () => {
     }
     //ここまでオッケーこの下をAPIに修正
 
-    await axios.post('http://localhost:3010/add', { userDetails });
+    await axios.post('http://localhost:3010/customer/add', { userDetails });
 
     setUserDetails({
       name: '',

@@ -1,9 +1,46 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+type TreatmentDetailsType = {
+  salonName: string;
+  name: string;
+  price: number;
+};
+
 const TreatmentAddPage = () => {
-  const [salon, setSalon] = useState<'hairSalon' | 'estheticSalon'>('estheticSalon');
+  // const [salon, setSalon] = useState<'hairSalon' | 'estheticSalon'>('estheticSalon');
+  const [treatmentDetails, setTreatmentDetails] = useState<TreatmentDetailsType>({
+    salonName: 'estheticSalon',
+    name: '',
+    price: 0,
+  });
+
+  console.log('登録した施術', treatmentDetails);
+  const name = treatmentDetails.name;
+  const price = treatmentDetails.price;
+
+  const handleClick = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (treatmentDetails.salonName === '' || treatmentDetails.name === '' || treatmentDetails.price === 0) {
+      return alert('入力されていない項目があります');
+    }
+    if (treatmentDetails.salonName === 'estheticSalon') {
+      await axios.post('http://localhost:3010/treatment/esthetic/add', { name });
+    } else if (treatmentDetails.salonName === 'hairSalon') {
+      await axios.post('http://localhost:3010/treatment/hair/add', { name });
+    }
+
+    await axios.post('http://localhost:3010/treatment/price/add', { price });
+
+    setTreatmentDetails({
+      salonName: 'estheticSalon',
+      name: '',
+      price: 0,
+    });
+  };
+
   return (
     <Container>
       <SalonTabs>
@@ -11,13 +48,14 @@ const TreatmentAddPage = () => {
       </SalonTabs>
       <MenuInputForm>
         <label>
-          カテゴリ:
+          サロンカテゴリ:　
           <input
             type="radio"
             id="categoryChoice2"
             name="category"
             value={'estheticSalon'}
-            style={{ width: 43, height: 28}}
+            style={{ width: 43, height: 28 }}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, salonName: 'estheticSalon' }))}
             defaultChecked
           />
           <label htmlFor="categoryChoice2">エステサロン</label>
@@ -27,6 +65,7 @@ const TreatmentAddPage = () => {
             name="category"
             value={'hairSalon'}
             style={{ width: 43, height: 28 }}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, salonName: 'hairSalon' }))}
           />
           <label htmlFor="categoryChoice1">ヘアサロン</label>
         </label>
@@ -43,23 +82,28 @@ const TreatmentAddPage = () => {
       <MenuInputForm>
         <label>
           施術名：
-          <input 
-          type='text'
-          style={{width: 700, height: 30}}
+          <input
+            type="text"
+            style={{ width: 700, height: 30 }}
+            placeholder='◯◯コース'
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, name: e.target.value }))}
+            value={treatmentDetails.name}
           />
-          </label>
-          </MenuInputForm>
+        </label>
+      </MenuInputForm>
       <Price>
         <label>
-        値段：
-        <input
-        type='text'
-        style={{width: 300, height: 30}}
-        />
+          値段：
+          <input
+            type="number"
+            style={{ width: 300, height: 30 }}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, price: e.target.valueAsNumber }))}
+            value={treatmentDetails.price}
+          />
         </label>
-        </Price>
+      </Price>
       <Time>
-      <label>
+        {/* <label>
         回数券：
         <input
         type="number"
@@ -69,9 +113,13 @@ const TreatmentAddPage = () => {
         min={1}
         max={100}
         />
-        </label>
-        </Time>
-      <AddButton as={Link} to={'/treatmentMenu'}>この内容で追加する</AddButton>
+        </label> */}
+      </Time>
+      <div>
+        <AddButton onClick={handleClick} as={Link} to={'/treatmentMenu'}>
+          この内容で追加する
+        </AddButton>
+      </div>
     </Container>
   );
 };

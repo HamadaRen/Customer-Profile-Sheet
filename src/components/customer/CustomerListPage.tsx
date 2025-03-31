@@ -42,7 +42,6 @@ const CustomerListPage = () => {
     window.location.replace(`http://localhost:3000/customer/${id}`);
   };
 
-
   //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
   const handleDelete = async (id: string) => {
     console.log('id', id);
@@ -50,10 +49,8 @@ const CustomerListPage = () => {
       .put(`http://localhost:3010/delete/${id}`)
       .then(() => {
         getCustomerData();
-        console.log('@@@@@@')
       })
       .catch(() => {
-        console.log('キャッチエラー');
       });
   };
   //ここまで

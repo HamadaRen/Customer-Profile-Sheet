@@ -6,7 +6,6 @@ const TreatmentMenuHeader = () => {
     <>
     <SHeader>施術名</SHeader>
     <SHeader>施術金額</SHeader>
-    <SHeader>施術回数</SHeader>
     <SHeader>編集　/　削除</SHeader>
     </>
   )

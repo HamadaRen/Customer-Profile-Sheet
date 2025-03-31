@@ -90,7 +90,7 @@ const CustomerInformationDetails = () => {
     }
     //ここまでオッケーこの下をAPIに修正
     
-    await axios.put('http://localhost:3010/put', { userDetails });};
+    await axios.put('http://localhost:3010/customer/put', { userDetails });};
 
     const handleRawChange = (e: any) => {
       const rawTarget = e.target as HTMLInputElement;
@@ -115,7 +115,7 @@ const CustomerInformationDetails = () => {
     
     const handleDelete = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
-      await axios.put(`http://localhost:3010/put/delete/${id}`, {id});
+      await axios.put(`http://localhost:3010/customer/delete/${id}`, {id});
     };
 
     useEffect(() => {
