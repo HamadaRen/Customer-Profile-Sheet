@@ -14,7 +14,7 @@ const TreatmentAddPage = () => {
   const [treatmentDetails, setTreatmentDetails] = useState<TreatmentDetailsType>({
     salonName: 'estheticSalon',
     name: '',
-    price: 0,
+    price: NaN,
   });
 
   console.log('登録した施術', treatmentDetails);
@@ -27,17 +27,15 @@ const TreatmentAddPage = () => {
       return alert('入力されていない項目があります');
     }
     if (treatmentDetails.salonName === 'estheticSalon') {
-      await axios.post('http://localhost:3010/treatment/esthetic/add', { name });
+      await axios.post('http://localhost:3010/treatment/esthetic/add', { name: name, price: price });
     } else if (treatmentDetails.salonName === 'hairSalon') {
-      await axios.post('http://localhost:3010/treatment/hair/add', { name });
+      await axios.post('http://localhost:3010/treatment/hair/add', { name: name, price: price });
     }
-
-    await axios.post('http://localhost:3010/treatment/price/add', { price });
 
     setTreatmentDetails({
       salonName: 'estheticSalon',
       name: '',
-      price: 0,
+      price: NaN,
     });
   };
 
@@ -85,7 +83,7 @@ const TreatmentAddPage = () => {
           <input
             type="text"
             style={{ width: 700, height: 30 }}
-            placeholder='◯◯コース'
+            placeholder="◯◯コース"
             onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, name: e.target.value }))}
             value={treatmentDetails.name}
           />
@@ -97,6 +95,7 @@ const TreatmentAddPage = () => {
           <input
             type="number"
             style={{ width: 300, height: 30 }}
+            placeholder='0'
             onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, price: e.target.valueAsNumber }))}
             value={treatmentDetails.price}
           />

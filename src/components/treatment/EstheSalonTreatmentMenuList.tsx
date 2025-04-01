@@ -15,12 +15,14 @@ type EstheticTreatmentAry = {
   id: string,
   category: string,
   name: string,
-  delete_at: string
+  delete_at: string,
+  price: number
 }
 
 const TreatmentMenuList = () => {
   const [hoveredId, setHoveredId] = useState<string>('');
   const [estheticTreatmentDataArray, setEstheticTreatmentDataArray] = useState<EstheticTreatmentAry[]>([])
+
   const getTreatmentData = async () => {
     const estheticData = await axios.get('http://localhost:3010/treatment/esthetic');
     setEstheticTreatmentDataArray(estheticData.data);
@@ -33,9 +35,8 @@ const handleEditClick = (id: string) => {
 //論理削除してリスト内をすぐに更新する関数
 //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
 const handleDelete = async (id: string) => {
-  console.log('id', id);
   await axios
-    .put(`http://localhost:3010/delete/${id}`)
+    .put(`http://localhost:3010/treatment/esthetic/delete/${id}`)
     .then(() => {
       getTreatmentData();
     })
@@ -68,6 +69,16 @@ useEffect(() => {
           {listItem.name}
           </ListItem>
 
+        <ListItem
+        onMouseEnter={() => setHoveredId(listItem.id)}
+        onMouseLeave={() => setHoveredId('')}
+        $selected={hoveredId === listItem.id}
+        as={Link}
+        to={`/treatmentMenu/${listItem.id}`}
+        >
+          {listItem.price + '円'}
+          </ListItem>
+
         <SButton
         onMouseEnter={() => setHoveredId(listItem.id)}
         onMouseLeave={() => setHoveredId('')}
@@ -80,9 +91,14 @@ useEffect(() => {
         >
           <ModeEditRoundedIcon />
         </IconButton>
-        <IconButton style={{alignItems: 'center', paddingTop: 1}}>
+
+        <IconButton 
+        style={{alignItems: 'center', paddingTop: 1}}
+        onClick={() => handleDelete(listItem.id)}
+        >
           <DeleteForeverRoundedIcon style={{position: 'relative', color: 'red'}} />
         </IconButton>
+
           </SButton>
           </>
       ))}
@@ -106,6 +122,7 @@ const ListItem = styled.div<{$selected?: boolean}>`
   text-align: center;
   padding-top: 1%;
   color: inherit;
+  text-decoration: dashed;
 `;
 const SButton = styled.div<{$selected?: boolean}>`
   border: 1px solid #000;

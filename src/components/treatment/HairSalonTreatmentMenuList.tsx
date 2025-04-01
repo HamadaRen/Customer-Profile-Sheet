@@ -17,6 +17,7 @@ type ListItemAry = {
   category: string,
   name: string,
   delete_at: string,
+  price: number
 }
 
 const HairSalonTreatMenuList = () => {
@@ -29,7 +30,18 @@ const HairSalonTreatMenuList = () => {
   }
 
 const handleEditClick = (id: string) => {
-  window.location.replace(`http://localhost:3000/treatmentMenu/${id}`)
+  window.location.replace(`http://localhost:3010/treatmentMenu/${id}`)
+}
+
+//削除ボタンを押したら即反映されるようにする
+const handleDeleteClick = async (id: string) => {
+  await axios.put(`http://localhost:3010/treatment/hair/delete/${id}`)
+  .then(() => {
+    getTreatmentData();
+  })
+  .catch(() => {
+    console.log('error')
+  });
 }
 
 useEffect(() => {
@@ -61,6 +73,7 @@ useEffect(() => {
       {hairTreatmentDataArray.map((listItem) => (
         <>
         <ListItem
+        key={listItem.id}
         onMouseEnter={() => setHoveredId(listItem.id)}
         onMouseLeave={() => setHoveredId('')}
         $selected={hoveredId === listItem.id}
@@ -68,6 +81,16 @@ useEffect(() => {
         to={`/treatmentMenu/${listItem.id}`}
         >
           {listItem.name}
+          </ListItem>
+
+        <ListItem
+        onMouseEnter={() => setHoveredId(listItem.id)}
+        onMouseLeave={() => setHoveredId('')}
+        $selected={hoveredId === listItem.id}
+        as={Link}
+        to={`/treatmentMenu/${listItem.id}`}
+        >
+          {listItem.price + '円'}
           </ListItem>
 
         <SButton
@@ -78,13 +101,17 @@ useEffect(() => {
         <IconButton 
         style={{alignItems: 'center', paddingTop: 1, marginRight: 30}}
         onClick={() => handleEditClick(listItem.id)}
-        
         >
           <ModeEditRoundedIcon />
         </IconButton>
-        <IconButton style={{alignItems: 'center', paddingTop: 1}}>
+
+        <IconButton 
+        style={{alignItems: 'center', paddingTop: 1}}
+        onClick={() => handleDeleteClick(listItem.id)}
+        >
           <DeleteForeverRoundedIcon style={{position: 'relative', color: 'red'}} />
         </IconButton>
+
           </SButton>
           </>
       ))}
@@ -106,7 +133,7 @@ const ListItem = styled.div<{$selected?: boolean}>`
   border: 1px solid #000;
   background-color: ${({$selected}) => ($selected ? '#bbc8e6' : '#efefef')};
   text-align: center;
-  padding-top: 1%;
+  text-decoration: dashed;
   color: inherit;
 `;
 const SButton = styled.div<{$selected?: boolean}>`

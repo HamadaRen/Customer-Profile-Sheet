@@ -12,7 +12,7 @@ const TreatmentMenuHeader = () => {
 }
 
 const SHeader = styled.div`
-  height: 4rem;
+  height: 2rem;
   border: 1px solid #000;
   background-color: #052B52;
   color: #fff;
