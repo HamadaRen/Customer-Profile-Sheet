@@ -47,6 +47,7 @@ const TreatmentAddPage = () => {
       <MenuInputForm>
         <label>
           サロンカテゴリ:　
+          <label htmlFor="categoryChoice2">
           <input
             type="radio"
             id="categoryChoice2"
@@ -56,7 +57,8 @@ const TreatmentAddPage = () => {
             onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, salonName: 'estheticSalon' }))}
             defaultChecked
           />
-          <label htmlFor="categoryChoice2">エステサロン</label>
+            エステサロン</label>
+          <label htmlFor="categoryChoice1">
           <input
             type="radio"
             id="categoryChoice1"
@@ -65,7 +67,7 @@ const TreatmentAddPage = () => {
             style={{ width: 43, height: 28 }}
             onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, salonName: 'hairSalon' }))}
           />
-          <label htmlFor="categoryChoice1">ヘアサロン</label>
+            ヘアサロン</label>
         </label>
       </MenuInputForm>
       {/* <MenuInputForm>

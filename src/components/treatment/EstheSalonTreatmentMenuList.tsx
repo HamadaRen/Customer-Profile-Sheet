@@ -29,7 +29,7 @@ const TreatmentMenuList = () => {
   };
 
 const handleEditClick = (id: string) => {
-  window.location.replace(`http://localhost:3000/treatmentMenu/${id}`)
+  window.location.replace(`http://localhost:3000/treatmentMenu/esthetic/${id}`)
 }
 
 //論理削除してリスト内をすぐに更新する関数
@@ -64,7 +64,7 @@ useEffect(() => {
         onMouseLeave={() => setHoveredId('')}
         $selected={hoveredId === listItem.id}
         as={Link}
-        to={`/treatmentMenu/${listItem.id}`}
+        to={`/treatmentMenu/esthetic/${listItem.id}`}
         >
           {listItem.name}
           </ListItem>
@@ -74,7 +74,7 @@ useEffect(() => {
         onMouseLeave={() => setHoveredId('')}
         $selected={hoveredId === listItem.id}
         as={Link}
-        to={`/treatmentMenu/${listItem.id}`}
+        to={`/treatmentMenu/esthetic/${listItem.id}`}
         >
           {listItem.price + '円'}
           </ListItem>

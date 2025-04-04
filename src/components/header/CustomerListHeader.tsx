@@ -6,7 +6,7 @@ const CustomerListHeader = () => {
     <>
       <SHeader>名前</SHeader>
       <SHeader>カナ</SHeader>
-      <SHeader>性別</SHeader>
+      <SHeader>電話番号</SHeader>
       <SHeader>編集　/　削除</SHeader>
     </>
   );

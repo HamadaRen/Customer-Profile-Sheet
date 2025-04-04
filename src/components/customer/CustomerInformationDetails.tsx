@@ -26,14 +26,14 @@ const CustomerInformationDetails = () => {
     const getCustomerDataArray = customerData.data;
     const getCustomer: UserDetailsType = getCustomerDataArray.shift();
     setUserDetails({
-    id: getCustomer.id,
-    name: getCustomer.name,
-    nameKana: getCustomer.nameKana,
-    birthday: new Date(getCustomer.birthday),
-    gender: getCustomer.gender,
-    tel: getCustomer.tel,
-    email: getCustomer.email,
-    address: getCustomer.address,
+      id: getCustomer.id,
+      name: getCustomer.name,
+      nameKana: getCustomer.nameKana,
+      birthday: new Date(getCustomer.birthday),
+      gender: getCustomer.gender,
+      tel: getCustomer.tel,
+      email: getCustomer.email,
+      address: getCustomer.address,
     });
   };
   // const initialDate: Date = '2001-12-4' as unknown as Date;
@@ -76,8 +76,7 @@ const CustomerInformationDetails = () => {
   ];
   
   //userDetailsを登録欄に表示したい
-  const handleRegistration = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const handleRegistration = async () => {
     if (
       userDetails.name === '' ||
       userDetails.nameKana === '' ||
@@ -88,9 +87,13 @@ const CustomerInformationDetails = () => {
       alert('入力していない項目があります');
       return;
     }
+
+    
     //ここまでオッケーこの下をAPIに修正
     
-    await axios.put('http://localhost:3010/customer/put', { userDetails });};
+    await axios.put('http://localhost:3010/customer/put', { userDetails });
+    window.location.replace(`http://localhost:3000/`);
+  };
 
     const handleRawChange = (e: any) => {
       const rawTarget = e.target as HTMLInputElement;
@@ -233,13 +236,13 @@ const CustomerInformationDetails = () => {
         </AddressForm>
       </form>
       <div>
-      <div onClick={handleRegistration}>
-        <RegistrationButton as={Link} to={'/'}>
+      <div >
+        <RegistrationButton onClick={handleRegistration}>
           内容を確定する
         </RegistrationButton>
       </div>
       <div onClick={handleDelete}>
-        <DeleteButton as={Link} to={'/'}>
+        <DeleteButton onClick={handleDelete}>
           顧客情報を削除する
         </DeleteButton>
       </div>

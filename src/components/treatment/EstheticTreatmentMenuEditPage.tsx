@@ -1,28 +1,60 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
+type TreatmentDetailsType = {
+  id: string;
+  name: string;
+  price: number;
+};
 
 const TreatmentMenuEditPage = () => {
   const [salon, setSalon] = useState<'hairSalon' | 'estheticSalon'>('estheticSalon');
+  const [treatmentDetails, setTreatmentDetails] = useState<TreatmentDetailsType>({
+    id: '',
+    // salonName: 'estheticSalon',
+    name: '',
+    price: NaN,
+  });
 
-  const handleRegistration = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    // if (
-    //   userDetails.name === '' ||
-    //   userDetails.nameKana === '' ||
-    //   userDetails.gender === '' ||
-    //   userDetails.tel === '' ||
-    //   userDetails.email === ''
-    // ) {
-    //   alert('入力していない項目があります');
-    //   return;
-    // }
-  }
+  const getTreatmentData = async () => {
+    const treatmentData = await axios.get(`http://localhost:3010/treatment/esthetic/${id}`);
+    const getTreatmentDataArray = treatmentData.data;
+    const getTreatment: TreatmentDetailsType = getTreatmentDataArray.shift();
+    setTreatmentDetails({
+      id: getTreatment.id,
+      name: getTreatment.name,
+      price: getTreatment.price,
+    });
+  };
+  
+  console.log('変更されるはずの情報', treatmentDetails)
+
+  const handleRegistration = async () => {
+    if (treatmentDetails.name === '' || treatmentDetails.price === 0) {
+      alert('入力していない項目があります');
+      return;
+      
+    }
+    await axios.put('http://localhost:3010/treatment/esthetic/put', { treatmentDetails })
+    .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
+  };
 
   const handleDelete = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // await axios.put(`http://localhost:3010/put/delete/${id}`, {id});
+    await axios.put(`http://localhost:3010/treatment/esthetic/delete/${id}`, { id })
+    .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
   };
+
+  useEffect(() => {
+    getTreatmentData();
+  }, []);
+
+  const params = useParams();
+  const id = params.id;
+
+  const location = useLocation();
 
   return (
     <Container>
@@ -63,13 +95,23 @@ const TreatmentMenuEditPage = () => {
       <MenuInputForm>
         <label>
           施術名：
-          <input type="text" style={{ width: 700, height: 30 }} />
+          <input
+            type="text"
+            style={{ width: 700, height: 30 }}
+            value={treatmentDetails.name}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, name: e.target.value }))}
+          />
         </label>
       </MenuInputForm>
       <Price>
         <label>
           値段：
-          <input type="text" style={{ width: 300, height: 30 }} />
+          <input
+            type="text"
+            style={{ width: 300, height: 30 }}
+            value={treatmentDetails.price}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, price: e.target.valueAsNumber }))}
+          />
         </label>
       </Price>
       <Time>
@@ -86,13 +128,13 @@ const TreatmentMenuEditPage = () => {
         </label> */}
       </Time>
       <div>
-        <div onClick={handleRegistration}>
-          <RegistrationButton as={Link} to={'/treatmentMenu'}>
+        <div >
+          <RegistrationButton onClick={handleRegistration}>
             内容を確定する
           </RegistrationButton>
         </div>
-        <div onClick={handleDelete}>
-          <DeleteButton as={Link} to={'/treatmentMenu'}>
+        <div>
+          <DeleteButton onClick={handleDelete}>
             顧客情報を削除する
           </DeleteButton>
         </div>

@@ -68,8 +68,7 @@ const CustomerListPage = () => {
                 onMouseEnter={() => setHoveredId(userData.id)}
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
-                as={Link}
-                to={`/customer/${userData.id}`}
+                onClick={() => handleEditClick(userData.id)}
               >
                 {userData.name}
               </SHeader>
@@ -77,8 +76,7 @@ const CustomerListPage = () => {
                 onMouseEnter={() => setHoveredId(userData.id)}
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
-                as={Link}
-                to={`/customer/${userData.id}`}
+                onClick={() => handleEditClick(userData.id)}
               >
                 {userData.nameKana}
               </SHeader>
@@ -86,10 +84,9 @@ const CustomerListPage = () => {
                 onMouseEnter={() => setHoveredId(userData.id)}
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
-                as={Link}
-                to={`/customer/${userData.id}`}
+                onClick={() => handleEditClick(userData.id)}
               >
-                {userData.gender}
+                {userData.tel}
               </SHeader>
               <SButton
                 onMouseEnter={() => setHoveredId(userData.id)}

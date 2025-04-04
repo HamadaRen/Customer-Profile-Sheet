@@ -30,7 +30,7 @@ const HairSalonTreatMenuList = () => {
   }
 
 const handleEditClick = (id: string) => {
-  window.location.replace(`http://localhost:3010/treatmentMenu/${id}`)
+  window.location.replace(`http://localhost:3000/treatmentMenu/hair/${id}`)
 }
 
 //削除ボタンを押したら即反映されるようにする
@@ -78,7 +78,7 @@ useEffect(() => {
         onMouseLeave={() => setHoveredId('')}
         $selected={hoveredId === listItem.id}
         as={Link}
-        to={`/treatmentMenu/${listItem.id}`}
+        to={`/treatmentMenu/hair/${listItem.id}`}
         >
           {listItem.name}
           </ListItem>
@@ -88,7 +88,7 @@ useEffect(() => {
         onMouseLeave={() => setHoveredId('')}
         $selected={hoveredId === listItem.id}
         as={Link}
-        to={`/treatmentMenu/${listItem.id}`}
+        to={`/treatmentMenu/hair/${listItem.id}`}
         >
           {listItem.price + '円'}
           </ListItem>

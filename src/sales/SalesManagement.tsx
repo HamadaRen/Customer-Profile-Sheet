@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -34,17 +36,26 @@ function TabPanel(props: TabPanelProps) {
 const SalesManagement = () => {
   const [value, setValue] = useState(0);
   
-    console.log('バリュー', value);
-  
     const handleChange = (event: any, newValue: any) => {
       setValue(newValue);
     };
+
+    const getSalesId = async () => {
+      const salesData = await axios.get('http://localhost:3010/sales')
+      const treatmentDetail = salesData.data
+      console.log('ゲットした売上id', treatmentDetail)
+    }
+
+    useEffect(() => {
+      getSalesId()
+    },[])
   return (
     <Container>
       <Calendar>
-        予約一覧
         <br />
-        新規予約とれるようにもする
+        <NewReserveButton as={Link} to={'/sales/entry'}>予約作成</NewReserveButton>
+        <br />
+        予約一覧
       </Calendar>
       <Sales>
       <>
@@ -92,6 +103,24 @@ const Sales = styled.div`
   background: lightblue;
   width: 100%;
   height: 43%;
+`
+
+const NewReserveButton = styled.div`
+  background: blue;
+  position: relative;
+  right: 40%;
+  width: 10%;
+  cursor: pointer;
+  text-decoration: dashed;
+  color: inherit;
+  padding: 1% 5%;
+  border-radius: 3%;
+  font-weight: bold;
+  box-shadow: 1px 1.6px 1px #000;
+  &:hover {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
 `
 
 export default SalesManagement
