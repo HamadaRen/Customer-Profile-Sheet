@@ -46,7 +46,7 @@ const CustomerListPage = () => {
   const handleDelete = async (id: string) => {
     console.log('id', id);
     await axios
-      .put(`http://localhost:3010/delete/${id}`)
+      .put(`http://localhost:3010/customer/delete/${id}`)
       .then(() => {
         getCustomerData();
       })

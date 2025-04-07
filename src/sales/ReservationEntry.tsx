@@ -35,11 +35,11 @@ type SalesType = {
   customer_id: string;
   treatment_id: string;
   quantity_id: string;
+  treatment_flag: string;
 };
 
 const ReservationEntry = () => {
   const [salonCategory, setSalonCategory] = useState<'estheticSalon' | 'hairSalon'>('estheticSalon');
-  const [keyword, setKeyword] = useState<string>('');
   const [customerCandidateAry, setCustomerCandidateAry] = useState<UserDetailsType[]>([]);
   const [estheticCandidateAry, setEstheticCandidateAry] = useState<ListItemAry[]>([]);
   const [hairCandidateAry, setHairCandidateAry] = useState<ListItemAry[]>([]);
@@ -51,14 +51,12 @@ const ReservationEntry = () => {
   const [hairId, setHairId] = useState<string>('');
   const [hairName, setHairName] = useState<string>('');
   const [numberId, setNumberId] = useState<string>('');
-  const [numberName, setNumberName] = useState<number>(NaN);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showTreatmentDropdown, setShowTreatmentDropdown] = useState(false);
-  const [showNumberDropdown, setShowNumberDropdown] = useState(true);
   const [customerFilteredOptions, setCustomerFilteredOptions] = useState(customerCandidateAry);
   const [estheticFilteredOptions, setEstheticFilteredOptions] = useState(estheticCandidateAry);
   const [hairFilteredOptions, setHairFilteredOptions] = useState(hairCandidateAry);
-  const [numberFilteredOptions, setNumberFilteredOptions] = useState(piecesAry);
+  const [treatmentFlg, setTreatmentFlg] = useState<string>('1')
 
   const str = '1';
   const num = Number(str);
@@ -70,6 +68,7 @@ const ReservationEntry = () => {
     customer_id: '',
     treatment_id: '',
     quantity_id: '',
+    treatment_flag: ''
   });
 
   const getCustomerData = async () => {
@@ -141,13 +140,17 @@ const ReservationEntry = () => {
 
   const handleEstheticSelect = (id: string, name: string) => {
     setEstheticId(id);
+    setHairId('');
     setEstheticName(name);
+    setHairName('');
     setShowTreatmentDropdown(false);
   };
 
   const handleHairSelect = (id: string, name: string) => {
     setHairId(id);
+    setEstheticId('');
     setHairName(name);
+    setEstheticName('');
     setShowTreatmentDropdown(false);
   };
 
@@ -172,7 +175,8 @@ const ReservationEntry = () => {
     setSalesDetails((prev) => ({ ...prev, customer_id: customerId }))
     setSalesDetails((prev) => ({ ...prev, treatment_id: estheticId || hairId}))
     setSalesDetails((prev) => ({ ...prev, quantity_id: numberId}))
-  },[customerId, estheticId, hairId, numberId])
+    setSalesDetails((prev) => ({ ...prev, treatment_flag: treatmentFlg}))
+  },[customerId, estheticId, hairId, numberId, treatmentFlg])
 
   const params = useParams();
   const id = params.id;
@@ -239,6 +243,7 @@ const ReservationEntry = () => {
             name="category"
             value={'estheticSalon'}
             onChange={() => setSalonCategory('estheticSalon')}
+            onClick={() => setTreatmentFlg('1')}
             defaultChecked
           />
           エステサロン
@@ -250,6 +255,7 @@ const ReservationEntry = () => {
             name="category"
             value={'hairSalon'}
             onChange={() => setSalonCategory('hairSalon')}
+            onClick={() => setTreatmentFlg('2')}
           />
           ヘアサロン
         </label>

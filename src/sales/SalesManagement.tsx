@@ -6,12 +6,19 @@ import Tab from '@mui/material/Tab';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import EstheticSalonSalesList from './EstheticSalonSalesList';
+import HairSalonSalesList from './HairSalonSalesList';
+import MonthlySales from './EstheticMonthlySales';
+import WeeklySales from './WeeklySales';
+import EstheticMonthlySales from './EstheticMonthlySales';
+import HairMonthlySales from './HairMonthlySales';
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: any;
   value: any;
 }
+
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -33,52 +40,79 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+type SalesAryType = {
+  id: string;
+  customer_id: string;
+  treatment_id: string;
+  quantity_id: string;
+  treatment_flag: string;
+}
+
 const SalesManagement = () => {
   const [value, setValue] = useState(0);
+  const [salonValue ,setSalonValue] = useState(0)
+  
   
     const handleChange = (event: any, newValue: any) => {
       setValue(newValue);
     };
 
-    const getSalesId = async () => {
-      const salesData = await axios.get('http://localhost:3010/sales')
-      const treatmentDetail = salesData.data
-      console.log('ゲットした売上id', treatmentDetail)
-    }
+    const handleSalonChange = (event: any, newValue: any) => {
+      setSalonValue(newValue);
+    };
 
-    useEffect(() => {
-      getSalesId()
-    },[])
+
   return (
     <Container>
       <Calendar>
         <br />
         <NewReserveButton as={Link} to={'/sales/entry'}>予約作成</NewReserveButton>
-        <br />
-        予約一覧
+        <>
+      <Box sx={{ width: '100%', bgcolor: 'background.paper', background: '#dfdfdf', marginTop: '1%' }}>
+        <Tabs value={salonValue} onChange={handleSalonChange} centered>
+
+          <Tab
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            label="エステサロン売上"
+          />
+          <Tab
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            label="ヘアサロン売上"
+          />
+        </Tabs>
+      </Box>
+      <TabPanel value={salonValue} index={0}>
+        <h3 style={{marginTop: 0}}>エステサロン</h3>
+          <EstheticSalonSalesList />
+      </TabPanel>
+      <TabPanel value={salonValue} index={1}>
+        <h3 style={{marginTop: 0}}>ヘアサロン</h3>
+          <HairSalonSalesList />
+      </TabPanel>
+    </>
       </Calendar>
+
+      
       <Sales>
       <>
-      <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+      <Box sx={{ width: '100%', bgcolor: 'background.paper', background: 'lightblue' }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab
-            style={{ position: 'relative', right: '41.1%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRadius: 10 }}
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="月売り上げ"
           />
           <Tab
-            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRadius: 5 }}
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="週売り上げ"
           />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <div>
-          月売り上げ
-        </div>
+      {salonValue === 0 ? <EstheticMonthlySales /> : <HairMonthlySales />}
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div>
-          週売り上げ
+          <WeeklySales />
         </div>
       </TabPanel>
     </>
@@ -96,31 +130,31 @@ const Container = styled.div`
 const Calendar = styled.div`
   position: relative;
   width: 100%;
-  height: 57%;
-  background: red;
+  height: 77%;
+  background: #dcdcdc;
 `
 const Sales = styled.div`
   background: lightblue;
   width: 100%;
-  height: 43%;
+  height: 23%;
 `
 
 const NewReserveButton = styled.div`
-  background: blue;
+  background: #192f60;
   position: relative;
-  right: 40%;
+  right: 43%;
   width: 10%;
   cursor: pointer;
   text-decoration: dashed;
-  color: inherit;
-  padding: 1% 5%;
+  color: #fff;
+  padding: 1% 3%;
   border-radius: 3%;
   font-weight: bold;
-  box-shadow: 1px 1.6px 1px #000;
   &:hover {
-    transform: translateY(1px);
-    box-shadow: none;
-  }
+  background: #bbc8e6;
+  color: #000;
+  border: 1px solid '#192f60';
+}
 `
 
 export default SalesManagement
