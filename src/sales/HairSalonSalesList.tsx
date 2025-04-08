@@ -14,6 +14,7 @@ type SalesAryType = {
   treatment_price: number;
   quantity_id: string;
   treatment_flag: string;
+  created_at: string
 };
 
 const HairSalonSalesList = () => {
@@ -38,10 +39,6 @@ const handleDelete = async (id: string) => {
       console.log('キャッチエラー');
     });
 };
-  
-  
-
-  console.log('ゲットした売上id', estheticSales)
 
   useEffect(() => {
     getSalesId()
@@ -53,6 +50,14 @@ const handleDelete = async (id: string) => {
       <>
       {estheticSales.map((listItem) => (
           <>
+            <ListItem
+              key={listItem.id}
+              onMouseEnter={() => setHoveredId(listItem.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === listItem.id}
+            >
+              {listItem.created_at.substring(0,10)}
+            </ListItem>
             <ListItem
               key={listItem.id}
               onMouseEnter={() => setHoveredId(listItem.id)}
@@ -102,7 +107,7 @@ const GridContainer = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: 4fr 3fr 2fr 2fr 2fr;
+  grid-template-columns: 2fr 4fr 3fr 2fr 2fr 2fr;
   grid-auto-rows: 2rem;
   border: 1px solid #000;
 `;

@@ -20,7 +20,7 @@ type UserDetailsType = {
 };
 
 const CustomerEntryPage = () => {
-    const  [ birthday ,  setBirthday ]  =  useState<Date | null>(new Date('2001-12-04')) ;
+    const  [ birthday ,  setBirthday ]  = useState<Date | null>(new Date('2001-12-04')) ;
     const [userDetails, setUserDetails] = useState<UserDetailsType>({
       name: '',
       nameKana: '',
@@ -30,8 +30,6 @@ const CustomerEntryPage = () => {
       email: '',
       address: '',
     });
-    console.log('birthday', birthday)
-    console.log('birthday', userDetails.birthday)
     
     registerLocale('ja', ja)
 
@@ -104,6 +102,8 @@ const CustomerEntryPage = () => {
       }
     }
   };
+
+  console.log('選択した日にち', userDetails)
 
   return (
     <Container>

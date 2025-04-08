@@ -14,6 +14,7 @@ type SalesAryType = {
   treatment_price: number;
   quantity_id: string;
   treatment_flag: string;
+  created_at: string
 };
 
 const EstheticSalonSalesList = () => {
@@ -29,7 +30,7 @@ const EstheticSalonSalesList = () => {
 
   const getData = () => {
     estheticSales.map((item) => {
-      const customerId = item.customer_id;
+      const ContractDateId = item
     });
   };
 
@@ -60,6 +61,14 @@ const EstheticSalonSalesList = () => {
       <>
         {estheticSales.map((listItem) => (
           <>
+          <ListItem
+              key={listItem.id}
+              onMouseEnter={() => setHoveredId(listItem.id)}
+              onMouseLeave={() => setHoveredId('')}
+              $selected={hoveredId === listItem.id}
+            >
+              {listItem.created_at.substring(0,10)}
+            </ListItem>
             <ListItem
               key={listItem.id}
               onMouseEnter={() => setHoveredId(listItem.id)}
@@ -109,7 +118,7 @@ const GridContainer = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: 4fr 3fr 2fr 2fr 1fr;
+  grid-template-columns: 2fr 4fr 3fr 2fr 2fr 1fr;
   grid-auto-rows: 2rem;
   border: 1px solid #000;
 `;

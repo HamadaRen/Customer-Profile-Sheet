@@ -9,9 +9,11 @@ import axios from 'axios';
 import EstheticSalonSalesList from './EstheticSalonSalesList';
 import HairSalonSalesList from './HairSalonSalesList';
 import MonthlySales from './EstheticMonthlySales';
-import WeeklySales from './WeeklySales';
+import WeeklySales from './EstheticWeeklySales';
 import EstheticMonthlySales from './EstheticMonthlySales';
 import HairMonthlySales from './HairMonthlySales';
+import EstheticWeeklySales from './EstheticWeeklySales';
+import HairWeeklySales from './HairWeeklySales';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -72,11 +74,11 @@ const SalesManagement = () => {
         <Tabs value={salonValue} onChange={handleSalonChange} centered>
 
           <Tab
-            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '35%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
             label="エステサロン売上"
           />
           <Tab
-            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '35%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="ヘアサロン売上"
           />
         </Tabs>
@@ -95,14 +97,14 @@ const SalesManagement = () => {
       
       <Sales>
       <>
-      <Box sx={{ width: '100%', bgcolor: 'background.paper', background: 'lightblue' }}>
+      <Box sx={{ width: '100%', bgcolor: 'background.paper', background: '#dcdcdc' }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab
-            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
             label="月売り上げ"
           />
           <Tab
-            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="週売り上げ"
           />
         </Tabs>
@@ -112,7 +114,7 @@ const SalesManagement = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div>
-          <WeeklySales />
+        {salonValue === 0 ? <EstheticWeeklySales /> : <HairWeeklySales />}
         </div>
       </TabPanel>
     </>
@@ -134,7 +136,7 @@ const Calendar = styled.div`
   background: #dcdcdc;
 `
 const Sales = styled.div`
-  background: lightblue;
+  background: #dcdcdc;
   width: 100%;
   height: 23%;
 `

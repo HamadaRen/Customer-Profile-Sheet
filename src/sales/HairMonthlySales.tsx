@@ -49,7 +49,7 @@ const HairMonthlySales = () => {
       ヘアサロン月間売上　:　
       {accountingAry.reduce(function (sum, element) {
         return sum + element;
-      }, 0) + '円'}
+      }, 0).toLocaleString() + '円'}
     </MonthlySalesList>
   )
 }

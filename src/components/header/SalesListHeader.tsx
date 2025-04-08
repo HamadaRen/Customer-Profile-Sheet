@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const SalesListHeader = () => {
   return (
     <>
+    <SHeader>契約日</SHeader>
     <SHeader>顧客名</SHeader>
     <SHeader>施術名</SHeader>
     <SHeader>施術金額</SHeader>

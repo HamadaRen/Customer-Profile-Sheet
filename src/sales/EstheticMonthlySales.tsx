@@ -27,7 +27,6 @@ const EstheticMonthlySales = () => {
       const treatmentPrice = item.treatment_price * Number(item.quantity_id);
       // const quantity = item.quantity_id;
       // const test = treatmentPrice * Number(quantity)
-      console.log('@@@@@@@@@@@@', treatmentPrice);
       setAccountingAry((accountingAry) => [...accountingAry, treatmentPrice]);
     });
   };
@@ -40,15 +39,12 @@ const EstheticMonthlySales = () => {
     calculation();
   }, [estheticSales]);
 
-  console.log('日程指定', estheticSales);
-  console.log('計算結果', accountingAry);
-
   return (
     <MonthlySalesList>
       エステサロン月間売上　:　
       {accountingAry.reduce(function (sum, element) {
         return sum + element;
-      }, 0) + '円'}
+      }, 0).toLocaleString() + '円'}
     </MonthlySalesList>
   );
 };
