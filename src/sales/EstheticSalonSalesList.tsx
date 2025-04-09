@@ -30,7 +30,8 @@ const EstheticSalonSalesList = () => {
 
   const getData = () => {
     estheticSales.map((item) => {
-      const ContractDateId = item
+      const ContractDateId = item.created_at
+      console.log('@@@@@@@@@@@@@@@', ContractDateId)
     });
   };
 
@@ -51,9 +52,9 @@ const EstheticSalonSalesList = () => {
     getSalesId();
   }, []);
 
-  useEffect(() => {
-    getData();
-  }, [estheticSales]);
+  // useEffect(() => {
+  //   getData();
+  // }, [estheticSales]);
 
   return (
     <GridContainer>
@@ -70,7 +71,6 @@ const EstheticSalonSalesList = () => {
               {listItem.created_at.substring(0,10)}
             </ListItem>
             <ListItem
-              key={listItem.id}
               onMouseEnter={() => setHoveredId(listItem.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === listItem.id}

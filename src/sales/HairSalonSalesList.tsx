@@ -30,8 +30,8 @@ const HairSalonSalesList = () => {
     //論理削除してリスト内をすぐに更新する関数
 //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
 const handleDelete = async (id: string) => {
-  await axios
-    .put(`http://localhost:3010/treatment/sales/delete/${id}`)
+  console.log('hakka')
+  axios.put(`http://localhost:3010/sales/deleted/${id}`)
     .then(() => {
       getSalesId();
     })
@@ -59,7 +59,6 @@ const handleDelete = async (id: string) => {
               {listItem.created_at.substring(0,10)}
             </ListItem>
             <ListItem
-              key={listItem.id}
               onMouseEnter={() => setHoveredId(listItem.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === listItem.id}
