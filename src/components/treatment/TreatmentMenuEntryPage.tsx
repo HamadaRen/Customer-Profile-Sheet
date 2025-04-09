@@ -27,10 +27,13 @@ const TreatmentAddPage = () => {
       return alert('入力されていない項目があります');
     }
     if (treatmentDetails.salonName === 'estheticSalon') {
-      await axios.post('http://localhost:3010/treatment/esthetic/add', { name: name, price: price });
+      await axios.post('http://localhost:3010/treatment/esthetic/add', { name: name, price: price })
+      .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
     } else if (treatmentDetails.salonName === 'hairSalon') {
-      await axios.post('http://localhost:3010/treatment/hair/add', { name: name, price: price });
+      await axios.post('http://localhost:3010/treatment/hair/add', { name: name, price: price })
+      .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
     }
+
 
     setTreatmentDetails({
       salonName: 'estheticSalon',
@@ -117,7 +120,7 @@ const TreatmentAddPage = () => {
         </label> */}
       </Time>
       <div>
-        <AddButton onClick={handleClick} as={Link} to={'/treatmentMenu'}>
+        <AddButton onClick={handleClick}>
           この内容で追加する
         </AddButton>
       </div>

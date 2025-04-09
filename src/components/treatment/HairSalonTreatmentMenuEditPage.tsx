@@ -7,16 +7,25 @@ type TreatmentDetailsType = {
   id: string;
   name: string;
   price: number;
+  salonName: string
 };
 
 const HairSalonTreatmentMenuEditPage = () => {
   const [salon, setSalon] = useState<'hairSalon' | 'estheticSalon'>('hairSalon');
   const [treatmentDetails, setTreatmentDetails] = useState<TreatmentDetailsType>({
     id: '',
-    // salonName: 'estheticSalon',
+    salonName: salon,
     name: '',
     price: NaN,
   });
+  
+  const name = treatmentDetails.name;
+  const price = treatmentDetails.price;
+
+  const params = useParams();
+  const id = params.id;
+  
+  const location = useLocation();
 
   const getTreatmentData = async () => {
     const treatmentData = await axios.get(`http://localhost:3010/treatment/hair/${id}`);
@@ -26,42 +35,48 @@ const HairSalonTreatmentMenuEditPage = () => {
       id: getTreatment.id,
       name: getTreatment.name,
       price: getTreatment.price,
+      salonName: 'hairSalon'
     });
-    console.log('getした要素', getTreatment);
   };
-
+  
+  //treatmentでサロンのテーブルを分けてしまっているのでサロンを変えた場合は変えた方のサロンにpostして元のサロンの方はdeleteする
   const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (treatmentDetails.name === '' || treatmentDetails.price === 0) {
       alert('入力していない項目があります');
       return;
     }
-    await axios
+    if(id === undefined){
+      return;
+    }
+    salon === 'hairSalon' ?
+      await axios
       .put('http://localhost:3010/treatment/hair/put', { treatmentDetails })
-      .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
+      .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`)) :
+      await axios
+      .post('http://localhost:3010/treatment/esthetic/add', { name: name, price: price })
+      await axios.put(`http://localhost:3010/treatment/hair/delete/${id}`)
+      .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`))
   };
-
+  
   const handleDelete = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     await axios
       .put(`http://localhost:3010/put/delete/${id}`, { id })
       .then(() => window.location.replace(`http://localhost:3000/treatmentMenu`));
-  };
+    };
+    
+    useEffect(() => {
+      getTreatmentData();
+    }, []);
+    
 
-  useEffect(() => {
-    getTreatmentData();
-  }, []);
-
-  const params = useParams();
-  const id = params.id;
-  console.log('パラムス', id);
-
-  const location = useLocation();
-
+    console.log('getした要素', salon);
+    
   return (
     <Container>
       <SalonTabs>
-        <h2>施術追加</h2>
+        <h2>施術編集</h2>
       </SalonTabs>
       <MenuInputForm>
         <label>
@@ -72,6 +87,7 @@ const HairSalonTreatmentMenuEditPage = () => {
             name="category"
             value={'estheticSalon'}
             style={{ width: 43, height: 28 }}
+            onChange={() => setSalon('estheticSalon')}
           />
           <label htmlFor="categoryChoice2">エステサロン</label>
           <input
@@ -80,6 +96,7 @@ const HairSalonTreatmentMenuEditPage = () => {
             name="category"
             value={'hairSalon'}
             style={{ width: 43, height: 28 }}
+            onChange={() => setSalon('hairSalon')}
             defaultChecked
           />
           <label htmlFor="categoryChoice1">ヘアサロン</label>
@@ -112,7 +129,7 @@ const HairSalonTreatmentMenuEditPage = () => {
             type="text"
             style={{ width: 300, height: 30 }}
             value={treatmentDetails.price}
-            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, price: e.target.valueAsNumber }))}
+            onChange={(e) => setTreatmentDetails((prev) => ({ ...prev, price: Number(e.target.value) }))}
           />
         </label>
       </Price>

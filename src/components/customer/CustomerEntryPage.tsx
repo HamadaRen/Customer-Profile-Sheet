@@ -67,7 +67,8 @@ const CustomerEntryPage = () => {
     }
     //ここまでオッケーこの下をAPIに修正
 
-    await axios.post('http://localhost:3010/customer/add', { userDetails });
+    await axios.post('http://localhost:3010/customer/add', { userDetails })
+    .then(() => window.location.replace(`http://localhost:3000/`));
 
     setUserDetails({
       name: '',
@@ -209,9 +210,7 @@ const CustomerEntryPage = () => {
           </label>
         </AddressForm>
       </form>
-      <div onClick={handleRegistration}>
-        <RegistrationButton>この内容で登録する</RegistrationButton>
-      </div>
+        <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
     </Container>
   );
 };
