@@ -24,6 +24,7 @@ const EstheticWeeklySales = () => {
   const [estheticSales, setEstheticSales] = useState<SalesAryType[]>([]);
   const [schedule, setSchedule] = useState<Date | null>(new Date());
   const [accountingAry, setAccountingAry] = useState<number[]>([]);
+  const [monthlyTotal, setMonthTotal] = useState<number>(NaN);
 
   const handleRawChange = (e: any) => {
     const target = e.target as HTMLInputElement; // 型をアサーション(as)で修正
@@ -47,6 +48,7 @@ const EstheticWeeklySales = () => {
   };
 
   const handleClick = async () => {
+    setAccountingAry([])
     if (schedule === null) {
       return;
     }
@@ -56,11 +58,14 @@ const EstheticWeeklySales = () => {
     const dateParams = year + month + day;
     const test = await axios.get(`http://localhost:3010/sales/esthetic/weeklyRange/${dateParams}`);
     const salesData = test.data;
-    console.log('@@@@@@@@@@@@@', salesData);
     setEstheticSales(salesData);
   };
 
   const calculation = () => {
+    if(estheticSales.length === 0){
+      setAccountingAry([])
+      return;
+    }
     estheticSales.map((item) => {
       const treatmentPrice = item.treatment_price * Number(item.quantity_id);
       // const quantity = item.quantity_id;
@@ -70,8 +75,12 @@ const EstheticWeeklySales = () => {
   };
 
   const handleSum = () => {
-    return 1 + 1;
+    setMonthTotal(estheticSales.length === 0 ? 0 : accountingAry.reduce((sum, element) => sum + element, 0));
   };
+
+  useEffect(() => {
+      handleSum();
+    }, []);
 
   useEffect(() => {
     handleClick();
@@ -81,7 +90,10 @@ const EstheticWeeklySales = () => {
     calculation();
   }, [estheticSales]);
 
-  // console.log('選択した日付', accountingAry);
+  useEffect(() => {
+      handleSum();
+    }, [accountingAry]);
+
 
   return (
     <>
@@ -99,14 +111,7 @@ const EstheticWeeklySales = () => {
       </ScheduleForm>
       <MonthlySalesList>
         エステ週間売り上げ　:　
-        {/* {estheticSales.length === 0
-          ? 0 + '円'
-          : accountingAry
-              .reduce(function (sum, element) {
-                return sum + element;
-              }, 0)
-              .toLocaleString() + '円'} */}
-        {handleSum()}
+        {monthlyTotal.toLocaleString() + '円'}
       </MonthlySalesList>
     </>
   );

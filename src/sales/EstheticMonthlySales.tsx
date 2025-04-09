@@ -24,6 +24,7 @@ const EstheticMonthlySales = () => {
   const [monthlyTotal, setMonthTotal] = useState<number>(NaN);
 
   const handleClick = async () => {
+    setAccountingAry([])
     if (schedule === null) {
       return;
     }
@@ -90,10 +91,6 @@ const EstheticMonthlySales = () => {
     setMonthTotal(estheticSales.length === 0 ? 0 : accountingAry.reduce((sum, element) => sum + element, 0));
   };
 
-  console.log('とってきたオブジェクトは配列', estheticSales)
-  console.log('計算結果', accountingAry)
-  console.log('選択した日程', schedule)
-  console.log('月間売上', monthlyTotal)
 
   return (
     <>

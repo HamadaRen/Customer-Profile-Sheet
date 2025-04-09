@@ -24,6 +24,7 @@ const HairMonthlySales = () => {
   const [monthlyTotal, setMonthTotal] = useState<number>(NaN);
 
   const handleClick = async () => {
+    setAccountingAry([])
     if (schedule === null) {
       return;
     }
@@ -31,7 +32,6 @@ const HairMonthlySales = () => {
     const month = (schedule.getMonth() + 1).toString().padStart(2, '0');
     const monthParams = year + month;
     const salesData = await axios.get(`http://localhost:3010/sales/hair/RangeSpecification/${monthParams}`);
-    console.log('hakka', salesData);
     const treatmentDetail = salesData.data;
     setHairSales(treatmentDetail);
   };
@@ -88,11 +88,6 @@ const HairMonthlySales = () => {
   const handleSum = () => {
     setMonthTotal(hairSales.length === 0 ? 0 : accountingAry.reduce((sum, element) => sum + element, 0));
   };
-
-  console.log('とってきたオブジェクトは配列', hairSales)
-  console.log('計算結果', accountingAry)
-  console.log('選択した日程', schedule)
-  console.log('月間売上', monthlyTotal)
 
   return (
     <>

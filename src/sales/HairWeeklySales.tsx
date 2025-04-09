@@ -21,9 +21,10 @@ type SalesAryType = {
 registerLocale('ja', ja);
 
 const HairWeeklySales = () => {
-  const [estheticSales, setEstheticSales] = useState<SalesAryType[]>([]);
+  const [hairSales, setHairSales] = useState<SalesAryType[]>([]);
   const [schedule, setSchedule] = useState<Date | null>(new Date());
   const [accountingAry, setAccountingAry] = useState<number[]>([]);
+  const [monthlyTotal, setMonthTotal] = useState<number>(NaN);
 
   const handleRawChange = (e: any) => {
     const target = e.target as HTMLInputElement; // 型をアサーション(as)で修正
@@ -41,12 +42,13 @@ const HairWeeklySales = () => {
 
       if (!isNaN(newDate.getTime())) {
         setSchedule(newDate);
-        console.log('hakka')
+        console.log('hakka');
       }
     }
   };
 
   const handleClick = async () => {
+    setAccountingAry([])
     if (schedule === null) {
       return;
     }
@@ -55,30 +57,47 @@ const HairWeeklySales = () => {
     const day = schedule.getDate().toString().padStart(2, '0');
     const dateParams = year + month + day;
     const test = await axios.get(`http://localhost:3010/sales/hair/weeklyRange/${dateParams}`);
-    const salesData = test.data
-    setEstheticSales(salesData)
+    const salesData = test.data;
+    setHairSales(salesData);
   };
 
   const calculation = () => {
-    estheticSales.map((item) => {
+    if (hairSales.length === 0) {
+      setAccountingAry([]);
+      return;
+    }
+    hairSales.map((item) => {
       const treatmentPrice = item.treatment_price * Number(item.quantity_id);
-      console.log('/////////////////////////////', item)
       // const quantity = item.quantity_id;
       // const test = treatmentPrice * Number(quantity)
       setAccountingAry((accountingAry) => [...accountingAry, treatmentPrice]);
     });
   };
 
+  useEffect(() => {
+    handleSum();
+  }, []);
 
   useEffect(() => {
     handleClick();
   }, [schedule]);
 
   useEffect(() => {
-      calculation();
-    }, [estheticSales]);
+    calculation();
+  }, [hairSales]);
 
-  // console.log('選択した日付', accountingAry);
+  useEffect(() => {
+    handleSum();
+  }, [accountingAry]);
+
+  const handleSum = () => {
+    setMonthTotal(hairSales.length === 0 ? 0 : accountingAry.reduce((sum, element) => sum + element, 0));
+  };
+
+  console.log('とってきたオブジェクトは配列', hairSales)
+  console.log('計算結果', accountingAry)
+  console.log('選択した日程', schedule)
+  console.log('月間売上', monthlyTotal)
 
   return (
     <>
@@ -96,9 +115,7 @@ const HairWeeklySales = () => {
       </ScheduleForm>
       <MonthlySalesList>
         ヘア週間売り上げ　:　
-        {estheticSales.length === 0 ? 0 + '円' :accountingAry.reduce(function (sum, element) {
-        return sum + element;
-      }, 0).toLocaleString() + '円'}
+        {monthlyTotal.toLocaleString() + '円'}
       </MonthlySalesList>
     </>
   );
