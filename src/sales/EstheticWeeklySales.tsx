@@ -41,7 +41,7 @@ const EstheticWeeklySales = () => {
 
       if (!isNaN(newDate.getTime())) {
         setSchedule(newDate);
-        console.log('hakka')
+        console.log('hakka');
       }
     }
   };
@@ -55,28 +55,31 @@ const EstheticWeeklySales = () => {
     const day = schedule.getDate().toString().padStart(2, '0');
     const dateParams = year + month + day;
     const test = await axios.get(`http://localhost:3010/sales/esthetic/weeklyRange/${dateParams}`);
-    const salesData = test.data
-    setEstheticSales(salesData)
+    const salesData = test.data;
+    console.log('@@@@@@@@@@@@@', salesData);
+    setEstheticSales(salesData);
   };
 
   const calculation = () => {
     estheticSales.map((item) => {
       const treatmentPrice = item.treatment_price * Number(item.quantity_id);
-      console.log('@@@@@@@@@@@@@', item)
       // const quantity = item.quantity_id;
       // const test = treatmentPrice * Number(quantity)
       setAccountingAry((accountingAry) => [...accountingAry, treatmentPrice]);
     });
   };
 
+  const handleSum = () => {
+    return 1 + 1;
+  };
 
   useEffect(() => {
     handleClick();
   }, [schedule]);
 
   useEffect(() => {
-      calculation();
-    }, [estheticSales]);
+    calculation();
+  }, [estheticSales]);
 
   // console.log('選択した日付', accountingAry);
 
@@ -96,9 +99,14 @@ const EstheticWeeklySales = () => {
       </ScheduleForm>
       <MonthlySalesList>
         エステ週間売り上げ　:　
-        {accountingAry.reduce(function (sum, element) {
-        return sum + element;
-      }, 0).toLocaleString() + '円'}
+        {/* {estheticSales.length === 0
+          ? 0 + '円'
+          : accountingAry
+              .reduce(function (sum, element) {
+                return sum + element;
+              }, 0)
+              .toLocaleString() + '円'} */}
+        {handleSum()}
       </MonthlySalesList>
     </>
   );

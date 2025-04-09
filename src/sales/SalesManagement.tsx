@@ -74,11 +74,11 @@ const SalesManagement = () => {
         <Tabs value={salonValue} onChange={handleSalonChange} centered>
 
           <Tab
-            style={{ position: 'relative', right: '35%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
+            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
             label="エステサロン売上"
           />
           <Tab
-            style={{ position: 'relative', right: '35%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="ヘアサロン売上"
           />
         </Tabs>
@@ -100,11 +100,11 @@ const SalesManagement = () => {
       <Box sx={{ width: '100%', bgcolor: 'background.paper', background: '#dcdcdc' }}>
         <Tabs value={value} onChange={handleChange} centered>
           <Tab
-            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000', borderLeft: '1px solid #000' }}
             label="月売り上げ"
           />
           <Tab
-            style={{ position: 'relative', right: '38%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
+            style={{ position: 'relative', right: '41%', background: '#dcdddd', color: 'black', fontWeight: 'bold', borderRight: '1px solid #000', borderTop: '1px solid #000', borderBottom: '1px solid #000' }}
             label="週売り上げ"
           />
         </Tabs>

@@ -96,7 +96,7 @@ const HairWeeklySales = () => {
       </ScheduleForm>
       <MonthlySalesList>
         ヘア週間売り上げ　:　
-        {accountingAry.reduce(function (sum, element) {
+        {estheticSales.length === 0 ? 0 + '円' :accountingAry.reduce(function (sum, element) {
         return sum + element;
       }, 0).toLocaleString() + '円'}
       </MonthlySalesList>
