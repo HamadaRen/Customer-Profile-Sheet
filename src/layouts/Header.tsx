@@ -1,10 +1,7 @@
-import { useAtom, useSetAtom } from "jotai";
-import { SHeader } from "../styles/application";
-import {
-  sideBarAnimationTypeAtom,
-  visibleSideBarAtom,
-} from "../state/application";
-import { useState } from "react";
+import { useAtom, useSetAtom } from 'jotai';
+import { SHeader } from '../styles/application';
+import { sideBarAnimationTypeAtom, visibleSideBarAtom } from '../state/application';
+import { useState } from 'react';
 
 const Header = () => {
   const [visibleSideBar, setVisibleSideBar] = useAtom(visibleSideBarAtom);
@@ -24,7 +21,7 @@ const Header = () => {
     //setIsPlayingAnimationがtrueの時にopenとcloseが切り替わる
     //isPlayingAnimationの要素がopenの時===visibleSideBarがtrue
     setSideBarAnimationType((prev) => {
-      return prev === "open" ? "close" : "open";
+      return prev === 'open' ? 'close' : 'open';
     });
     setTimeout(() => {
       //サイドバーが開くアニメーションが0.3秒だからアニメーション中は処理を走らせない
@@ -44,7 +41,12 @@ const Header = () => {
   };
 
   //ヘッダーをクリックしたときにhandleClick関数を呼び出す
-  return <SHeader onClick={handleClick}>顧客管理システム（仮）</SHeader>;
+  return (
+    <SHeader>
+      <img src="/svg/icon_hamburger.svg" alt="" style={{ width: '2.5rem', height: '2.5rem' }} onClick={handleClick} />
+      <p>for too 顧客管理システム</p>
+    </SHeader>
+  );
 };
 
 export default Header;
