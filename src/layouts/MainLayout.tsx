@@ -13,6 +13,9 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const visibleSideBar = useAtomValue(visibleSideBarAtom);
   const sideBarAnimationType = useAtomValue(sideBarAnimationTypeAtom);
 
+  //HTML要素を表してレイアウトを設定している
+  //visibleSideBarとのtrue,falseとサイドバーファイルの動きを関連付けている
+  //visibleSideBarがtrueの時sideBarAnimationTypeがopenの状態を代入する
   return (
     <MainContainer>
       <Header />
