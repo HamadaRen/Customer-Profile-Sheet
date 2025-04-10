@@ -1,5 +1,6 @@
 export const COLORS = {
   OFF_WHITE: "#fafafa",
+  MAIN_HEADER_BROWN: "#343331",
   MAIN_BLUE: "#3982BD",
   LIGHT_BLUE: "#F0FAFF",
   DEEP_BLUE: "#052B52",
