@@ -121,6 +121,6 @@ const StyledRowManagement = styled.div<{ $selected?: boolean }>`
   background-color: ${({ $selected }) => ($selected ? '#454137' : 'transparent')};
 
   &:hover {
-    background-color: #526a8e;
+    background-color: #393b2e;
   }
 `;
