@@ -20,7 +20,7 @@ type UserDetailsType = {
 };
 
 const CustomerEntryPage = () => {
-    const  [ birthday ,  setBirthday ]  =  useState<Date | null>(new Date('2001-12-04')) ;
+    const  [ birthday ,  setBirthday ]  = useState<Date | null>(new Date('2001-12-04')) ;
     const [userDetails, setUserDetails] = useState<UserDetailsType>({
       name: '',
       nameKana: '',
@@ -30,8 +30,6 @@ const CustomerEntryPage = () => {
       email: '',
       address: '',
     });
-    console.log('birthday', birthday)
-    console.log('birthday', userDetails.birthday)
     
     registerLocale('ja', ja)
 
@@ -54,9 +52,9 @@ const CustomerEntryPage = () => {
   //userDetailsを登録欄に表示したい
   const handleRegistration = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const getData = await axios.get('http://localhost:3010/customer/delete')
-      const getDataArray = getData.data
-      console.log('getしたデータ', getDataArray)
+    // const getData = await axios.get('http://localhost:3010/customer/delete')
+    //   const getDataArray = getData.data
+    //   console.log('getしたデータ', getDataArray)
     if (
       userDetails.name === '' ||
       userDetails.nameKana === '' ||
@@ -69,7 +67,8 @@ const CustomerEntryPage = () => {
     }
     //ここまでオッケーこの下をAPIに修正
 
-    await axios.post('http://localhost:3010/add', { userDetails });
+    await axios.post('http://localhost:3010/customer/add', { userDetails })
+    .then(() => window.location.replace(`http://localhost:3000/`));
 
     setUserDetails({
       name: '',
@@ -105,6 +104,7 @@ const CustomerEntryPage = () => {
     }
   };
 
+  console.log('選択した日にち', userDetails)
 
   return (
     <Container>
@@ -147,7 +147,6 @@ const CustomerEntryPage = () => {
             onChangeRaw={handleRawChange}
             // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
             maxDate={NEW_DATE}
-            
               />
           </label>
         </BirthdayForm>
@@ -211,9 +210,7 @@ const CustomerEntryPage = () => {
           </label>
         </AddressForm>
       </form>
-      <div onClick={handleRegistration}>
-        <RegistrationButton>この内容で登録する</RegistrationButton>
-      </div>
+        <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
     </Container>
   );
 };

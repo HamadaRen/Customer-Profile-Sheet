@@ -22,24 +22,13 @@ export const SideBar = () => {
   return (
     <StyledSideBar $animation={sideBarAnimationType}>
       <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
-        顧客リスト
-      </StyledRow>
-      <StyledRow $selected={location.pathname === '/customer/entry'} as={Link} to="/customer/entry">
         顧客マスタ
       </StyledRow>
-      <StyledRow
-      // $selected={location.pathname === '/customer'}
-      // as={Link}
-      // to="/app/base-location"
-      >
+      <StyledRow $selected={location.pathname === '/treatmentMenu'} as={Link} to="/treatmentMenu">
         施術マスタ
       </StyledRow>
-      <StyledRow
-      // $selected={location.pathname === "/app/facility"}
-      // as={Link}
-      // to="/app/facility"
-      >
-        予約マスタ
+      <StyledRow $selected={location.pathname === '/sales'} as={Link} to="/sales">
+        売上マスタ
       </StyledRow>
     </StyledSideBar>
   );
