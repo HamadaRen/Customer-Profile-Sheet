@@ -39,3 +39,21 @@ export const RightContainer = styled.div<{ $visibleSidebar: boolean }>`
   display: flex;
   flex-direction: column;
 `;
+
+export const SidebarHeader = styled.div`
+  display: flex;
+  width: 11.25rem;
+  padding: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  color: #dccec1;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(220, 206, 193, 0);
+  background-image: -webkit-linear-gradient(left, transparent, #DCCEC1 50%, #DCCEC1 50%, transparent);
+  background-image: linear-gradient(to right, transparent, #DCCEC1 50%, #DCCEC1 50%, transparent);
+  background-size: 10rem 0.08rem;
+  background-position: bottom;
+  background-repeat: no-repeat;
+`;
