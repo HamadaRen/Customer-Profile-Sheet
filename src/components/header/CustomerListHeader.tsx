@@ -1,28 +1,41 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
+import { Contact, CustomerName, CustomerNumber, FirstVisit, LastVisit, NumberOfVisitors, PersonInCharged, SharedInformation, SHeaderGradient, TicketInformation, UsedPeriod } from '../../styles/application';
 
 const CustomerListHeader = () => {
   return (
     <>
-      <SHeader>顧客No.</SHeader>
-      <SHeader>顧客名</SHeader>
-      <SHeader>連絡手段</SHeader>
-      <SHeader>チケット情報</SHeader>
-      <SHeader>来店数</SHeader>
-      <SHeader>初回来店</SHeader>
-      <SHeader>最終来店</SHeader>
-      <SHeader>利用期間</SHeader>
-      <SHeader>担当者名</SHeader>
-      <SHeader>共有事項</SHeader>
+      <SHeaderGradient>
+        <CustomerNumber>顧客No.</CustomerNumber>
+        <CustomerName>顧客名</CustomerName>
+        <Contact>連絡手段</Contact>
+        <TicketInformation>チケット情報</TicketInformation>
+        <NumberOfVisitors>来店数</NumberOfVisitors>
+        <FirstVisit>初回来店</FirstVisit>
+        <LastVisit>最終来店</LastVisit>
+        <UsedPeriod>利用期間</UsedPeriod>
+        <PersonInCharged>担当者名</PersonInCharged>
+        <SharedInformation>共有事項</SharedInformation>
+      </SHeaderGradient>
     </>
   );
 };
 
 export default CustomerListHeader;
 
-const SHeader = styled.div`
-  height: 2rem;
-  border: #000 1px solid;
-  background-color: #052B52;
-  color: #fff;
-`;
+// const SHeader = styled.div`
+//   display: flex;
+//   padding: 4px 0px;
+//   justify-content: center;
+//   align-items: center;
+//   align-self: stretch;
+//   border-bottom: 1px solid var(--text-10, #d6d6d6);
+//   background: #443e33;
+//   color: var(--main-, #f3e6da);
+//   font-family: 'Noto Sans JP';
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 900;
+//   line-height: normal;
+// `;
+
+

@@ -59,8 +59,8 @@ const CustomerListPage = () => {
   return (
     <>
       <CustomerHeader />
-      <GridContainer>
         <CustomerListHeader />
+      <GridContainer>
         <>
           {customerDataArray.map((userData) => (
             <>
