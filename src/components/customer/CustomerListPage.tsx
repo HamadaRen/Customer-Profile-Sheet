@@ -8,6 +8,7 @@ import CustomerHeader from '../header/CustomerHeader';
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { IconButton } from '@mui/material';
+import CustomerFooter from '../footer/CustomerFooter';
 
 type UserDetailsType = {
   id: string;
@@ -107,6 +108,7 @@ const CustomerListPage = () => {
           ))}
         </>
       </GridContainer>
+      <CustomerFooter />
     </>
   );
 };
@@ -119,7 +121,7 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 2fr 1fr 1fr;
   grid-auto-rows: 2rem;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 `;
 
 const SHeader = styled.div<{ $selected?: boolean }>`
