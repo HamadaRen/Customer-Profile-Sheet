@@ -10,6 +10,7 @@ const CustomerFooter = () => {
   return (
     <CustomerFoot>
       <CustomerFooterButtonLine>
+        <CustomerFootPosition>
         <CustomerFooterButton>
         <img src="/svg/icon_leftExpansion.svg" alt="" style={{ width: '1.5rem', height: '1.5rem' }} />
         </CustomerFooterButton>
@@ -25,6 +26,7 @@ const CustomerFooter = () => {
         <CustomerFooterButton>
         <img src="/svg/icon_leftExpansion.svg" alt="" style={{ width: '1.5rem', height: '1.5rem', transform: 'rotate(180deg)' }} />
         </CustomerFooterButton>
+        </CustomerFootPosition>
       </CustomerFooterButtonLine>
     </CustomerFoot>
   )
@@ -32,8 +34,20 @@ const CustomerFooter = () => {
 
 const CustomerFoot = styled.div`
   background: #ddd7d1;
+  width: 100%;
   height: 4.1875rem;
   text-align: center;
+  position: relative;
+  /* min-height: 100%; */
+`
+
+const CustomerFootPosition = styled.div`
+  display: inline-flex;
+  padding: 0.5rem 1.25rem 0.625rem 1.25rem;
+  align-items: flex-end;
+  gap: 0.625rem;
+  border-radius: 10px;
+  background-blend-mode: multiply;
 `
 
 export default CustomerFooter

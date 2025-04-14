@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@mui/material';
-import { AdvancedSearch, BottomExpansion, CustomerId, CustomerIdSearch, SearchButton, SearchCustomer } from '../../styles/application';
+import { AdvancedSearch, BottomExpansion, CustomerId, CustomerIdSearch, HeaderCustomerId, SearchButton, SearchCustomer } from '../../styles/application';
 
 const CustomerHeader = () => {
   const handleClick = () => {
@@ -10,18 +10,18 @@ const CustomerHeader = () => {
   return (
     <AddButton>
       <SearchCustomer>
-        <CustomerId>
+        <HeaderCustomerId>
           顧客No
           <CustomerIdSearch />
-          </CustomerId>
-        <CustomerId>
+          </HeaderCustomerId>
+        <HeaderCustomerId>
           顧客名
           <CustomerIdSearch />
-          </CustomerId>
-        <CustomerId>
+          </HeaderCustomerId>
+        <HeaderCustomerId>
           担当者
           <CustomerIdSearch />
-          </CustomerId>
+          </HeaderCustomerId>
           <SearchButton>
             <p>検索</p>
             <img src="/svg/icon_magnifyingGlass.svg" alt="" style={{ width: '1.3125rem', height: '1.3125rem' }} />

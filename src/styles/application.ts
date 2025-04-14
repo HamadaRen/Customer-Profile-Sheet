@@ -25,6 +25,16 @@ export const SHeader = styled.div`
   z-index: 10;
 `;
 
+export const UserData = styled.div`
+width: 12.5rem;
+position: relative;
+left: 62rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.69rem;
+`
+
 export const SBody = styled.div`
   width: 100%;
   height: 100%;
@@ -69,7 +79,7 @@ export const SearchCustomer = styled.div`
   background-blend-mode: multiply;
 `;
 
-export const CustomerId = styled.div`
+export const HeaderCustomerId = styled.div`
   display: flex;
   width: 13rem;
   flex-direction: column;
@@ -146,6 +156,7 @@ export const BottomExpansion = styled.img`
 export const CustomerFooterButtonLine = styled.div`
   display: inline-flex;
   align-items: center;
+  text-align: center;
   gap: 0.4375rem;
   margin-bottom: 0.5rem;
   margin-top: 0.8rem;
@@ -208,7 +219,7 @@ export const SHeaderGradient = styled.div`
 
 export const CustomerNumber = styled.div`
   display: flex;
-  width: 7rem;
+  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -223,7 +234,7 @@ export const CustomerNumber = styled.div`
 
 export const CustomerName = styled.div`
   display: flex;
-  width: 7rem;
+  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -238,7 +249,7 @@ export const CustomerName = styled.div`
 
 export const Contact = styled.div`
   display: flex;
-  width: 10rem;
+  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -248,11 +259,12 @@ export const Contact = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  /* padding-right: 2rem; */
 `;
 
 export const TicketInformation = styled.div`
   display: flex;
-  width: 6rem;
+  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -262,11 +274,12 @@ export const TicketInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  /* padding-right: 2rem; */
 `;
 
 export const NumberOfVisitors = styled.div`
   display: flex;
-  width: 6rem;
+  /* width: 5.7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -276,11 +289,12 @@ export const NumberOfVisitors = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  /* margin-left: 1rem; */
 `;
 
 export const FirstVisit = styled.div`
   display: flex;
-  width: 7.5rem;
+  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -294,7 +308,7 @@ export const FirstVisit = styled.div`
 
 export const LastVisit = styled.div`
   display: flex;
-  width: 7.5rem;
+  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -308,7 +322,7 @@ export const LastVisit = styled.div`
 
 export const UsedPeriod = styled.div`
   display: flex;
-  width: 7.5rem;
+  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -321,7 +335,7 @@ export const UsedPeriod = styled.div`
 `;
 export const PersonInCharged = styled.div`
   display: flex;
-  width: 7.5rem;
+  /* width: 7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -335,7 +349,7 @@ export const PersonInCharged = styled.div`
 
 export const SharedInformation = styled.div`
   display: flex;
-  width: 16rem;
+  /* width: 17.4rem; */
   padding: 0 1rem;
   align-items: center;
   flex-shrink: 0;
@@ -345,4 +359,321 @@ export const SharedInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+`;
+
+export const CustomerId = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  width: 6rem;
+  height: 6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  color: inherit;
+  padding: 0 0.6rem;
+  /* padding-bottom: 1rem; */
+  border-bottom: 1px solid #b0a396;
+`;
+
+export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  width: 6.3rem;
+  height: 6rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  border-bottom: 1px solid #b0a396;
+  padding: 0 0.74rem;
+`;
+
+export const ListHeaderContact = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  width: 8.5rem;
+  height: 6rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  /* margin-left: 1.5rem; */
+  border-bottom: 1px solid #b0a396;
+  padding: 0 1.8rem;
+`;
+
+export const Tel = styled.div`
+  display: flex;
+  width: 7rem;
+  padding: 0.1rem 0;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--main-, #565249);
+  text-align: center;
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 2.5rem;
+`;
+
+export const ContactButton = styled.div`
+  display: flex;
+  width: 6.5rem;
+  height: 1.3rem;
+  padding: 0 1.0625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.125rem;
+  border-radius: 10px;
+  border: 1px solid var(--orange-, #ed7100);
+  background: var(--orange-, #fdeddf);
+  color: var(--orange-, #ed7100);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 1.4rem;
+  margin-bottom: 0.4rem;
+`;
+
+export const Ticket = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  width: 8.5rem;
+  height: 6rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  /* margin-left: 1.7rem; */
+  border-bottom: 1px solid #b0a396;
+  padding: 0 1.9rem;
+`;
+
+export const TicketName = styled.div`
+  display: flex;
+  padding: 0.1rem 0.5rem;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-left: 2rem;
+`;
+export const TicketTime = styled.div`
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 2rem;
+`;
+export const TicketKinds = styled.div`
+  display: flex;
+  padding: 0.1rem;
+  padding-left: 0.5rem;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 2rem;
+`;
+
+export const TicketKindsTime = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #5d8b00);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-right: 0.5rem;
+`;
+
+export const TicketButton = styled.div`
+  display: flex;
+  width: 6.5rem;
+  height: 1.3rem;
+  padding: 0 1.0625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.125rem;
+  border-radius: 10px;
+  border: 1px solid var(--orange-, #5d8b00);
+  background: var(--orange-, #e9edda);
+  color: var(--orange-, #5d8b00);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 1.4rem;
+  margin-top: 0.2rem;
+`;
+
+export const Visitors = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  border-bottom: 1px solid #b0a396;
+  padding-right: 2rem;
+`;
+
+export const Remarks = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  /* width: 284px; */
+  height: 6rem;
+  padding: 0 1rem;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  border-bottom: 1px solid #b0a396;
+`;
+
+export const SButton = styled.div<{ $selected?: boolean }>`
+  height: 2rem;
+  /* border: 1px solid #000; */
+  align-items: center;
+  background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#dcdcdc')};
+  color: inherit;
+`;
+
+export const ModalContainer = styled.div`
+  position: fixed;
+  left: 53rem;
+  display: flex;
+  width: 43rem;
+  height: 64.375rem;
+  padding: 1rem 0px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #665e4d;
+  box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
+`;
+
+export const CustomerDetail = styled.div`
+  display: flex;
+  width: 39rem;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid var(--main-, #f3e6da);
+  background: linear-gradient(90deg, #524c45 0%, #827a6e 100%), linear-gradient(90deg, #69635b 0%, #cfc3b3 100%);
+`;
+
+export const CustomerDetailName = styled.div`
+  color: var(--text-, #fff);
+  font-family: 'Noto Sans JP';
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+export const CustomerNameKana = styled.div`
+  color: var(--text-, #fff);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const CustomerDetailNumber = styled.div`
+  color: var(--text-, #fff);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const TelIcon = styled.div`
+  display: flex;
+  width: 1.2rem;
+  padding: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 101.684px;
+  border: 1.017px solid var(--Green-, #5d8b00);
+  background: var(--text-, #fff);
+`;
+
+export const IconPhoto = styled.div`
+  display: flex;
+  width: 8.1rem;
+  height: 2.1rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 17rem;
+  top: 0.5rem;
+  gap: 0.3rem;
+`;
+
+export const ManagerName = styled.div`
+  color: var(--text-, #fff);
+  font-family: 'Noto Sans JP';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerInformationContainer = styled.div`
+  display: flex;
+  width: 41rem;
+  height: 56.8rem;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #f9f5f1;
 `;
