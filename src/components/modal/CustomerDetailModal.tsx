@@ -8,6 +8,7 @@ import CustomerDetailQuestionnaire from './CustomerDetailQuestionnaire';
 import CustomerDetailHistory from './CustomerDetailHistory';
 import CustomerDetailConsent from './CustomerDetailConsent';
 import CustomerDetailTicket from './CustomerDetailTicket';
+import CustomerDetailModalFooter from '../footer/CustomerDetailModalFooter';
 
 
 const CustomerDetailModal = () => {
@@ -41,6 +42,7 @@ const CustomerDetailModal = () => {
             <CustomerDetailTab selected={selected} setSelected={setSelected} />
             <div>{selectedData}</div>
           </CustomerInformationContainer>
+          <CustomerDetailModalFooter />
       </ModalContainer>
     </>
   );

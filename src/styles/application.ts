@@ -832,7 +832,6 @@ export const CustomerDetailItem = styled.div`
 export const CustomerDetailItemLong = styled.div`
   display: flex;
   width: 32.3rem;
-  height: 1rem;
   padding: 0.4rem 0.8rem;
   align-items: center;
   gap: 0.5rem;
