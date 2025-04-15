@@ -1,42 +1,77 @@
-import { Box, Tabs, Tab, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Tabs, Tab, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={2}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
 const CustomerDetailTab = () => {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event: any, newValue: any) => {
-    setValue(newValue)};
+  const [selected, setSelected] = useState<'customerInformation' | 'questionnaire' | 'history' | 'consent' | 'ticket'>(
+    'customerInformation'
+  );
 
   return (
-    <div>aaa</div>
-  )
-}
+    <CustomerDetailHeaderContainer>
+      <CustomerDetailHeaderTab
+        $selected={selected === 'customerInformation'}
+        onClick={() => setSelected('customerInformation')}
+      >
+        顧客情報
+      </CustomerDetailHeaderTab>
+      <CustomerDetailHeaderTab
+        $selected={selected === 'questionnaire'}
+        onClick={() => setSelected('questionnaire')}
+      >
+        問診表
+      </CustomerDetailHeaderTab>
+      <CustomerDetailHeaderTab
+        $selected={selected === 'history'}
+        onClick={() => setSelected('history')}
+      >
+        来店・施術履歴
+      </CustomerDetailHeaderTab>
+      <CustomerDetailHeaderTab
+        $selected={selected === 'consent'}
+        onClick={() => setSelected('consent')}
+      >
+        同意書
+      </CustomerDetailHeaderTab>
+      <CustomerDetailHeaderTab
+        $selected={selected === 'ticket'}
+        onClick={() => setSelected('ticket')}
+      >
+        チケット情報
+      </CustomerDetailHeaderTab>
+    </CustomerDetailHeaderContainer>
+  );
+};
 
-export default CustomerDetailTab
+const CustomerDetailHeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  align-self: stretch;
+  border-bottom: 1px solid #b0a396;
+  background: #f3f0ec;
+  box-shadow: 0px 4px 10px 0px #ddcfc2;
+  position: relative;
+`;
+
+const CustomerDetailHeaderTab = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  height: 3rem;
+  padding: 0rem 1.25rem 0rem 1.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  font-family: 'Noto Sans JP';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  background: ${({ $selected }) => ($selected ? '#e9edda' : 'transparent')};
+  color: ${({ $selected }) => ($selected ? '#5d8b00' : '#656565')};
+  border-bottom: ${({ $selected }) => ($selected ? '2px solid #5d8b00' : 'transparent')};
+`;
+
+
+export default CustomerDetailTab;
