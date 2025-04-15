@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ModalContainer, CustomerDetail, CustomerNameKana, CustomerDetailName, CustomerDetailNumber, TelIcon, IconPhoto, ManagerName} from '../../styles/application';
 
+
 const CustomerDetailHeader = () => {
   return (
       <CustomerDetail>
