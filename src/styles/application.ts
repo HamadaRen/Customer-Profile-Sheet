@@ -26,14 +26,14 @@ export const SHeader = styled.div`
 `;
 
 export const UserData = styled.div`
-width: 12.5rem;
-position: relative;
-left: 62rem;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.69rem;
-`
+  width: 12.5rem;
+  position: relative;
+  left: 62rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.69rem;
+`;
 
 export const SBody = styled.div`
   width: 100%;
@@ -208,7 +208,7 @@ export const SHeaderGradient = styled.div`
   align-items: center;
   align-self: stretch;
   border-bottom: 0.06rem solid var(--text-10, #d6d6d6);
-  background: linear-gradient(90deg, #443E33 0%, #878480 100%), linear-gradient(90deg, #524c45 0%, #6b655d 100%),
+  background: linear-gradient(90deg, #443e33 0%, #878480 100%), linear-gradient(90deg, #524c45 0%, #6b655d 100%),
     linear-gradient(90deg, #787066 0%, #decfbd 100%);
   color: var(--main-, #f3e6da);
   font-size: 0.5rem;
@@ -582,29 +582,29 @@ export const SButton = styled.div<{ $selected?: boolean }>`
 `;
 
 export const ModalContainer = styled.div`
-  position: fixed;
-  left: 56rem;
+  position: absolute;
+  right: 0;
+  top: 0;
   display: flex;
-  width: 40rem;
-  height: 39rem;
-  padding: 1rem 0px;
+  width: 40vw;
+  height: 100%;
+  padding: 1rem;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   background: #665e4d;
   box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
+  z-index: 10;
 `;
 
 export const CustomerDetail = styled.div`
   display: flex;
-  width: 36.5rem;
-  height: 3rem;
+  width: calc(100% - 2rem);
   padding: 0.5rem 1rem;
   align-items: center;
   gap: 1rem;
-  flex-shrink: 0;
   border-radius: 5px;
-  border: 1px solid var(--main-, #f3e6da);
+  border: 1px solid #f3e6da;
   background: linear-gradient(90deg, #524c45 0%, #827a6e 100%), linear-gradient(90deg, #69635b 0%, #cfc3b3 100%);
 `;
 
@@ -637,25 +637,25 @@ export const CustomerDetailNumber = styled.div`
 
 export const TelIcon = styled.div`
   display: flex;
-  width: 1.1rem;
-  padding: 0.2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 101.684px;
-  border: 1.017px solid var(--Green-, #5d8b00);
-  background: var(--text-, #fff);
+  justify-content: center;
+  border-radius: 100%;
+  border: 1.017px solid #5d8b00;
+  background: #fff;
   cursor: pointer;
 `;
 
 export const IconPhoto = styled.div`
   display: flex;
-  width: 6rem;
-  height: 2.1rem;
+  /* width: 6rem; */
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  margin-left: auto;
   position: relative;
-  left: 17rem;
-  top: 0.5rem;
+  bottom: -0.25rem;
   gap: 0.3rem;
 `;
 
@@ -670,8 +670,8 @@ export const ManagerName = styled.div`
 
 export const CustomerInformationContainer = styled.div`
   display: flex;
-  width: 38.5rem;
-  height: 56.8rem;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
@@ -711,13 +711,14 @@ export const CustomerDetailHeaderTab = styled.div<{ $selected?: boolean }>`
 
 export const CustomerInformationBodyContainer = styled.div`
   display: flex;
-  width: 36.5rem;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   overflow-y: scroll;
   overflow-x: hidden;
+  scrollbar-color: #b2b89e;
 `;
 
 export const CustomerInformationSubHeaderBox = styled.div`
@@ -778,7 +779,7 @@ export const CustomerBasicInformationSubHeaderBox = styled.div`
 
 export const CustomerBasicInformationContainer = styled.div`
   display: flex;
-  width: 36.3rem;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -886,7 +887,7 @@ export const CustomerDetailItemRight = styled.div`
 
 export const CustomerDetailSharedSubHeaderContainer = styled.div`
   display: flex;
-  width: 44.875rem;
+  width: 100%;
   padding: 0.5rem 0px;
   justify-content: center;
   align-items: center;
@@ -905,6 +906,7 @@ export const CustomerDetailSharedFixedContainer = styled.div`
   /* width: 44.25rem; */
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 export const CustomerDetailFixedMemoBox = styled.div`
@@ -1343,6 +1345,7 @@ export const CustomerConsentListItemContainer = styled.div<{ $selected?: boolean
   align-items: flex-start;
   gap: 0.625rem;
   background: ${({ $selected }) => ($selected ? '#EFF5D8' : 'transparent')};
+  cursor: pointer;
 `;
 export const CustomerConsentListItemBox = styled.div`
   display: flex;
@@ -1390,7 +1393,7 @@ export const CustomerTicketContainer = styled.div`
   align-items: flex-start;
   gap: 0.125rem;
   flex-shrink: 0;
-  `;
+`;
 
 export const CustomerTicketListContainer = styled.div`
   display: flex;
@@ -1483,8 +1486,8 @@ export const CustomerTicketFooter = styled.div`
 `;
 
 export const ButtonHoverThinner = styled.div`
-cursor: pointer;
+  cursor: pointer;
   &:hover {
     opacity: 0.5;
   }
-`
+`;
