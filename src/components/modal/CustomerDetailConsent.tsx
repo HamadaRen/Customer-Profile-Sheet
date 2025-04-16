@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ButtonHoverThinner, ConfirmationButton, CustomerConsentAttachedBox, CustomerConsentBodyBox, CustomerConsentCheckBox, CustomerConsentContractDate, CustomerConsentContractDateBox, CustomerConsentDataContainer, CustomerConsentDisplayContainer, CustomerConsentListHeader, CustomerConsentListHeaderItem, CustomerConsentListItemBox, CustomerConsentListItemContainer, CustomerConsentTitle, CustomerConsentTitleBox } from '../../styles/application';
 
 const CustomerDetailConsent = () => {
+  const [selectedId, setSelectedId] = useState<'1' | '2'>('1')
   return (
     <>
       <CustomerConsentDisplayContainer>
@@ -56,7 +57,11 @@ const CustomerDetailConsent = () => {
           同意書一覧
         </CustomerConsentListHeaderItem>
       </CustomerConsentListHeader>
-      <CustomerConsentListItemContainer>
+
+      <CustomerConsentListItemContainer
+      $selected={selectedId === '1'}
+      onClick={() => setSelectedId('1')}
+      >
         <CustomerConsentListItemBox>
           <CustomerConsentCheckBox type="checkbox" />
           <CustomerConsentBodyBox>
@@ -78,7 +83,10 @@ const CustomerDetailConsent = () => {
         </CustomerConsentListItemBox>
       </CustomerConsentListItemContainer>
 
-      <CustomerConsentListItemContainer>
+      <CustomerConsentListItemContainer
+      $selected={selectedId === '2'}
+      onClick={() => setSelectedId('2')}
+      >
         <CustomerConsentListItemBox>
           <CustomerConsentCheckBox type="checkbox" />
           <CustomerConsentBodyBox>

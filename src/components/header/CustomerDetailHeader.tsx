@@ -14,13 +14,13 @@ const CustomerDetailHeader = () => {
           </div>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <TelIcon>
-              <img src="/svg/icon_tel_green.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
+              <img src="/svg/icon_tel_green.svg" alt="" style={{ width: '1.25rem', height: '1rem' }} />
             </TelIcon>
             <TelIcon>
-              <img src="/svg/icon_line_green.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
+              <img src="/svg/icon_line_green.svg" alt="" style={{ width: '1.25rem', height: '1rem' }} />
             </TelIcon>
             <TelIcon>
-              <img src="/svg/icon_instagram_green.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
+              <img src="/svg/icon_instagram_green.svg" alt="" style={{ width: '1.1rem', height: '1.1rem' }} />
             </TelIcon>
           </div>
         </div>
