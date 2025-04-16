@@ -1,7 +1,8 @@
 import { useAtom, useSetAtom } from 'jotai';
-import { SHeader } from '../styles/application';
+import { SHeader, UserData } from '../styles/application';
 import { sideBarAnimationTypeAtom, visibleSideBarAtom } from '../state/application';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 const Header = () => {
   const [visibleSideBar, setVisibleSideBar] = useAtom(visibleSideBarAtom);
@@ -45,8 +46,34 @@ const Header = () => {
     <SHeader>
       <img src="/svg/icon_hamburger.svg" alt="" style={{ width: '2.5rem', height: '2.5rem' }} onClick={handleClick} />
       <p>for too 顧客管理システム</p>
+      <UserData>
+        <Department>エステ事業部</Department>
+        <img src="/svg/icon_human_beige.svg" alt="" style={{ width: '1.125rem', height: '1.125rem' }} />
+        <Administrator>濵田　錬</Administrator>
+      </UserData>
     </SHeader>
   );
 };
+
+const Department = styled.p`
+  color: var(--main-, #DCCEC1);
+text-align: right;
+font-family: "Noto Sans JP";
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 1.8px;
+`
+const Administrator = styled.p`
+color: var(--main-, #DCCEC1);
+font-family: "Noto Sans JP";
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 2.1px;
+`
+
 
 export default Header;
