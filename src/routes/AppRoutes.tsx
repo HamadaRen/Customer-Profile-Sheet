@@ -13,6 +13,7 @@ import Login from '../login/Login';
 import SalesManagement from '../sales/SalesManagement';
 import ReservationEntry from '../sales/ReservationEntry';
 import HairSalonTreatmentMenuEditPage from '../components/treatment/HairSalonTreatmentMenuEditPage';
+import CustomerDetailModal from '../components/modal/CustomerDetailModal';
 
 type UserDetailsType = {
   name: string;
@@ -47,6 +48,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/treatmentMenu/hair/:id" element={<HairSalonTreatmentMenuEditPage />}></Route>
           <Route path="/sales" element={<SalesManagement />}></Route>
           <Route path="/sales/entry" element={<ReservationEntry />}></Route>
+          <Route path="/modal" element={<CustomerDetailModal />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Route>
           <Route path="/login" element={<Login />}></Route>

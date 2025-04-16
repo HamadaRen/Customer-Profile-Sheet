@@ -55,6 +55,7 @@ export default CustomerListHeader;
 const GridHeader = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 2fr 2fr 3fr 3.2fr 1.5fr 2fr 2fr 2fr 2fr 4.9fr;
+  /* grid-template-columns: 2fr 2fr 3fr 3.2fr 1.5fr 2fr 2fr 2fr 2fr 4.9fr; */
+  grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
   /* margin-right: 50rem; */
 `;

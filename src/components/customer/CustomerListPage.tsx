@@ -319,7 +319,8 @@ const CustomerListPage = () => {
 const GridContainer = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 1.9fr 1.9fr 3fr 3fr 1.5fr 1.9fr 1.9fr 1.9fr 1.9fr 5fr;
+  /* grid-template-columns: 1.9fr 1.9fr 3fr 3fr 1.5fr 1.9fr 1.9fr 1.9fr 1.9fr 5fr; */
+  grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
   /* padding-left: 1rem; */
   align-items: center;
   align-self: stretch;
