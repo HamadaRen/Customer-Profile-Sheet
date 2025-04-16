@@ -582,12 +582,12 @@ export const SButton = styled.div<{ $selected?: boolean }>`
 `;
 
 export const ModalContainer = styled.div`
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 0;
+  bottom: 0;
   display: flex;
   width: 40vw;
-  height: 100%;
+  height: calc(100vh - 5.125rem);
   padding: 1rem;
   flex-direction: column;
   align-items: center;
@@ -649,7 +649,6 @@ export const TelIcon = styled.div`
 
 export const IconPhoto = styled.div`
   display: flex;
-  /* width: 6rem; */
   height: 100%;
   justify-content: center;
   align-items: flex-end;
@@ -712,10 +711,10 @@ export const CustomerDetailHeaderTab = styled.div<{ $selected?: boolean }>`
 export const CustomerInformationBodyContainer = styled.div`
   display: flex;
   width: 100%;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin-left: 1rem; */
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-color: #b2b89e;
@@ -735,7 +734,6 @@ export const CustomerInformationEditButtonBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  /* gap: 0.8rem; */
   align-self: stretch;
 `;
 
@@ -992,15 +990,15 @@ export const CustomerDetailMemoTime = styled.div`
 
 export const CustomerDetailFooterContainer = styled.div`
   display: flex;
-  width: 32rem;
-  height: 1.5rem;
-  padding: 13px 60px;
   justify-content: center;
-  align-items: flex-end;
-  gap: 30px;
+  align-items: center;
+  width: 100%;
+  height: 1.75rem;
+  padding: 0.8rem 0;
+  gap: 1.875rem;
   position: absolute;
-  left: 0.2rem;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
   background: rgba(86, 80, 73, 0.48);
   backdrop-filter: blur(2px);
 `;
