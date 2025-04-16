@@ -637,8 +637,8 @@ export const CustomerDetailNumber = styled.div`
 
 export const TelIcon = styled.div`
   display: flex;
-  width: 1.2rem;
-  padding: 0.5rem;
+  width: 1.1rem;
+  padding: 0.2rem;
   align-items: center;
   gap: 0.5rem;
   border-radius: 101.684px;
@@ -1208,3 +1208,283 @@ export const HistoryStatusBodyContent = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
+
+export const CustomerConsentDisplayContainer = styled.div`
+  display: flex;
+  height: 16rem;
+  padding: 0rem 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+`;
+
+export const CustomerConsentTitleBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+`;
+
+export const CustomerConsentTitle = styled.div`
+  display: flex;
+  align-items: center;
+  width: 20.5rem;
+  color: var(--main-, #756c62);
+  font-family: 'Noto Sans JP';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+export const CustomerConsentAttachedBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration-line: none;
+`;
+
+export const CustomerConsentContractDateBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  color: var(--Text-50, #656565);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerConsentContractDate = styled.div`
+  display: flex;
+  padding: 0.125rem 0.875rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 3px;
+  background: #e4dbd3;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerConsentDataContainer = styled.div`
+  display: flex;
+  width: 34.3125rem;
+  /* flex-direction: column; */
+  padding: 0.5rem 0;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+  align-self: stretch;
+  /* margin: 0 0 13.5rem 1rem; */
+`;
+
+export const ConfirmationButton = styled.div`
+  display: flex;
+  width: 6rem;
+  height: 1rem;
+  padding: 0.375rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: linear-gradient(91deg, #63763d 0.73%, #819755 51.19%, #b9c572 99.67%), #3982bd;
+  border-radius: 5px;
+  background: linear-gradient(91deg, #63763d 0.73%, #819755 51.19%, #b9c572 99.67%), #3982bd;
+  color: var(--Text-, #fff);
+  text-align: center;
+  font-family: 'Noto Sans JP';
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 2rem;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+export const CustomerConsentListHeader = styled.div`
+  display: flex;
+  padding: 0rem 0.375rem 0rem 1.625rem;
+  align-items: center;
+  gap: 0.25rem;
+  align-self: stretch;
+  border-bottom: 1px solid #d6d6d6;
+  box-shadow: 0px 1px 4px 0px rgba(178, 178, 178, 0.18);
+  color: var(--Text-80, #272727);
+  font-family: 'Noto Sans JP';
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
+
+export const CustomerConsentListHeaderItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const CustomerConsentListItemContainer = styled.div<{ $selected?: boolean }>`
+  display: flex;
+  width: 34.5rem;
+  height: 3.5rem;
+  padding: 0.3rem 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.625rem;
+  background: ${({ $selected }) => ($selected ? '#EFF5D8' : 'transparent')};
+`;
+export const CustomerConsentListItemBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-bottom: 1px solid #d6d6d6;
+`;
+
+export const CustomerConsentCheckBox = styled.input`
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: rgba(255, 255, 255, 0.6);
+  filter: drop-shadow(2px 2px 4px rgba(201, 201, 201, 0.5));
+  backdrop-filter: blur(2.5px);
+`;
+
+export const CustomerConsentBodyBox = styled.div`
+  display: flex;
+  height: 4.5rem;
+  padding-left: 0.93rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  color: var(--main-, #565249);
+  font-family: 'Noto Sans JP';
+  font-size: 0.93rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+`;
+
+export const CustomerTicketContainer = styled.div`
+  display: flex;
+  height: 51.875rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.125rem;
+  flex-shrink: 0;
+  `;
+
+export const CustomerTicketListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
+  overflow-y: scroll;
+`;
+
+export const CustomerTicketListItemBox = styled.div`
+  display: flex;
+  width: 31.5rem;
+  padding: 0.5rem 1.06rem;
+  align-items: flex-start;
+  gap: 0.125rem;
+  border-radius: 5px;
+  border: 1px solid var(--text-10, #d6d6d6);
+  background: #fff;
+  box-shadow: 4px 4px 10px 0px rgba(157, 159, 161, 0.25);
+  margin: 0.5rem 0.2rem 0 0.4rem;
+`;
+
+export const CustomerTicketListItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  flex: 1 0 0;
+`;
+
+export const CustomerTicketBodyDetailBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.3rem;
+`;
+
+export const CustomerTicketBodyDetailTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  color: var(--main-, #575850);
+  font-family: 'Noto Sans JP';
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerTicketDetail = styled.div`
+  display: flex;
+  padding: 0px 1.8rem;
+  align-items: center;
+  gap: 3rem;
+  color: var(--main-, #756c62);
+  font-family: 'Noto Sans JP';
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerTicketFooterBox = styled.div`
+  display: flex;
+  padding: 0px 1.56rem;
+  align-items: flex-end;
+  gap: 1rem;
+  align-self: stretch;
+`;
+
+export const CustomerTicketFooter = styled.div`
+  display: flex;
+  height: 1.5rem;
+  padding: 0rem 0.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3125rem;
+  border-radius: 5px;
+  border: 1px solid var(--text-50, #656565);
+  background: #f9fbef;
+  box-shadow: 2px 2px 4px 0px rgba(204, 204, 204, 0.25);
+  color: var(--main-, #756c62);
+  font-family: 'Noto Sans JP';
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const ButtonHoverThinner = styled.div`
+cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+`

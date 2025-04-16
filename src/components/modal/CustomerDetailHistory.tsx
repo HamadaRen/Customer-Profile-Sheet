@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BottomExpansion, HistoryCounselingTag, HistoryListItemBox, HistoryListItemHeaderBox, HistoryPurchasedProductsTag, HistoryStatus, HistoryStatusBody, HistoryStatusBodyBox, HistoryStatusBodyContent, HistoryStatusBodyTitle, HistoryTabContainer, HistoryTreatmentTag, HistoryTriangle, HistoryVisitDate, HistoryVisitInformation, HistoryVisitTime } from '../../styles/application';
+import { BottomExpansion, ButtonHoverThinner, HistoryCounselingTag, HistoryListItemBox, HistoryListItemHeaderBox, HistoryPurchasedProductsTag, HistoryStatus, HistoryStatusBody, HistoryStatusBodyBox, HistoryStatusBodyContent, HistoryStatusBodyTitle, HistoryTabContainer, HistoryTreatmentTag, HistoryTriangle, HistoryVisitDate, HistoryVisitInformation, HistoryVisitTime } from '../../styles/application';
 
 const CustomerDetailHistory = () => {
   return (
@@ -8,7 +8,9 @@ const CustomerDetailHistory = () => {
       <HistoryListItemBox>
         <HistoryListItemHeaderBox>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <BottomExpansion src="/svg/icon_arrow_878787.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
+            <ButtonHoverThinner>
+            <img src="/svg/icon_arrow_878787.svg" alt="" style={{ width: '1.5rem', height: '1.5rem' }} />
+            </ButtonHoverThinner>
             <HistoryVisitInformation>来店済</HistoryVisitInformation>
             <HistoryVisitDate>2025/1/11（土）</HistoryVisitDate>
             <HistoryVisitTime>12:00~13:40</HistoryVisitTime>
