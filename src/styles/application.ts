@@ -672,10 +672,11 @@ export const CustomerInformationContainer = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
+  /* align-items: center; */
+  /* flex-shrink: 0; */
   border-radius: 5px;
   background: #f9f5f1;
+  /* padding: 1rem; */
 `;
 
 export const CustomerDetailHeaderContainer = styled.div`
@@ -718,13 +719,14 @@ export const CustomerInformationBodyContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: #b2b89e;
-`;
+  padding-top: 0.5rem;
+  `;
 
 export const CustomerInformationSubHeaderBox = styled.div`
-  display: flex;
-  padding-bottom: 0.2rem;
+  /* display: flex; */
+  /* padding-bottom: 0.2rem; */
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   align-self: stretch;
 `;
 
@@ -738,8 +740,8 @@ export const CustomerInformationEditButtonBox = styled.div`
 `;
 
 export const CustomerInformationEditButton = styled.div`
-  position: relative;
-  margin: 0.8rem 0.1rem 0 0;
+  /* position: relative; */
+  /* margin: 0.8rem 0.1rem 0 0; */
   display: flex;
   padding: 0.3rem 0.5rem;
   justify-content: center;
@@ -761,7 +763,7 @@ export const CustomerInformationEditButton = styled.div`
 
 export const CustomerBasicInformationSubHeaderBox = styled.div`
   display: flex;
-  width: 44.875rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
   gap: 0.125rem;
@@ -773,14 +775,15 @@ export const CustomerBasicInformationSubHeaderBox = styled.div`
   font-weight: 700;
   line-height: 150%; /* 27px */
   letter-spacing: 0.9px;
+  align-self: stretch;
 `;
 
 export const CustomerBasicInformationContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   gap: 0.08rem;
 `;
 export const CustomerBasicInformationBox = styled.div`
@@ -788,31 +791,34 @@ export const CustomerBasicInformationBox = styled.div`
   justify-content: center;
   align-items: center;
   align-self: stretch;
+  padding-right: 4rem;
+  gap: 5rem;
 `;
 export const CustomerDetailItemBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.1rem;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  /* gap: 0.1rem; */
+  padding-left: 1rem;
   flex: 1 0 0;
 `;
 export const CustomerDetailItemTitle = styled.div`
-  display: flex;
+  /* display: flex; */
   padding: 0px 0.25rem;
-  align-items: center;
-  gap: 0.5rem;
-  align-self: stretch;
+  /* align-items: center; */
+  /* gap: 0.5rem; */
+  /* align-self: stretch; */
   color: #909090;
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-left: 0.7rem;
+  /* margin-left: 0.7rem; */
 `;
 export const CustomerDetailItem = styled.div`
   display: flex;
-  width: 15rem;
+  width: 100%;
   height: 1rem;
   padding: 0.4rem 0.8rem;
   align-items: center;
@@ -831,10 +837,10 @@ export const CustomerDetailItem = styled.div`
 `;
 export const CustomerDetailItemLong = styled.div`
   display: flex;
-  width: 32.3rem;
-  padding: 0.4rem 0.8rem;
+  width: 100%;
+  padding: 0.4rem 0.4rem;
   align-items: center;
-  gap: 0.5rem;
+  /* gap: 0.5rem; */
   align-self: stretch;
   border-radius: 3px;
   background: #ede5df;
@@ -865,7 +871,7 @@ export const CustomerDetailItemTitleRight = styled.div`
 
 export const CustomerDetailItemRight = styled.div`
   display: flex;
-  width: 15rem;
+  width: 100%;
   height: 1rem;
   padding: 0.4rem 0.8rem;
   align-items: center;
@@ -901,18 +907,18 @@ export const CustomerDetailSharedSubHeaderContainer = styled.div`
 `;
 
 export const CustomerDetailSharedFixedContainer = styled.div`
-  /* width: 44.25rem; */
+  width: 100%;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding-left: 3rem;
 `;
 
 export const CustomerDetailFixedMemoBox = styled.div`
   display: flex;
-  width: 32rem;
+  width: calc(100% - 6rem);
   padding: 0.3rem 1rem 0.5rem 0.8rem;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: flex-start;
   gap: 0.25rem;
   align-self: stretch;
@@ -967,7 +973,7 @@ export const CustomerDetailFixedMemoPerson = styled.div`
 
 export const CustomerDetailDateMemoBox = styled.div`
   display: flex;
-  width: 32rem;
+  width: calc(100% - 6rem);
   padding: 0.3rem 1rem 0.5rem 0.8rem;
   flex-direction: column;
   justify-content: center;
@@ -1028,32 +1034,34 @@ export const CustomerDetailPrinting = styled.div`
 
 export const HistoryTabContainer = styled.div`
   display: flex;
-  width: 38.5rem;
-  height: 30.7rem;
+  width: 100%;
+  height: 100%;
   padding: 1rem 0px;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
-`;
+  `;
 
 export const HistoryListItemBox = styled.div`
   display: flex;
-  /* width: 33.5rem; */
+  width: calc(100% - 5rem);
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
   border: 1px solid var(--main-, #a29b93);
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
-`;
+  /* padding: 0 3rem; */
+  background-color: red;
+  `;
 
 export const HistoryListItemHeaderBox = styled.div`
   display: flex;
-  width: 33.5rem;
-  padding: 0.2rem 1rem;
+  width: 100%;
+  /* padding: 0.2rem 1rem; */
   justify-content: flex-end;
   align-items: center;
-  gap: 0.3rem;
+  gap: 13rem;
   background: #fff;
   border-radius: 5px;
 `;
