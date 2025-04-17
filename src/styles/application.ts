@@ -715,7 +715,7 @@ export const CustomerInformationBodyContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: #b2b89e;
 `;
