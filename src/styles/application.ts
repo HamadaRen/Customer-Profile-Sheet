@@ -720,7 +720,7 @@ export const CustomerInformationBodyContainer = styled.div`
   overflow-x: hidden;
   scrollbar-color: #b2b89e;
   padding-top: 0.5rem;
-  `;
+`;
 
 export const CustomerInformationSubHeaderBox = styled.div`
   /* display: flex; */
@@ -1036,41 +1036,34 @@ export const HistoryTabContainer = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  padding: 1rem 0px;
+  padding: 1rem 0;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
-  `;
+`;
 
 export const HistoryListItemBox = styled.div`
   display: flex;
-  width: calc(100% - 5rem);
+  width: calc(100% - 4rem);
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
   border: 1px solid var(--main-, #a29b93);
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
   /* padding: 0 3rem; */
-  background-color: red;
   `;
 
 export const HistoryListItemHeaderBox = styled.div`
   display: flex;
   width: 100%;
-  /* padding: 0.2rem 1rem; */
-  justify-content: flex-end;
-  align-items: center;
-  gap: 13rem;
   background: #fff;
   border-radius: 5px;
-`;
+  `;
 
 export const HistoryVisitInformation = styled.div`
   display: flex;
-  width: 2.5rem;
-  height: 1rem;
-  padding: 0px 0.5rem;
+  padding: 0px 0.6rem;
   justify-content: center;
   align-items: center;
   gap: 0.125rem;
@@ -1083,10 +1076,10 @@ export const HistoryVisitInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-`;
+  white-space: nowrap;
+  `;
 
 export const HistoryVisitDate = styled.div`
-  /* width: 6rem; */
   color: var(--main-, #756c62);
   font-family: 'Noto Sans JP';
   font-size: 0.8rem;
@@ -1101,15 +1094,16 @@ export const HistoryVisitTime = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-`;
+  `;
 
 export const HistoryStatus = styled.div`
   display: flex;
-  width: 17rem;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
-`;
+  padding: 0 1rem;
+  `;
 
 export const HistoryTreatmentTag = styled.div`
   display: flex;
@@ -1126,7 +1120,7 @@ export const HistoryTreatmentTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-`;
+  `;
 export const HistoryCounselingTag = styled.div`
   display: flex;
   padding: 0.05rem 0.3rem;
@@ -1142,7 +1136,7 @@ export const HistoryCounselingTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-`;
+  `;
 export const HistoryPurchasedProductsTag = styled.div`
   display: flex;
   padding: 0.05rem 0.3rem;
@@ -1158,18 +1152,19 @@ export const HistoryPurchasedProductsTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-`;
+  `;
 
 export const HistoryTriangle = styled.div`
-  position: absolute;
-  top: 9.8rem;
-  left: 1.5rem;
-`;
+  position: relative;
+  bottom: 8.6%;
+  right: 6%;
+  /* left: 0%; */
+  `;
 
 export const HistoryStatusBodyBox = styled.div`
   display: flex;
-  width: 33.6rem;
-  padding: 1rem;
+  width: calc(100% - 1rem);
+  padding: 0 0.5rem 0.5rem 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -1177,7 +1172,7 @@ export const HistoryStatusBodyBox = styled.div`
   border: 1px solid var(--main-, #a29b93);
   border-radius: 3px;
   background: #fff;
-`;
+  `;
 
 export const HistoryStatusBody = styled.div`
   display: flex;
