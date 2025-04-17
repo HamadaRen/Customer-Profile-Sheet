@@ -1388,25 +1388,31 @@ export const CustomerConsentBodyBox = styled.div`
 
 export const CustomerTicketContainer = styled.div`
   display: flex;
-  height: 51.875rem;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: flex-start;
   gap: 0.125rem;
   flex-shrink: 0;
-`;
+  padding-top: 0.5rem;
+  /* padding: 1rem; */
+  `;
 
 export const CustomerTicketListContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 1rem;
-  overflow-y: scroll;
+  gap: 1rem;
+  padding: 0 1rem 0 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* background-color: red; */
 `;
 
 export const CustomerTicketListItemBox = styled.div`
   display: flex;
-  width: 31.5rem;
+  width: calc(100% - 2rem);
   padding: 0.5rem 1.06rem;
   align-items: flex-start;
   gap: 0.125rem;
@@ -1414,7 +1420,7 @@ export const CustomerTicketListItemBox = styled.div`
   border: 1px solid var(--text-10, #d6d6d6);
   background: #fff;
   box-shadow: 4px 4px 10px 0px rgba(157, 159, 161, 0.25);
-  margin: 0.5rem 0.2rem 0 0.4rem;
+  /* margin: 0.5rem 0.2rem 0 0.4rem; */
 `;
 
 export const CustomerTicketListItem = styled.div`
@@ -1483,6 +1489,7 @@ export const CustomerTicketFooter = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  /* white-space: nowrap; */
 `;
 
 export const ButtonHoverThinner = styled.div`
