@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CustomerDetailHeader from '../header/CustomerDetailHeader';
-import { CustomerDetail, CustomerInformationContainer, ModalContainer } from '../../styles/application';
+import { CustomerDetail, CustomerInformationContainer, ModalContainer, ModalGrayContainer } from '../../styles/application';
 import CustomerDetailTab from './CustomerDetailTab';
 import CustomerDetailInformation from './CustomerDetailInformation';
 import CustomerDetailQuestionnaire from './CustomerDetailQuestionnaire';
@@ -12,9 +12,10 @@ import CustomerDetailModalFooter from '../footer/CustomerDetailModalFooter';
 
 type CustomerDetailModalType = {
   showModal: boolean;
+  handleModalClose: () => void
 };
 
-const CustomerDetailModal = ({ showModal }: CustomerDetailModalType) => {
+const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModalType) => {
   const [selected, setSelected] = useState<'customerInformation' | 'questionnaire' | 'history' | 'consent' | 'ticket'>(
     'customerInformation'
   );
@@ -38,6 +39,7 @@ const CustomerDetailModal = ({ showModal }: CustomerDetailModalType) => {
 
   return (
     <>
+    <ModalGrayContainer onClick={handleModalClose} />
       <ModalContainer>
         <CustomerDetailHeader />
         <CustomerInformationContainer>

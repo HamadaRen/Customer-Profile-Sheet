@@ -10,6 +10,7 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { IconButton } from '@mui/material';
 import CustomerFooter from '../footer/CustomerFooter';
 import { CustomerId, CustomerName, Contact, Tel, ContactButton, Ticket, TicketName, TicketTime, TicketKinds, TicketKindsTime, TicketButton, Visitors, Remarks, ListHeaderContact, ListHeaderCustomerName } from '../../styles/application';
+import CustomerDetailModal from '../modal/CustomerDetailModal';
 
 type UserDetailsType = {
   id: string;
@@ -28,7 +29,7 @@ type UserDetailsType = {
 const CustomerListPage = () => {
   const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([]);
   const [hoveredId, setHoveredId] = useState<string>('');
-  const [showModal, setShowModal] = useState<boolean>(true)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const getCustomerData = async () => {
     const customerData = await axios.get('http://localhost:3010/customer');
@@ -43,8 +44,12 @@ const CustomerListPage = () => {
 
   const handleEditClick = (id: string) => {
     // window.location.replace(`http://localhost:3000/customer/${id}`);
-
+    setShowModal(true);
   };
+
+  const handleModalClose = () => {
+    setShowModal((showModal) => (!showModal))
+  }
 
   //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
   const handleDelete = async (id: string) => {
@@ -146,7 +151,8 @@ const CustomerListPage = () => {
   ];
 
   return (
-    <div style={{display:'grid', gridTemplateRows:'6rem 2rem 28rem 5rem'}}>
+    <div style={{display:'grid', gridTemplateRows:'6rem 2rem 1fr 5rem', height: '100%', position:'relative'}}>
+      <CustomerDetailModal showModal={showModal} handleModalClose={handleModalClose} />
       <CustomerHeader />
       <CustomerListHeader />
       <GridContainer>

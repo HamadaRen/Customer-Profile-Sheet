@@ -1,6 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CustomerInformationBodyContainer, CustomerInformationSubHeaderBox, CustomerInformationEditButtonBox, CustomerInformationEditButton, CustomerBasicInformationSubHeaderBox, CustomerBasicInformationContainer, CustomerBasicInformationBox, CustomerDetailItemBox, CustomerDetailItemTitle, CustomerDetailItem, CustomerDetailItemTitleRight, CustomerDetailItemRight, CustomerDetailItemLong, CustomerDetailSharedSubHeaderContainer, CustomerDetailSharedFixedContainer, CustomerDetailFixedMemoBox, CustomerDetailFixedMemoDate, CustomerDetailFixedMemoBodyBox, CustomerDetailFixedMemoBody, CustomerDetailFixedMemoPerson, CustomerDetailDateMemoBox, CustomerDetailMemoTime, CustomerDetailFooterContainer, CustomerDetailPrinting } from '../../styles/application';
+import {
+  CustomerInformationBodyContainer,
+  CustomerInformationSubHeaderBox,
+  CustomerInformationEditButtonBox,
+  CustomerInformationEditButton,
+  CustomerBasicInformationSubHeaderBox,
+  CustomerBasicInformationContainer,
+  CustomerBasicInformationBox,
+  CustomerDetailItemBox,
+  CustomerDetailItemTitle,
+  CustomerDetailItem,
+  CustomerDetailItemTitleRight,
+  CustomerDetailItemRight,
+  CustomerDetailItemLong,
+  CustomerDetailSharedSubHeaderContainer,
+  CustomerDetailSharedFixedContainer,
+  CustomerDetailFixedMemoBox,
+  CustomerDetailFixedMemoDate,
+  CustomerDetailFixedMemoBodyBox,
+  CustomerDetailFixedMemoBody,
+  CustomerDetailFixedMemoPerson,
+  CustomerDetailDateMemoBox,
+  CustomerDetailMemoTime,
+} from '../../styles/application';
 
 const CustomerDetailInformation = () => {
   return (
@@ -22,8 +43,9 @@ const CustomerDetailInformation = () => {
               alignItems: 'center',
               justifyContent: 'center',
               borderBottom: '0.1rem solid #A29B93',
-              width: '29rem',
-              marginRight: '10rem',
+              width: 'calc(100% - 6rem)',
+              // alignSelf: 'stretch',
+              // marginRight: '10rem',
             }}
           ></div>
         </CustomerBasicInformationSubHeaderBox>
@@ -62,15 +84,16 @@ const CustomerDetailInformation = () => {
         <div
           style={{
             height: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderBottom: '0.1rem solid #A29B93',
-            width: '29rem',
-            marginRight: '0.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderBottom: '0.1rem solid #A29B93',
+              width: 'calc(100% - 6rem)',
+            // marginRight: '10rem',
           }}
         ></div>
       </CustomerDetailSharedSubHeaderContainer>
+      {/* ここから下修正 */}
       <CustomerDetailSharedFixedContainer>
         <CustomerDetailFixedMemoBox>
           <CustomerDetailFixedMemoDate>
@@ -132,6 +155,5 @@ const CustomerDetailInformation = () => {
     </CustomerInformationBodyContainer>
   );
 };
-
 
 export default CustomerDetailInformation;

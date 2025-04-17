@@ -597,6 +597,23 @@ export const ModalContainer = styled.div`
   z-index: 10;
 `;
 
+export const ModalGrayContainer = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 60vw;
+  height: calc(100vh - 5.125rem);
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #000;
+  opacity: 0.4;
+  box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
+  z-index: 10;
+`;
+
 export const CustomerDetail = styled.div`
   display: flex;
   width: calc(100% - 2rem);
