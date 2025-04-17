@@ -1278,7 +1278,7 @@ export const CustomerConsentContractDate = styled.div`
 
 export const CustomerConsentDataContainer = styled.div`
   display: flex;
-  width: 34.3125rem;
+  width: 100%;
   /* flex-direction: column; */
   padding: 0.5rem 0;
   justify-content: center;
@@ -1308,7 +1308,6 @@ export const ConfirmationButton = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-right: 2rem;
   &:hover {
     opacity: 0.7;
   }
@@ -1338,7 +1337,7 @@ export const CustomerConsentListHeaderItem = styled.div`
 
 export const CustomerConsentListItemContainer = styled.div<{ $selected?: boolean }>`
   display: flex;
-  width: 34.5rem;
+  width: calc(100% - 4rem);
   height: 3.5rem;
   padding: 0.3rem 2rem;
   flex-direction: column;
