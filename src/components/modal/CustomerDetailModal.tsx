@@ -20,10 +20,6 @@ const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModa
     'customerInformation'
   );
 
-  // if (!showModal) {
-  //   return <></>;
-  // }
-
   let selectedData;
   if (selected === 'customerInformation') {
     selectedData = <CustomerDetailInformation />;
