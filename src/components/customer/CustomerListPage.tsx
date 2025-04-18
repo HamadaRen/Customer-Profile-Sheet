@@ -157,7 +157,7 @@ const CustomerListPage = () => {
       <CustomerListHeader />
       <GridContainer>
         <>
-          {fakeData.map((userData) => (
+          {fakeData.map((userData, index) => (
             <>
               <CustomerId
                 key={userData.id}
@@ -165,6 +165,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.id}
               </CustomerId>
@@ -173,6 +174,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 <div style={{ display: 'flex', width: '7rem', justifyContent: 'center', alignItems: 'center' }}>
                   {userData.name}
@@ -183,6 +185,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
                   <Tel>
@@ -230,6 +233,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.125rem' }}>
                   <TicketName>{userData.ticket}</TicketName>
@@ -253,6 +257,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.visit + '回'}
               </Visitors>
@@ -261,6 +266,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.firstVisit}
               </CustomerId>
@@ -270,6 +276,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.lastVisit}
               </CustomerId>
@@ -278,6 +285,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.period}
               </CustomerId>
@@ -286,6 +294,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.staff}
               </CustomerId>
@@ -294,6 +303,7 @@ const CustomerListPage = () => {
                 onMouseLeave={() => setHoveredId('')}
                 $selected={hoveredId === userData.id}
                 onClick={() => handleEditClick(userData.id)}
+                index={index}
               >
                 {userData.memo}
               </Remarks>
@@ -322,18 +332,15 @@ const CustomerListPage = () => {
   );
 };
 
-const GridContainer = styled.div`
+const GridContainer = styled.div<{ $listColor?: boolean }>`
   display: grid;
   width: 100%;
   /* grid-template-columns: 1.9fr 1.9fr 3fr 3fr 1.5fr 1.9fr 1.9fr 1.9fr 1.9fr 5fr; */
   grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
-  /* padding-left: 1rem; */
   align-items: center;
   align-self: stretch;
   border-bottom: 1px solid #b0a396;
-  background: #f3f0ec;
   overflow-y: scroll;
-  /* margin-left: 6rem; */
 `;
 
 

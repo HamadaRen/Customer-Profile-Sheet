@@ -361,7 +361,7 @@ export const SharedInformation = styled.div`
   line-height: normal;
 `;
 
-export const CustomerId = styled.div<{ $selected?: boolean }>`
+export const CustomerId = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   /* width: 6rem; */
   height: 6rem;
@@ -374,14 +374,13 @@ export const CustomerId = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   color: inherit;
   padding: 0 0.6rem;
-  /* padding-bottom: 1rem; */
   border-bottom: 1px solid #b0a396;
 `;
 
-export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
+export const ListHeaderCustomerName = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   /* width: 6.3rem; */
   height: 6rem;
@@ -394,21 +393,18 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 0.74rem;
 `;
 
-export const ListHeaderContact = styled.div<{ $selected?: boolean }>`
+export const ListHeaderContact = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  /* gap: 0.5rem; */
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.5rem; */
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.8rem;
 `;
@@ -426,7 +422,6 @@ export const Tel = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* margin-left: 2.5rem; */
 `;
 
 export const ContactButton = styled.div`
@@ -450,16 +445,13 @@ export const ContactButton = styled.div`
   margin-bottom: 0.4rem;
 `;
 
-export const Ticket = styled.div<{ $selected?: boolean }>`
+export const Ticket = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 0.5rem; */
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.7rem; */
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.9rem;
 `;
@@ -539,7 +531,7 @@ export const TicketButton = styled.div`
   margin-top: 0.2rem;
 `;
 
-export const Visitors = styled.div<{ $selected?: boolean }>`
+export const Visitors = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   justify-content: center;
@@ -551,12 +543,12 @@ export const Visitors = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   /* padding-right: 2rem; */
 `;
 
-export const Remarks = styled.div<{ $selected?: boolean }>`
+export const Remarks = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   /* width: 284px; */
   height: 6rem;
@@ -569,7 +561,7 @@ export const Remarks = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
 `;
 
@@ -725,11 +717,8 @@ export const CustomerInformationContainer = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
-  /* align-items: center; */
-  /* flex-shrink: 0; */
   border-radius: 5px;
   background: #f9f5f1;
-  /* padding: 1rem; */
 `;
 
 export const CustomerDetailHeaderContainer = styled.div`
@@ -776,10 +765,7 @@ export const CustomerInformationBodyContainer = styled.div`
 `;
 
 export const CustomerInformationSubHeaderBox = styled.div`
-  /* display: flex; */
-  /* padding-bottom: 0.2rem; */
   flex-direction: column;
-  /* align-items: flex-start; */
   align-self: stretch;
 `;
 
@@ -793,8 +779,6 @@ export const CustomerInformationEditButtonBox = styled.div`
 `;
 
 export const CustomerInformationEditButton = styled.div`
-  /* position: relative; */
-  /* margin: 0.8rem 0.1rem 0 0; */
   display: flex;
   padding: 0.3rem 0.5rem;
   justify-content: center;
