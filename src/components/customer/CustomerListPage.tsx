@@ -9,7 +9,23 @@ import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { IconButton } from '@mui/material';
 import CustomerFooter from '../footer/CustomerFooter';
-import { CustomerId, CustomerName, Contact, Tel, ContactButton, Ticket, TicketName, TicketTime, TicketKinds, TicketKindsTime, TicketButton, Visitors, Remarks, ListHeaderContact, ListHeaderCustomerName } from '../../styles/application';
+import {
+  CustomerId,
+  CustomerName,
+  Contact,
+  Tel,
+  ContactButton,
+  Ticket,
+  TicketName,
+  TicketTime,
+  TicketKinds,
+  TicketKindsTime,
+  TicketButton,
+  Visitors,
+  Remarks,
+  ListHeaderContact,
+  ListHeaderCustomerName,
+} from '../../styles/application';
 import CustomerDetailModal from '../modal/CustomerDetailModal';
 
 type UserDetailsType = {
@@ -29,7 +45,10 @@ type UserDetailsType = {
 const CustomerListPage = () => {
   const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([]);
   const [hoveredId, setHoveredId] = useState<string>('');
-  const [showModal, setShowModal] = useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [customerId, setCustomerId] = useState<string>('');
+  const [customerName, setCustomerName] = useState<string>('');
+  const [managerName, setManagerName] = useState<string>('');
 
   const getCustomerData = async () => {
     const customerData = await axios.get('http://localhost:3010/customer');
@@ -48,8 +67,8 @@ const CustomerListPage = () => {
   };
 
   const handleModalClose = () => {
-    setShowModal((showModal) => (!showModal))
-  }
+    setShowModal((showModal) => !showModal);
+  };
 
   //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
   const handleDelete = async (id: string) => {
@@ -61,7 +80,7 @@ const CustomerListPage = () => {
       })
       .catch(() => {});
   };
-  //ここまで
+
 
   const fakeData = [
     {
@@ -151,9 +170,16 @@ const CustomerListPage = () => {
   ];
 
   return (
-    <div style={{display:'grid', gridTemplateRows:'6rem 2rem 1fr 5rem', height: '100%', position:'relative'}}>
+    <div style={{ display: 'grid', gridTemplateRows: '6rem 2rem 1fr 5rem', height: '100%', position: 'relative' }}>
       <CustomerDetailModal showModal={showModal} handleModalClose={handleModalClose} />
-      <CustomerHeader />
+      <CustomerHeader
+        customerId={customerId}
+        setCustomerId={setCustomerId}
+        customerName={customerName}
+        setCustomerName={setCustomerName}
+        managerName={managerName}
+        setManagerName={setManagerName}
+      />
       <CustomerListHeader />
       <GridContainer>
         <>
@@ -189,11 +215,7 @@ const CustomerListPage = () => {
               >
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
                   <Tel>
-                    <img
-                      src="/svg/icon_tel.svg"
-                      alt=""
-                      style={{ width: '1.0625rem', height: '1rem', flexShrink: 0 }}
-                    />
+                    <img src="/svg/icon_tel.svg" alt="" style={{ width: '1.0625rem', height: '1rem', flexShrink: 0 }} />
                     {userData.contact}
                   </Tel>
                   <Tel>
@@ -342,6 +364,5 @@ const GridContainer = styled.div<{ $listColor?: boolean }>`
   border-bottom: 1px solid #b0a396;
   overflow-y: scroll;
 `;
-
 
 export default CustomerListPage;

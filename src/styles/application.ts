@@ -92,7 +92,7 @@ export const HeaderCustomerId = styled.div`
   align-self: stretch;
 `;
 
-export const CustomerIdSearch = styled.input`
+export const CustomerIdSearchInput = styled.input`
   display: flex;
   height: 1.25rem;
   padding: 5px 10px;
