@@ -1045,6 +1045,7 @@ export const HistoryListItemBox = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
 `;
 
+
 export const HistoryListItemHeaderBox = styled.div`
   display: flex;
   width: 100%;
