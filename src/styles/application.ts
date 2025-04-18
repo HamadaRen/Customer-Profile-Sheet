@@ -27,13 +27,13 @@ export const SHeader = styled.div`
 `;
 
 export const UserData = styled.div`
-  width: 12.5rem;
-  position: relative;
-  left: 62rem;
+  position: absolute;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  right: 0;
   gap: 0.69rem;
+  padding: 0 2rem;
 `;
 
 export const SBody = styled.div`
