@@ -1,8 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
 import {
-  BottomExpansion,
-  ButtonHoverThinner,
   HistoryCounselingTag,
   HistoryListItemBox,
   HistoryListItemHeaderBox,
@@ -39,13 +35,11 @@ const CustomerDetailHistory = () => {
               <HistoryVisitDate>2025/1/11（土）</HistoryVisitDate>
               <HistoryVisitTime>12:00~13:40</HistoryVisitTime>
             </div>
-          {/* <div style={{justifyContent: 'flex-end', height: '100%' }}> */}
           <HistoryStatus>
             <HistoryTreatmentTag>施術</HistoryTreatmentTag>
             <HistoryCounselingTag>カウンセリング</HistoryCounselingTag>
             <HistoryPurchasedProductsTag>購入商品</HistoryPurchasedProductsTag>
           </HistoryStatus>
-          {/* </div> */}
         </HistoryListItemHeaderBox>
         <HistoryStatusBodyBox>
           <HistoryTriangle>

@@ -122,7 +122,7 @@ export const SearchButton = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 27px */
+  line-height: 150%; 
   letter-spacing: 0.9px;
   &:hover {
     transform: translateY(1px);
@@ -219,7 +219,6 @@ export const SHeaderGradient = styled.div`
 
 export const CustomerNumber = styled.div`
   display: flex;
-  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -234,7 +233,6 @@ export const CustomerNumber = styled.div`
 
 export const CustomerName = styled.div`
   display: flex;
-  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -249,7 +247,6 @@ export const CustomerName = styled.div`
 
 export const Contact = styled.div`
   display: flex;
-  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -259,12 +256,10 @@ export const Contact = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* padding-right: 2rem; */
 `;
 
 export const TicketInformation = styled.div`
   display: flex;
-  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -274,12 +269,10 @@ export const TicketInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* padding-right: 2rem; */
 `;
 
 export const NumberOfVisitors = styled.div`
   display: flex;
-  /* width: 5.7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -289,12 +282,10 @@ export const NumberOfVisitors = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* margin-left: 1rem; */
 `;
 
 export const FirstVisit = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -308,7 +299,6 @@ export const FirstVisit = styled.div`
 
 export const LastVisit = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -322,7 +312,6 @@ export const LastVisit = styled.div`
 
 export const UsedPeriod = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -335,7 +324,6 @@ export const UsedPeriod = styled.div`
 `;
 export const PersonInCharged = styled.div`
   display: flex;
-  /* width: 7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -349,7 +337,6 @@ export const PersonInCharged = styled.div`
 
 export const SharedInformation = styled.div`
   display: flex;
-  /* width: 17.4rem; */
   padding: 0 1rem;
   align-items: center;
   flex-shrink: 0;
@@ -363,11 +350,9 @@ export const SharedInformation = styled.div`
 
 export const CustomerId = styled.div<{ $selected?: boolean }>`
   display: flex;
-  /* width: 6rem; */
   height: 6rem;
   justify-content: center;
   align-items: center;
-  /* gap: 0.25rem; */
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
@@ -377,13 +362,11 @@ export const CustomerId = styled.div<{ $selected?: boolean }>`
   background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
   color: inherit;
   padding: 0 0.6rem;
-  /* padding-bottom: 1rem; */
   border-bottom: 1px solid #b0a396;
 `;
 
 export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
   display: flex;
-  /* width: 6.3rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: center;
@@ -401,21 +384,17 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
 
 export const ListHeaderContact = styled.div<{ $selected?: boolean }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  /* gap: 0.5rem; */
   background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.5rem; */
   border-bottom: 1px solid #b0a396;
   padding: 0 1.8rem;
 `;
 
 export const Tel = styled.div`
   display: flex;
-  /* width: 7rem; */
   padding: 0.1rem 0 0 2.5rem;
   align-items: center;
   gap: 0.5rem;
@@ -426,7 +405,6 @@ export const Tel = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* margin-left: 2.5rem; */
 `;
 
 export const ContactButton = styled.div`
@@ -452,14 +430,11 @@ export const ContactButton = styled.div`
 
 export const Ticket = styled.div<{ $selected?: boolean }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 0.5rem; */
   background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.7rem; */
   border-bottom: 1px solid #b0a396;
   padding: 0 1.9rem;
 `;
@@ -544,7 +519,6 @@ export const Visitors = styled.div<{ $selected?: boolean }>`
   height: 6rem;
   justify-content: center;
   align-items: center;
-  /* gap: 8px; */
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
@@ -553,12 +527,10 @@ export const Visitors = styled.div<{ $selected?: boolean }>`
   line-height: normal;
   background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
   border-bottom: 1px solid #b0a396;
-  /* padding-right: 2rem; */
 `;
 
 export const Remarks = styled.div<{ $selected?: boolean }>`
   display: flex;
-  /* width: 284px; */
   height: 6rem;
   padding: 0 1rem;
   align-items: center;
@@ -575,7 +547,6 @@ export const Remarks = styled.div<{ $selected?: boolean }>`
 
 export const SButton = styled.div<{ $selected?: boolean }>`
   height: 2rem;
-  /* border: 1px solid #000; */
   align-items: center;
   background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#dcdcdc')};
   color: inherit;
@@ -672,11 +643,8 @@ export const CustomerInformationContainer = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
-  /* align-items: center; */
-  /* flex-shrink: 0; */
   border-radius: 5px;
   background: #f9f5f1;
-  /* padding: 1rem; */
 `;
 
 export const CustomerDetailHeaderContainer = styled.div`
@@ -723,10 +691,7 @@ export const CustomerInformationBodyContainer = styled.div`
 `;
 
 export const CustomerInformationSubHeaderBox = styled.div`
-  /* display: flex; */
-  /* padding-bottom: 0.2rem; */
   flex-direction: column;
-  /* align-items: flex-start; */
   align-self: stretch;
 `;
 
@@ -740,8 +705,6 @@ export const CustomerInformationEditButtonBox = styled.div`
 `;
 
 export const CustomerInformationEditButton = styled.div`
-  /* position: relative; */
-  /* margin: 0.8rem 0.1rem 0 0; */
   display: flex;
   padding: 0.3rem 0.5rem;
   justify-content: center;
@@ -773,7 +736,7 @@ export const CustomerBasicInformationSubHeaderBox = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 27px */
+  line-height: 150%; 
   letter-spacing: 0.9px;
   align-self: stretch;
 `;
@@ -782,8 +745,6 @@ export const CustomerBasicInformationContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   gap: 0.08rem;
 `;
 export const CustomerBasicInformationBox = styled.div`
@@ -795,26 +756,17 @@ export const CustomerBasicInformationBox = styled.div`
   gap: 5rem;
 `;
 export const CustomerDetailItemBox = styled.div`
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: flex-start; */
-  /* gap: 0.1rem; */
   padding-left: 1rem;
   flex: 1 0 0;
 `;
 export const CustomerDetailItemTitle = styled.div`
-  /* display: flex; */
   padding: 0px 0.25rem;
-  /* align-items: center; */
-  /* gap: 0.5rem; */
-  /* align-self: stretch; */
   color: #909090;
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  /* margin-left: 0.7rem; */
 `;
 export const CustomerDetailItem = styled.div`
   display: flex;
@@ -840,7 +792,6 @@ export const CustomerDetailItemLong = styled.div`
   width: 100%;
   padding: 0.4rem 0.4rem;
   align-items: center;
-  /* gap: 0.5rem; */
   align-self: stretch;
   border-radius: 3px;
   background: #ede5df;
@@ -866,7 +817,6 @@ export const CustomerDetailItemTitleRight = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  /* margin-left: 0.7rem; */
 `;
 
 export const CustomerDetailItemRight = styled.div`
@@ -886,7 +836,6 @@ export const CustomerDetailItemRight = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* margin-left: 0.8rem; */
 `;
 
 export const CustomerDetailSharedSubHeaderContainer = styled.div`
@@ -902,7 +851,7 @@ export const CustomerDetailSharedSubHeaderContainer = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 27px */
+  line-height: 150%; 
   letter-spacing: 0.9px;
 `;
 
@@ -918,7 +867,6 @@ export const CustomerDetailFixedMemoBox = styled.div`
   width: calc(100% - 6rem);
   padding: 0.3rem 1rem 0.5rem 0.8rem;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: flex-start;
   gap: 0.25rem;
   align-self: stretch;
@@ -1051,7 +999,6 @@ export const HistoryListItemBox = styled.div`
   border-radius: 5px;
   border: 1px solid var(--main-, #a29b93);
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
-  /* padding: 0 3rem; */
   `;
 
 export const HistoryListItemHeaderBox = styled.div`
@@ -1158,7 +1105,6 @@ export const HistoryTriangle = styled.div`
   position: relative;
   bottom: 8.6%;
   right: 6%;
-  /* left: 0%; */
   `;
 
 export const HistoryStatusBodyBox = styled.div`
@@ -1279,13 +1225,11 @@ export const CustomerConsentContractDate = styled.div`
 export const CustomerConsentDataContainer = styled.div`
   display: flex;
   width: 34.3125rem;
-  /* flex-direction: column; */
   padding: 0.5rem 0;
   justify-content: center;
   align-items: center;
   gap: 1.75rem;
   align-self: stretch;
-  /* margin: 0 0 13.5rem 1rem; */
 `;
 
 export const ConfirmationButton = styled.div`
