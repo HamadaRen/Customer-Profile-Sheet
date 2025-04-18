@@ -46,14 +46,14 @@ const CustomerHeader = ({
   };
 
   const handleSearchClick = () => {
-    if(customerId === '' && customerName === '' && managerName === ''){
-      alert('検索項目が入力されていません')
+    if (customerId === '' && customerName === '' && managerName === '') {
+      alert('検索項目が入力されていません');
       return;
     }
-    setCustomerId('')
-    setCustomerName('')
-    setManagerName('')
-  }
+    setCustomerId('');
+    setCustomerName('');
+    setManagerName('');
+  };
 
   return (
     <AddButton>

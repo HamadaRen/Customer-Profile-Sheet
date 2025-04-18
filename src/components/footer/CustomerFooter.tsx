@@ -35,10 +35,12 @@ const CustomerFooter = () => {
 const CustomerFoot = styled.div`
   background: #ddd7d1;
   width: 100%;
-  height: 5rem;
-  text-align: center;
-  /* position: relative; */
-  /* min-height: 100%; */
+  height: 3.5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
 `
 
 const CustomerFootPosition = styled.div`

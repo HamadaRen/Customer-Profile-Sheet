@@ -170,7 +170,7 @@ const CustomerListPage = () => {
   ];
 
   return (
-    <div style={{ display: 'grid', gridTemplateRows: '6rem 2rem 1fr 5rem', height: '100%', position: 'relative' }}>
+    <div style={{ display: 'grid', gridTemplateRows: '6rem 2rem 1fr 3.5rem', height: '100%', position: 'relative' }}>
       <CustomerDetailModal showModal={showModal} handleModalClose={handleModalClose} />
       <CustomerHeader
         customerId={customerId}
