@@ -2,17 +2,11 @@ import styled from 'styled-components';
 import CustomerListHeader from '../header/CustomerListHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import CustomerInformationDetails from './CustomerInformationDetails';
+import { useLocation } from 'react-router-dom';
 import CustomerHeader from '../header/CustomerHeader';
-import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import { IconButton } from '@mui/material';
 import CustomerFooter from '../footer/CustomerFooter';
 import {
   CustomerId,
-  CustomerName,
-  Contact,
   Tel,
   ContactButton,
   Ticket,
@@ -62,7 +56,6 @@ const CustomerListPage = () => {
   }, []);
 
   const handleEditClick = (id: string) => {
-    // window.location.replace(`http://localhost:3000/customer/${id}`);
     setShowModal(true);
   };
 
@@ -80,7 +73,6 @@ const CustomerListPage = () => {
       })
       .catch(() => {});
   };
-
 
   const fakeData = [
     {
@@ -329,22 +321,6 @@ const CustomerListPage = () => {
               >
                 {userData.memo}
               </Remarks>
-
-              {/* <SButton
-                onMouseEnter={() => setHoveredId(userData.id)}
-                onMouseLeave={() => setHoveredId('')}
-                $selected={hoveredId === userData.id}
-              >
-                <IconButton
-                  style={{ alignItems: 'center', paddingTop: 1, marginRight: 30 }}
-                  onClick={() => handleEditClick(userData.id)}
-                >
-                  <ModeEditRoundedIcon />
-                </IconButton>
-                <IconButton style={{ alignItems: 'center', paddingTop: 1 }} onClick={() => handleDelete(userData.id)}>
-                  <DeleteForeverRoundedIcon style={{ position: 'relative', color: 'red' }} />
-                </IconButton>
-              </SButton> */}
             </>
           ))}
         </>
@@ -357,7 +333,6 @@ const CustomerListPage = () => {
 const GridContainer = styled.div<{ $listColor?: boolean }>`
   display: grid;
   width: 100%;
-  /* grid-template-columns: 1.9fr 1.9fr 3fr 3fr 1.5fr 1.9fr 1.9fr 1.9fr 1.9fr 5fr; */
   grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
   align-items: center;
   align-self: stretch;
