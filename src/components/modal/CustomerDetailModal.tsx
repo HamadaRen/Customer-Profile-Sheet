@@ -20,9 +20,9 @@ const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModa
     'customerInformation'
   );
 
-  if (!showModal) {
-    return <></>;
-  }
+  // if (!showModal) {
+  //   return <></>;
+  // }
 
   let selectedData;
   if (selected === 'customerInformation') {
@@ -39,8 +39,8 @@ const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModa
 
   return (
     <>
-    <ModalGrayContainer onClick={handleModalClose} />
-      <ModalContainer>
+    <ModalGrayContainer onClick={handleModalClose} $showModal={showModal} />
+      <ModalContainer $animation={showModal ? 'open' : 'close'}>
         <CustomerDetailHeader />
         <CustomerInformationContainer>
           <CustomerDetailTab selected={selected} setSelected={setSelected} />

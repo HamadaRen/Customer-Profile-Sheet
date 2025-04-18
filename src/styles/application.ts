@@ -581,12 +581,13 @@ export const SButton = styled.div<{ $selected?: boolean }>`
   color: inherit;
 `;
 
-export const ModalContainer = styled.div`
-  position: fixed;
+export const ModalContainer = styled.div<{
+  $animation: 'open' | 'close';
+}>`
+  /* position: fixed;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
   display: flex;
-  width: 40vw;
   height: calc(100vh - 5.125rem);
   padding: 1rem;
   flex-direction: column;
@@ -594,15 +595,49 @@ export const ModalContainer = styled.div`
   gap: 12px;
   background: #665e4d;
   box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
-  z-index: 10;
+  z-index: 20;
+
+  /* width: calc(40% + 2px); */
+  position: absolute;
+  right: ${(props) => (props.$animation === "open" ? '0' : '-2rem')};
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  @keyframes openModalContainer {
+    0% {
+      width: 0;
+      min-width: 0;
+      /* margin-left: 40vw; */
+    }
+    100% {
+      width: 40vw;
+      /* margin-left: 0; */
+    }
+  }
+
+  @keyframes closeModalContainer {
+    0% {
+      width: 40vw;
+      /* margin-left: 0; */
+    }
+    100% {
+      width: 0;
+      min-width: 0;
+      /* margin-left: 40vw; */
+    }
+  }
+
+  animation: ${(props) => (props.$animation === 'open' ? 'openModalContainer' : 'closeModalContainer')} 0.5s forwards;
+  transition: all 0.5s;
 `;
 
-export const ModalGrayContainer = styled.div`
+export const ModalGrayContainer = styled.div<{ $showModal: boolean }>`
   position: fixed;
-  left: 0;
+  /* left: 0; */
   bottom: 0;
-  display: flex;
-  width: 60vw;
+  display: ${(props) => (props.$showModal ? '' : 'none')};
+  width: 100%;
   height: calc(100vh - 5.125rem);
   padding: 1rem;
   flex-direction: column;
@@ -623,6 +658,7 @@ export const CustomerDetail = styled.div`
   border-radius: 5px;
   border: 1px solid #f3e6da;
   background: linear-gradient(90deg, #524c45 0%, #827a6e 100%), linear-gradient(90deg, #69635b 0%, #cfc3b3 100%);
+  overflow: hidden;
 `;
 
 export const CustomerDetailName = styled.div`
@@ -1069,14 +1105,14 @@ export const HistoryListItemBox = styled.div`
   border: 1px solid var(--main-, #a29b93);
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
   /* padding: 0 3rem; */
-  `;
+`;
 
 export const HistoryListItemHeaderBox = styled.div`
   display: flex;
   width: 100%;
   background: #fff;
   border-radius: 5px;
-  `;
+`;
 
 export const HistoryVisitInformation = styled.div`
   display: flex;
@@ -1094,7 +1130,7 @@ export const HistoryVisitInformation = styled.div`
   font-weight: 700;
   line-height: normal;
   white-space: nowrap;
-  `;
+`;
 
 export const HistoryVisitDate = styled.div`
   color: var(--main-, #756c62);
@@ -1111,7 +1147,7 @@ export const HistoryVisitTime = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  `;
+`;
 
 export const HistoryStatus = styled.div`
   display: flex;
@@ -1120,7 +1156,7 @@ export const HistoryStatus = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0 1rem;
-  `;
+`;
 
 export const HistoryTreatmentTag = styled.div`
   display: flex;
@@ -1137,7 +1173,7 @@ export const HistoryTreatmentTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  `;
+`;
 export const HistoryCounselingTag = styled.div`
   display: flex;
   padding: 0.05rem 0.3rem;
@@ -1153,7 +1189,7 @@ export const HistoryCounselingTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  `;
+`;
 export const HistoryPurchasedProductsTag = styled.div`
   display: flex;
   padding: 0.05rem 0.3rem;
@@ -1169,14 +1205,14 @@ export const HistoryPurchasedProductsTag = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  `;
+`;
 
 export const HistoryTriangle = styled.div`
   position: relative;
   bottom: 8.6%;
   right: 6%;
   /* left: 0%; */
-  `;
+`;
 
 export const HistoryStatusBodyBox = styled.div`
   display: flex;
@@ -1189,7 +1225,7 @@ export const HistoryStatusBodyBox = styled.div`
   border: 1px solid var(--main-, #a29b93);
   border-radius: 3px;
   background: #fff;
-  `;
+`;
 
 export const HistoryStatusBody = styled.div`
   display: flex;
@@ -1413,7 +1449,7 @@ export const CustomerTicketContainer = styled.div`
   flex-shrink: 0;
   padding-top: 0.5rem;
   /* padding: 1rem; */
-  `;
+`;
 
 export const CustomerTicketListContainer = styled.div`
   display: flex;
