@@ -12,9 +12,9 @@ export const MainContainer = styled.div`
 export const SHeader = styled.div`
   width: 100%;
   height: 3.125rem;
+  position: relative;
   display: flex;
   align-items: center;
-  padding: 0 1.25rem;
   color: #dccec1;
   font-size: 1.25rem;
   font-weight: 500;
@@ -23,6 +23,7 @@ export const SHeader = styled.div`
   box-shadow: 0px 4px 15px 0px rgba(53, 50, 43, 0.22);
   gap: 0.5rem;
   z-index: 10;
+  white-space: nowrap;
 `;
 
 export const UserData = styled.div`
