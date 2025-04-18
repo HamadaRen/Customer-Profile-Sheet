@@ -351,7 +351,7 @@ export const SharedInformation = styled.div`
 
 export const CustomerId = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);
   justify-content: center;
   align-items: center;
   color: var(--main-, #565249);
@@ -368,7 +368,7 @@ export const CustomerId = styled.div<{ $selected?: boolean, index: number }>`
 
 export const ListHeaderCustomerName = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -385,7 +385,7 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean, index: n
 
 export const ListHeaderContact = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
@@ -431,7 +431,7 @@ export const ContactButton = styled.div`
 
 export const Ticket = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -517,7 +517,7 @@ export const TicketButton = styled.div`
 
 export const Visitors = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);;
   justify-content: center;
   align-items: center;
   color: var(--main-, #565249);
@@ -532,7 +532,7 @@ export const Visitors = styled.div<{ $selected?: boolean, index: number }>`
 
 export const Remarks = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  height: 6rem;
+  height: calc(100% - 1px);;
   padding: 0 1rem;
   align-items: center;
   gap: 8px;
