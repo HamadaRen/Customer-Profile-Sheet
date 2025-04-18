@@ -44,8 +44,6 @@ const CustomerDetailInformation = () => {
               justifyContent: 'center',
               borderBottom: '0.1rem solid #A29B93',
               width: 'calc(100% - 6rem)',
-              // alignSelf: 'stretch',
-              // marginRight: '10rem',
             }}
           ></div>
         </CustomerBasicInformationSubHeaderBox>
@@ -89,11 +87,9 @@ const CustomerDetailInformation = () => {
               justifyContent: 'center',
               borderBottom: '0.1rem solid #A29B93',
               width: 'calc(100% - 6rem)',
-            // marginRight: '10rem',
           }}
         ></div>
       </CustomerDetailSharedSubHeaderContainer>
-      {/* ここから下修正 */}
       <CustomerDetailSharedFixedContainer>
         <CustomerDetailFixedMemoBox>
           <CustomerDetailFixedMemoDate>

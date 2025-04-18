@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import CustomerListHeader from '../header/CustomerListHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import CustomerHeader from '../header/CustomerHeader';
 import CustomerFooter from '../footer/CustomerFooter';
