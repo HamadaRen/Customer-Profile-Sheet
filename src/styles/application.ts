@@ -92,7 +92,7 @@ export const HeaderCustomerId = styled.div`
   align-self: stretch;
 `;
 
-export const CustomerIdSearch = styled.input`
+export const CustomerIdSearchInput = styled.input`
   display: flex;
   height: 1.25rem;
   padding: 5px 10px;
@@ -348,7 +348,7 @@ export const SharedInformation = styled.div`
   line-height: normal;
 `;
 
-export const CustomerId = styled.div<{ $selected?: boolean }>`
+export const CustomerId = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   justify-content: center;
@@ -359,13 +359,13 @@ export const CustomerId = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   color: inherit;
   padding: 0 0.6rem;
   border-bottom: 1px solid #b0a396;
 `;
 
-export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
+export const ListHeaderCustomerName = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   flex-direction: column;
@@ -377,18 +377,18 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 0.74rem;
 `;
 
-export const ListHeaderContact = styled.div<{ $selected?: boolean }>`
+export const ListHeaderContact = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.8rem;
 `;
@@ -428,13 +428,13 @@ export const ContactButton = styled.div`
   margin-bottom: 0.4rem;
 `;
 
-export const Ticket = styled.div<{ $selected?: boolean }>`
+export const Ticket = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.9rem;
 `;
@@ -514,7 +514,7 @@ export const TicketButton = styled.div`
   margin-top: 0.2rem;
 `;
 
-export const Visitors = styled.div<{ $selected?: boolean }>`
+export const Visitors = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   justify-content: center;
@@ -525,11 +525,11 @@ export const Visitors = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
 `;
 
-export const Remarks = styled.div<{ $selected?: boolean }>`
+export const Remarks = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   padding: 0 1rem;
@@ -541,7 +541,7 @@ export const Remarks = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
 `;
 
@@ -780,7 +780,7 @@ export const CustomerBasicInformationSubHeaderBox = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; 
+  line-height: 150%;
   letter-spacing: 0.9px;
   align-self: stretch;
 `;
@@ -895,7 +895,7 @@ export const CustomerDetailSharedSubHeaderContainer = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; 
+  line-height: 150%;
   letter-spacing: 0.9px;
 `;
 

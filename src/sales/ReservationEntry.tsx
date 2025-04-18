@@ -58,12 +58,6 @@ const ReservationEntry = () => {
   const [hairFilteredOptions, setHairFilteredOptions] = useState(hairCandidateAry);
   const [treatmentFlg, setTreatmentFlg] = useState<string>('1')
 
-  const str = '1';
-  const num = Number(str);
-
-  const num1 = 1;
-  const str1 = String(num1);
-
   const [salesDetails, setSalesDetails] = useState<SalesType>({
     customer_id: '',
     treatment_id: '',
