@@ -8,7 +8,7 @@ const CustomerFooter = () => {
 
 
   return (
-    <CustomerFoot>
+    <CustomerFoot style={{zIndex: 1}}>
       <CustomerFooterButtonLine>
         <CustomerFootPosition>
         <CustomerFooterButton>
@@ -35,9 +35,9 @@ const CustomerFooter = () => {
 const CustomerFoot = styled.div`
   background: #ddd7d1;
   width: 100%;
-  height: 4.1875rem;
+  height: 5rem;
   text-align: center;
-  position: relative;
+  /* position: relative; */
   /* min-height: 100%; */
 `
 
