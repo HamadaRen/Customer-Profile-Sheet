@@ -9,15 +9,18 @@ import {
   CustomerDetailItemTitle,
   CustomerDetailItemTitleRight,
   CustomerInformationEditButton,
+  CustomerInformationEditButtonBox,
 } from '../../styles/application';
 
 const CustomerDetailQuestionnaire = () => {
   return (
     <QuestionnaireContainer>
-      <CustomerInformationEditButton style={{ position: 'relative', left: '30rem', margin: '0 3rem 0 0' }}>
-        情報を編集する
-        <img src="/svg/icon_pen.svg" alt="" style={{ width: '0.8rem', height: '0.8rem' }} />
-      </CustomerInformationEditButton>
+      <CustomerInformationEditButtonBox style={{padding: '0 2.4rem'}}>
+        <CustomerInformationEditButton>
+          情報を編集する
+          <img src="/svg/icon_pen.svg" alt="" style={{ width: '0.8rem', height: '0.8rem' }} />
+        </CustomerInformationEditButton>
+      </CustomerInformationEditButtonBox>
       <CustomerBasicInformationBox>
         <CustomerDetailItemBox>
           <CustomerDetailItemTitle>身長</CustomerDetailItemTitle>
@@ -59,7 +62,13 @@ const CustomerDetailQuestionnaire = () => {
       <CustomerBasicInformationBox>
         <CustomerDetailItemBox>
           <CustomerDetailItemTitle>気になる箇所</CustomerDetailItemTitle>
-          <CustomerDetailItemLong><ul style={{padding: '0 1rem'}}><li>胸のあたりの赤み</li><li>お背中の荒れ</li><li>おでこのニキビ跡</li></ul></CustomerDetailItemLong>
+          <CustomerDetailItemLong>
+            <ul style={{ padding: '0 1rem' }}>
+              <li>胸のあたりの赤み</li>
+              <li>お背中の荒れ</li>
+              <li>おでこのニキビ跡</li>
+            </ul>
+          </CustomerDetailItemLong>
         </CustomerDetailItemBox>
       </CustomerBasicInformationBox>
     </QuestionnaireContainer>
@@ -68,7 +77,7 @@ const CustomerDetailQuestionnaire = () => {
 
 const QuestionnaireContainer = styled.div`
   display: flex;
-  width: 37.5rem;
+  width: 100%;
   padding: 0.5rem 0.5rem;
   flex-direction: column;
   align-items: flex-start;

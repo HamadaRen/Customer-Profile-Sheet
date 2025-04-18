@@ -93,7 +93,7 @@ export const HeaderCustomerId = styled.div`
   align-self: stretch;
 `;
 
-export const CustomerIdSearch = styled.input`
+export const CustomerIdSearchInput = styled.input`
   display: flex;
   height: 1.25rem;
   padding: 5px 10px;
@@ -123,7 +123,7 @@ export const SearchButton = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 27px */
+  line-height: 150%;
   letter-spacing: 0.9px;
   &:hover {
     transform: translateY(1px);
@@ -220,7 +220,6 @@ export const SHeaderGradient = styled.div`
 
 export const CustomerNumber = styled.div`
   display: flex;
-  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -235,7 +234,6 @@ export const CustomerNumber = styled.div`
 
 export const CustomerName = styled.div`
   display: flex;
-  /* width: 6rem; */
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -250,7 +248,6 @@ export const CustomerName = styled.div`
 
 export const Contact = styled.div`
   display: flex;
-  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -260,12 +257,10 @@ export const Contact = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* padding-right: 2rem; */
 `;
 
 export const TicketInformation = styled.div`
   display: flex;
-  /* width: 11rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -275,12 +270,10 @@ export const TicketInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* padding-right: 2rem; */
 `;
 
 export const NumberOfVisitors = styled.div`
   display: flex;
-  /* width: 5.7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -290,12 +283,10 @@ export const NumberOfVisitors = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  /* margin-left: 1rem; */
 `;
 
 export const FirstVisit = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -309,7 +300,6 @@ export const FirstVisit = styled.div`
 
 export const LastVisit = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -323,7 +313,6 @@ export const LastVisit = styled.div`
 
 export const UsedPeriod = styled.div`
   display: flex;
-  /* width: 6.3rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -336,7 +325,6 @@ export const UsedPeriod = styled.div`
 `;
 export const PersonInCharged = styled.div`
   display: flex;
-  /* width: 7rem; */
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -350,7 +338,6 @@ export const PersonInCharged = styled.div`
 
 export const SharedInformation = styled.div`
   display: flex;
-  /* width: 17.4rem; */
   padding: 0 1rem;
   align-items: center;
   flex-shrink: 0;
@@ -362,29 +349,25 @@ export const SharedInformation = styled.div`
   line-height: normal;
 `;
 
-export const CustomerId = styled.div<{ $selected?: boolean }>`
+export const CustomerId = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 6rem; */
   height: 6rem;
   justify-content: center;
   align-items: center;
-  /* gap: 0.25rem; */
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   color: inherit;
   padding: 0 0.6rem;
-  /* padding-bottom: 1rem; */
   border-bottom: 1px solid #b0a396;
 `;
 
-export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
+export const ListHeaderCustomerName = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 6.3rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: center;
@@ -395,28 +378,24 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 0.74rem;
 `;
 
-export const ListHeaderContact = styled.div<{ $selected?: boolean }>`
+export const ListHeaderContact = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  /* gap: 0.5rem; */
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.5rem; */
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.8rem;
 `;
 
 export const Tel = styled.div`
   display: flex;
-  /* width: 7rem; */
   padding: 0.1rem 0 0 2.5rem;
   align-items: center;
   gap: 0.5rem;
@@ -427,7 +406,6 @@ export const Tel = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* margin-left: 2.5rem; */
 `;
 
 export const ContactButton = styled.div`
@@ -451,16 +429,13 @@ export const ContactButton = styled.div`
   margin-bottom: 0.4rem;
 `;
 
-export const Ticket = styled.div<{ $selected?: boolean }>`
+export const Ticket = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 8.5rem; */
   height: 6rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 0.5rem; */
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
-  /* margin-left: 1.7rem; */
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
   padding: 0 1.9rem;
 `;
@@ -540,26 +515,23 @@ export const TicketButton = styled.div`
   margin-top: 0.2rem;
 `;
 
-export const Visitors = styled.div<{ $selected?: boolean }>`
+export const Visitors = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
   height: 6rem;
   justify-content: center;
   align-items: center;
-  /* gap: 8px; */
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
-  /* padding-right: 2rem; */
 `;
 
-export const Remarks = styled.div<{ $selected?: boolean }>`
+export const Remarks = styled.div<{ $selected?: boolean, index: number }>`
   display: flex;
-  /* width: 284px; */
   height: 6rem;
   padding: 0 1rem;
   align-items: center;
@@ -570,30 +542,72 @@ export const Remarks = styled.div<{ $selected?: boolean }>`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#9baeca' : 'transparent')};
+  background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
 `;
 
 export const SButton = styled.div<{ $selected?: boolean }>`
   height: 2rem;
-  /* border: 1px solid #000; */
   align-items: center;
   background-color: ${({ $selected }) => ($selected ? '#dcdcdc' : '#dcdcdc')};
   color: inherit;
 `;
 
-export const ModalContainer = styled.div`
-  position: fixed;
-  right: 0;
-  bottom: 0;
+export const ModalContainer = styled.div<{
+  $animation: 'open' | 'close';
+}>`
   display: flex;
-  width: 40vw;
   height: calc(100vh - 5.125rem);
   padding: 1rem;
   flex-direction: column;
   align-items: center;
   gap: 12px;
   background: #665e4d;
+  box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
+  z-index: 20;
+
+  position: absolute;
+  right: ${(props) => (props.$animation === "open" ? '0' : '-2rem')};
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  @keyframes openModalContainer {
+    0% {
+      width: 0;
+      min-width: 0;
+    }
+    100% {
+      width: 40vw;
+    }
+  }
+
+  @keyframes closeModalContainer {
+    0% {
+      width: 40vw;
+    }
+    100% {
+      width: 0;
+      min-width: 0;
+    }
+  }
+
+  animation: ${(props) => (props.$animation === 'open' ? 'openModalContainer' : 'closeModalContainer')} 0.5s forwards;
+  transition: all 0.5s;
+`;
+
+export const ModalGrayContainer = styled.div<{ $showModal: boolean }>`
+  position: fixed;
+  bottom: 0;
+  display: ${(props) => (props.$showModal ? '' : 'none')};
+  width: 100%;
+  height: calc(100vh - 5.125rem);
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #000;
+  opacity: 0.4;
   box-shadow: -9px 0px 9.1px 0px rgba(125, 125, 125, 0.25);
   z-index: 10;
 `;
@@ -607,6 +621,7 @@ export const CustomerDetail = styled.div`
   border-radius: 5px;
   border: 1px solid #f3e6da;
   background: linear-gradient(90deg, #524c45 0%, #827a6e 100%), linear-gradient(90deg, #69635b 0%, #cfc3b3 100%);
+  overflow: hidden;
 `;
 
 export const CustomerDetailName = styled.div`
@@ -673,8 +688,6 @@ export const CustomerInformationContainer = styled.div`
   width: 100%;
   height: 100%;
   flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
   border-radius: 5px;
   background: #f9f5f1;
 `;
@@ -719,13 +732,11 @@ export const CustomerInformationBodyContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: #b2b89e;
+  padding-top: 0.5rem;
 `;
 
 export const CustomerInformationSubHeaderBox = styled.div`
-  display: flex;
-  padding-bottom: 0.2rem;
   flex-direction: column;
-  align-items: flex-start;
   align-self: stretch;
 `;
 
@@ -739,8 +750,6 @@ export const CustomerInformationEditButtonBox = styled.div`
 `;
 
 export const CustomerInformationEditButton = styled.div`
-  position: relative;
-  margin: 0.8rem 0.1rem 0 0;
   display: flex;
   padding: 0.3rem 0.5rem;
   justify-content: center;
@@ -762,7 +771,7 @@ export const CustomerInformationEditButton = styled.div`
 
 export const CustomerBasicInformationSubHeaderBox = styled.div`
   display: flex;
-  width: 44.875rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
   gap: 0.125rem;
@@ -772,16 +781,15 @@ export const CustomerBasicInformationSubHeaderBox = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 27px */
+  line-height: 150%;
   letter-spacing: 0.9px;
+  align-self: stretch;
 `;
 
 export const CustomerBasicInformationContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 0.08rem;
 `;
 export const CustomerBasicInformationBox = styled.div`
@@ -789,31 +797,25 @@ export const CustomerBasicInformationBox = styled.div`
   justify-content: center;
   align-items: center;
   align-self: stretch;
+  padding-right: 4rem;
+  gap: 5rem;
 `;
 export const CustomerDetailItemBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.1rem;
+  padding-left: 1rem;
   flex: 1 0 0;
 `;
 export const CustomerDetailItemTitle = styled.div`
-  display: flex;
   padding: 0px 0.25rem;
-  align-items: center;
-  gap: 0.5rem;
-  align-self: stretch;
   color: #909090;
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-left: 0.7rem;
 `;
 export const CustomerDetailItem = styled.div`
   display: flex;
-  width: 15rem;
+  width: 100%;
   height: 1rem;
   padding: 0.4rem 0.8rem;
   align-items: center;
@@ -832,10 +834,9 @@ export const CustomerDetailItem = styled.div`
 `;
 export const CustomerDetailItemLong = styled.div`
   display: flex;
-  width: 32.3rem;
-  padding: 0.4rem 0.8rem;
+  width: 100%;
+  padding: 0.4rem 0.4rem;
   align-items: center;
-  gap: 0.5rem;
   align-self: stretch;
   border-radius: 3px;
   background: #ede5df;
@@ -861,12 +862,11 @@ export const CustomerDetailItemTitleRight = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  /* margin-left: 0.7rem; */
 `;
 
 export const CustomerDetailItemRight = styled.div`
   display: flex;
-  width: 15rem;
+  width: 100%;
   height: 1rem;
   padding: 0.4rem 0.8rem;
   align-items: center;
@@ -881,7 +881,6 @@ export const CustomerDetailItemRight = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /* margin-left: 0.8rem; */
 `;
 
 export const CustomerDetailSharedSubHeaderContainer = styled.div`
@@ -897,23 +896,22 @@ export const CustomerDetailSharedSubHeaderContainer = styled.div`
   font-size: 0.85rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; /* 27px */
+  line-height: 150%;
   letter-spacing: 0.9px;
 `;
 
 export const CustomerDetailSharedFixedContainer = styled.div`
-  /* width: 44.25rem; */
+  width: 100%;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding-left: 3rem;
 `;
 
 export const CustomerDetailFixedMemoBox = styled.div`
   display: flex;
-  width: 32rem;
+  width: calc(100% - 6rem);
   padding: 0.3rem 1rem 0.5rem 0.8rem;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   gap: 0.25rem;
   align-self: stretch;
@@ -968,7 +966,7 @@ export const CustomerDetailFixedMemoPerson = styled.div`
 
 export const CustomerDetailDateMemoBox = styled.div`
   display: flex;
-  width: 32rem;
+  width: calc(100% - 6rem);
   padding: 0.3rem 1rem 0.5rem 0.8rem;
   flex-direction: column;
   justify-content: center;
@@ -1029,9 +1027,9 @@ export const CustomerDetailPrinting = styled.div`
 
 export const HistoryTabContainer = styled.div`
   display: flex;
-  width: 38.5rem;
-  height: 30.7rem;
-  padding: 1rem 0px;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -1040,7 +1038,7 @@ export const HistoryTabContainer = styled.div`
 
 export const HistoryListItemBox = styled.div`
   display: flex;
-  /* width: 33.5rem; */
+  width: calc(100% - 4rem);
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
@@ -1048,22 +1046,17 @@ export const HistoryListItemBox = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(99, 118, 61, 0.25);
 `;
 
+
 export const HistoryListItemHeaderBox = styled.div`
   display: flex;
-  width: 33.5rem;
-  padding: 0.2rem 1rem;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.3rem;
+  width: 100%;
   background: #fff;
   border-radius: 5px;
 `;
 
 export const HistoryVisitInformation = styled.div`
   display: flex;
-  width: 2.5rem;
-  height: 1rem;
-  padding: 0px 0.5rem;
+  padding: 0px 0.6rem;
   justify-content: center;
   align-items: center;
   gap: 0.125rem;
@@ -1076,10 +1069,10 @@ export const HistoryVisitInformation = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  white-space: nowrap;
 `;
 
 export const HistoryVisitDate = styled.div`
-  /* width: 6rem; */
   color: var(--main-, #756c62);
   font-family: 'Noto Sans JP';
   font-size: 0.8rem;
@@ -1098,10 +1091,11 @@ export const HistoryVisitTime = styled.div`
 
 export const HistoryStatus = styled.div`
   display: flex;
-  width: 17rem;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  padding: 0 1rem;
 `;
 
 export const HistoryTreatmentTag = styled.div`
@@ -1154,15 +1148,15 @@ export const HistoryPurchasedProductsTag = styled.div`
 `;
 
 export const HistoryTriangle = styled.div`
-  position: absolute;
-  top: 9.8rem;
-  left: 1.5rem;
+  position: relative;
+  bottom: 8.6%;
+  right: 6%;
 `;
 
 export const HistoryStatusBodyBox = styled.div`
   display: flex;
-  width: 33.6rem;
-  padding: 1rem;
+  width: calc(100% - 1rem);
+  padding: 0 0.5rem 0.5rem 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -1276,14 +1270,12 @@ export const CustomerConsentContractDate = styled.div`
 
 export const CustomerConsentDataContainer = styled.div`
   display: flex;
-  width: 34.3125rem;
-  /* flex-direction: column; */
+  width: 100%;
   padding: 0.5rem 0;
   justify-content: center;
   align-items: center;
   gap: 1.75rem;
   align-self: stretch;
-  /* margin: 0 0 13.5rem 1rem; */
 `;
 
 export const ConfirmationButton = styled.div`
@@ -1306,7 +1298,6 @@ export const ConfirmationButton = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-right: 2rem;
   &:hover {
     opacity: 0.7;
   }
@@ -1336,7 +1327,7 @@ export const CustomerConsentListHeaderItem = styled.div`
 
 export const CustomerConsentListItemContainer = styled.div<{ $selected?: boolean }>`
   display: flex;
-  width: 34.5rem;
+  width: calc(100% - 4rem);
   height: 3.5rem;
   padding: 0.3rem 2rem;
   flex-direction: column;
@@ -1387,25 +1378,29 @@ export const CustomerConsentBodyBox = styled.div`
 
 export const CustomerTicketContainer = styled.div`
   display: flex;
-  height: 51.875rem;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: flex-start;
   gap: 0.125rem;
   flex-shrink: 0;
+  padding-top: 0.5rem;
 `;
 
 export const CustomerTicketListContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 1rem;
-  overflow-y: scroll;
+  gap: 1rem;
+  padding: 0 1rem 0 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const CustomerTicketListItemBox = styled.div`
   display: flex;
-  width: 31.5rem;
+  width: calc(100% - 2rem);
   padding: 0.5rem 1.06rem;
   align-items: flex-start;
   gap: 0.125rem;
@@ -1413,7 +1408,6 @@ export const CustomerTicketListItemBox = styled.div`
   border: 1px solid var(--text-10, #d6d6d6);
   background: #fff;
   box-shadow: 4px 4px 10px 0px rgba(157, 159, 161, 0.25);
-  margin: 0.5rem 0.2rem 0 0.4rem;
 `;
 
 export const CustomerTicketListItem = styled.div`
