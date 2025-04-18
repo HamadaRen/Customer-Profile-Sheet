@@ -80,7 +80,7 @@ const StyledSideBar = styled.div<{ $animation: 'open' | 'close' }>`
   color: white;
   display: flex;
   width: 17.75rem;
-  height: 64.375rem;
+  height: 100%;
   padding-top: 0.9375rem;
   flex-direction: column;
   align-items: center;
