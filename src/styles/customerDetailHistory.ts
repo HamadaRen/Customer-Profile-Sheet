@@ -122,29 +122,12 @@ export const HistoryPurchasedProductsTag = styled.div`
 `;
 
 export const HistoryTriangle = styled.div`
-  position: relative;
-  bottom: 8.6%;
-  right: 6%;
+  position: absolute;
+  right: 87%;
+  top: 21%;
 `;
 
-export const HistoryStatusBodyBox = styled.div<{ $open?: boolean }>`
-  @keyframes historyOpen {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 7rem;
-    }
-  }
-
-  @keyframes historyClose {
-    0% {
-      height: 8rem;
-    }
-    100% {
-      height: 0;
-    }
-  }
+export const HistoryStatusBodyBox = styled.div`
   display: flex;
   width: calc(100% - 1rem);
   padding: 0 0.5rem 0.5rem 0.5rem;
@@ -152,12 +135,8 @@ export const HistoryStatusBodyBox = styled.div<{ $open?: boolean }>`
   justify-content: center;
   align-items: flex-start;
   gap: 0.25rem;
-  border: 1px solid var(--main-, #a29b93);
   border-radius: 3px;
   background: #fff;
-  overflow: hidden;
-  top: ${(props) => (props.$open === true ? '0' : '-8rem')};
-  animation: ${({ $open }) => ($open ? 'historyOpen' : 'historyClose')} 0.3s forwards;
 `;
 
 export const HistoryStatusBody = styled.div`

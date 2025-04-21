@@ -8,14 +8,14 @@ import {
   HistoryTreatmentTag,
   HistoryCounselingTag,
   HistoryPurchasedProductsTag,
+  HistoryTriangle,
 } from '../../../../styles/customerDetailHistory';
 
 type HistoryHeaderType = {
   open: boolean;
-  handleClickArrow: () => void;
 };
 
-const HistoryHeader = ({ open, handleClickArrow }: HistoryHeaderType) => {
+const HistoryHeader = ({ open }: HistoryHeaderType) => {
   return (
     <>
       <HistoryListItemHeaderBox>
@@ -28,7 +28,7 @@ const HistoryHeader = ({ open, handleClickArrow }: HistoryHeaderType) => {
             justifyContent: 'flex-start',
           }}
         >
-          <ButtonHoverThinner onClick={handleClickArrow}>
+          <ButtonHoverThinner>
             {open ? (
               <img
                 src="/svg/icon_arrow_878787.svg"
