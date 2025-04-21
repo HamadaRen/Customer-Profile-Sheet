@@ -1,8 +1,7 @@
 import { useAtom, useSetAtom } from 'jotai';
-import { SHeader, UserData } from '../styles/application';
 import { sideBarAnimationTypeAtom, visibleSideBarAtom } from '../state/application';
 import { useState } from 'react';
-import styled from 'styled-components';
+import { Department, Administrator, SHeader, UserData } from '../styles/header';
 
 const Header = () => {
   const [visibleSideBar, setVisibleSideBar] = useAtom(visibleSideBarAtom);
@@ -54,26 +53,5 @@ const Header = () => {
     </SHeader>
   );
 };
-
-const Department = styled.p`
-  color: var(--main-, #DCCEC1);
-text-align: right;
-font-family: "Noto Sans JP";
-font-size: 12px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: 1.8px;
-`
-const Administrator = styled.p`
-color: var(--main-, #DCCEC1);
-font-family: "Noto Sans JP";
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: 2.1px;
-`
-
 
 export default Header;

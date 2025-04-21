@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useState } from 'react';
 import CustomerDetailHeader from '../header/CustomerDetailHeader';
-import { CustomerDetail, CustomerInformationContainer, ModalContainer, ModalGrayContainer } from '../../styles/application';
+import { CustomerInformationContainer, ModalContainer, ModalGrayContainer } from '../../styles/customerDetailModal';
 import CustomerDetailTab from './CustomerDetailTab';
 import CustomerDetailInformation from './CustomerDetailInformation';
 import CustomerDetailQuestionnaire from './CustomerDetailQuestionnaire';
@@ -12,7 +11,7 @@ import CustomerDetailModalFooter from '../footer/CustomerDetailModalFooter';
 
 type CustomerDetailModalType = {
   showModal: boolean;
-  handleModalClose: () => void
+  handleModalClose: () => void;
 };
 
 const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModalType) => {
@@ -35,7 +34,7 @@ const CustomerDetailModal = ({ showModal, handleModalClose }: CustomerDetailModa
 
   return (
     <>
-    <ModalGrayContainer onClick={handleModalClose} $showModal={showModal} />
+      <ModalGrayContainer onClick={handleModalClose} $showModal={showModal} />
       <ModalContainer $animation={showModal ? 'open' : 'close'}>
         <CustomerDetailHeader />
         <CustomerInformationContainer>

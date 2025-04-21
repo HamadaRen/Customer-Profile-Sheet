@@ -1,15 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Button } from '@mui/material';
 import {
+  AddButton,
   AdvancedSearch,
   BottomExpansion,
-  CustomerId,
   CustomerIdSearchInput,
   HeaderCustomerId,
   SearchButton,
   SearchCustomer,
-} from '../../styles/application';
+} from '../../styles/customerHeader';
 
 type CustomerHeaderType = {
   customerId: string;
@@ -94,10 +92,5 @@ const CustomerHeader = ({
     </AddButton>
   );
 };
-
-const AddButton = styled.div`
-  text-align: center;
-  background: #ddd7d1;
-`;
 
 export default CustomerHeader;

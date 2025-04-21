@@ -1,115 +1,37 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { ButtonHoverThinner, ConfirmationButton, CustomerConsentAttachedBox, CustomerConsentBodyBox, CustomerConsentCheckBox, CustomerConsentContractDate, CustomerConsentContractDateBox, CustomerConsentDataContainer, CustomerConsentDisplayContainer, CustomerConsentListHeader, CustomerConsentListHeaderItem, CustomerConsentListItemBox, CustomerConsentListItemContainer, CustomerConsentTitle, CustomerConsentTitleBox } from '../../styles/application';
+import { useState } from 'react';
+import { CustomerConsentDisplayContainer, ConfirmationButton } from '../../styles/customerDetailConsent';
+import ConsentTitle from './modalItem/consent/CustomerDetailConsentTitle';
+import ConsentImage from './modalItem/consent/CustomerDetailConsentImage';
+import ConsentList from './modalItem/consent/CustomerDetailConsentList';
+import ConsentListItem from './modalItem/consent/CustomerDetailConsentListItem';
+
+type ConcentDataType = {
+  id: string;
+  name: string;
+  created_at: string;
+};
+
+type StaffDataType = {
+  id: string;
+  name: string;
+};
 
 const CustomerDetailConsent = () => {
-  const [selectedId, setSelectedId] = useState<'1' | '2'>('1')
+  const [selectedId, setSelectedId] = useState<'1' | '2'>('1');
   return (
     <>
       <CustomerConsentDisplayContainer>
-        <CustomerConsentTitleBox>
-          <CustomerConsentTitle>
-            <img src="/svg/icon_document_green.svg" alt="" style={{ width: '1rem', height: '1rem' }} />
-            {'プラピール体験'}
-          </CustomerConsentTitle>
-          <CustomerConsentAttachedBox>
-            <CustomerConsentContractDateBox>
-              契約日
-              <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-            <CustomerConsentContractDateBox>
-              担当者
-              <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-          </CustomerConsentAttachedBox>
-        </CustomerConsentTitleBox>
-        <CustomerConsentDataContainer>
-          <ButtonHoverThinner>
-            <img
-              src="/svg/icon_arrow_878787.svg"
-              alt=""
-              style={{ width: '2rem', height: '2rem', transform: 'rotate(-90deg)' }}
-            />
-          </ButtonHoverThinner>
-          <img src="/img/img_consent.png" alt="" style={{ width: '8rem', height: '11rem' }} />
-          <ButtonHoverThinner>
-            <img
-              src="/svg/icon_arrow_878787.svg"
-              alt=""
-              style={{ width: '2rem', height: '2rem', transform: 'rotate(90deg)' }}
-            />
-          </ButtonHoverThinner>
-        </CustomerConsentDataContainer>
+        <ConsentTitle />
+        <ConsentImage />
         <ConfirmationButton>
           詳細を確認
           <img src="/svg/icon_fileSearch.svg" alt="" style={{ width: '1rem', height: '1rem' }} />
         </ConfirmationButton>
       </CustomerConsentDisplayContainer>
-      <CustomerConsentListHeader>
-        <CustomerConsentListHeaderItem>
-          <ButtonHoverThinner>
-            <img
-              src="/svg/icon_hamburger_green.svg"
-              alt=""
-              style={{ width: '1.4rem', height: '1.4rem', padding: '0.5rem 0 0 0' }}
-            />
-          </ButtonHoverThinner>
-          同意書一覧
-        </CustomerConsentListHeaderItem>
-      </CustomerConsentListHeader>
-
-      <CustomerConsentListItemContainer
-      $selected={selectedId === '1'}
-      onClick={() => setSelectedId('1')}
-      >
-        <CustomerConsentListItemBox>
-          <CustomerConsentCheckBox type="checkbox" />
-          <CustomerConsentBodyBox>
-            <div style={{textDecorationLine: 'underline'}}>
-            プラピール体験
-            </div>
-            <CustomerConsentAttachedBox>
-            <CustomerConsentContractDateBox >
-              契約日
-              <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-            <CustomerConsentContractDateBox>
-              担当者
-              <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-          </CustomerConsentAttachedBox>
-            </CustomerConsentBodyBox>
-          
-        </CustomerConsentListItemBox>
-      </CustomerConsentListItemContainer>
-
-      <CustomerConsentListItemContainer
-      $selected={selectedId === '2'}
-      onClick={() => setSelectedId('2')}
-      >
-        <CustomerConsentListItemBox>
-          <CustomerConsentCheckBox type="checkbox" />
-          <CustomerConsentBodyBox>
-            <div style={{textDecorationLine: 'underline'}}>
-            プラピール体験
-            </div>
-            <CustomerConsentAttachedBox>
-            <CustomerConsentContractDateBox >
-              契約日
-              <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-            <CustomerConsentContractDateBox>
-              担当者
-              <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-          </CustomerConsentAttachedBox>
-            </CustomerConsentBodyBox>
-          
-        </CustomerConsentListItemBox>
-      </CustomerConsentListItemContainer>
+      <ConsentList />
+      <ConsentListItem selectedId={selectedId} setSelectedId={setSelectedId} />
     </>
   );
 };
-
 
 export default CustomerDetailConsent;

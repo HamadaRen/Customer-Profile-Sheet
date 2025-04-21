@@ -1,5 +1,4 @@
-import React from 'react'
-import { CustomerDetailFooterContainer, CustomerDetailPrinting } from '../../styles/application'
+import { CustomerDetailFooterContainer, CustomerDetailPrinting } from "../../styles/customerDetailModal"
 
 const CustomerDetailModalFooter = () => {
   return (
