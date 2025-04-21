@@ -9,12 +9,26 @@ import {
 
 const CustomerFooter = () => {
   const [selected, setSelected] = useState<number>(1);
+  const [footerId, setFooterId] = useState<number>(1);
+
+  const handleClickUp = () => {
+    if(selected === 3){
+      return;
+    }
+    setSelected(selected + 1)
+  }
+  const handleClickDown = () => {
+    if(selected === 1){
+      return;
+    }
+    setSelected(selected - 1)
+  }
 
   return (
     <CustomerFoot style={{ zIndex: 1 }}>
       <CustomerFooterButtonLine>
         <CustomerFootPosition>
-          <CustomerFooterButton>
+          <CustomerFooterButton onClick={handleClickDown}>
             <img src="/svg/icon_leftExpansion.svg" alt="" style={{ width: '1.5rem', height: '1.5rem' }} />
           </CustomerFooterButton>
           <CustomerFooterButtonNumber $selected={selected === 1} onClick={() => setSelected(1)}>
@@ -26,7 +40,7 @@ const CustomerFooter = () => {
           <CustomerFooterButtonNumber $selected={selected === 3} onClick={() => setSelected(3)}>
             3
           </CustomerFooterButtonNumber>
-          <CustomerFooterButton>
+          <CustomerFooterButton onClick={handleClickUp}>
             <img
               src="/svg/icon_leftExpansion.svg"
               alt=""

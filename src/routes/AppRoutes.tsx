@@ -8,9 +8,13 @@ import TreatmentAddPage from '../components/treatment/TreatmentMenuEntryPage';
 import TreatmentMenuEditPage from '../components/treatment/EstheticTreatmentMenuEditPage';
 import TreatmentTab from '../components/header/TreatmentTab';
 import Login from '../login/Login';
-import SalesManagement from '../sales/SalesManagement';
-import ReservationEntry from '../sales/ReservationEntry';
 import HairSalonTreatmentMenuEditPage from '../components/treatment/HairSalonTreatmentMenuEditPage';
+import ReservationEntry from '../sales/ReservationEntry';
+import SalesManagementScreen from '../sales/SalesManagement';
+import SalesManagement from '../components/sidebar/SalesManagement';
+import SalesAnalysis from '../components/sidebar/SalesAnalysis';
+import MenuPrice from '../components/sidebar/MenuPrice';
+import TicketManagement from '../components/sidebar/TicketManagement';
 
 type UserDetailsType = {
   name: string;
@@ -43,8 +47,12 @@ const AppRoutes: React.FC = () => {
           <Route path="/treatmentMenu" element={<TreatmentTab />}></Route>
           <Route path="/treatmentMenu/esthetic/:id" element={<TreatmentMenuEditPage />}></Route>
           <Route path="/treatmentMenu/hair/:id" element={<HairSalonTreatmentMenuEditPage />}></Route>
-          <Route path="/sales" element={<SalesManagement />}></Route>
+          <Route path="/sales" element={<SalesManagementScreen />}></Route>
           <Route path="/sales/entry" element={<ReservationEntry />}></Route>
+          <Route path="/sales/management" element={<SalesManagement />}></Route>
+          <Route path="/sales/analysis" element={<SalesAnalysis />}></Route>
+          <Route path="/menu/price" element={<MenuPrice />}></Route>
+          <Route path="/ticket/management" element={<TicketManagement />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>

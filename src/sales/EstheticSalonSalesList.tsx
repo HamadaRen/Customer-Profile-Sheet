@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SalesListHeader from '../components/header/SalesListHeader';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { IconButton } from '@mui/material';
+import SalesListHeader from '../components/header/SalesListHeader';
 
 type SalesAryType = {
   id: string;
@@ -14,7 +14,7 @@ type SalesAryType = {
   treatment_price: number;
   quantity_id: string;
   treatment_flag: string;
-  created_at: string
+  created_at: string;
 };
 
 const EstheticSalonSalesList = () => {
@@ -30,8 +30,7 @@ const EstheticSalonSalesList = () => {
 
   const getData = () => {
     estheticSales.map((item) => {
-      const ContractDateId = item.created_at
-      console.log('@@@@@@@@@@@@@@@', ContractDateId)
+      const ContractDateId = item.created_at;
     });
   };
 
@@ -62,13 +61,13 @@ const EstheticSalonSalesList = () => {
       <>
         {estheticSales.map((listItem) => (
           <>
-          <ListItem
+            <ListItem
               key={listItem.id}
               onMouseEnter={() => setHoveredId(listItem.id)}
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === listItem.id}
             >
-              {listItem.created_at.substring(0,10)}
+              {listItem.created_at.substring(0, 10)}
             </ListItem>
             <ListItem
               onMouseEnter={() => setHoveredId(listItem.id)}
