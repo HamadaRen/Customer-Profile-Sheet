@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HistoryTabContainer = styled.div`
   display: flex;
@@ -127,7 +127,24 @@ export const HistoryTriangle = styled.div`
   right: 6%;
 `;
 
-export const HistoryStatusBodyBox = styled.div`
+export const HistoryStatusBodyBox = styled.div<{ $open?: boolean }>`
+  @keyframes historyOpen {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 7rem;
+    }
+  }
+
+  @keyframes historyClose {
+    0% {
+      height: 8rem;
+    }
+    100% {
+      height: 0;
+    }
+  }
   display: flex;
   width: calc(100% - 1rem);
   padding: 0 0.5rem 0.5rem 0.5rem;
@@ -138,6 +155,9 @@ export const HistoryStatusBodyBox = styled.div`
   border: 1px solid var(--main-, #a29b93);
   border-radius: 3px;
   background: #fff;
+  overflow: hidden;
+  top: ${(props) => (props.$open === true ? '0' : '-8rem')};
+  animation: ${({ $open }) => ($open ? 'historyOpen' : 'historyClose')} 0.3s forwards;
 `;
 
 export const HistoryStatusBody = styled.div`

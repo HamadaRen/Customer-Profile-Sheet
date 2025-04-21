@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   HistoryTabContainer,
   HistoryListItemBox,
@@ -23,11 +24,16 @@ type MerchandiseType = {
 };
 
 const CustomerDetailHistory = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleClickArrow = () => {
+    setOpen((open) => !open);
+  }
   return (
     <HistoryTabContainer>
       <HistoryListItemBox>
-        <HistoryHeader />
-        <HistoryBody />
+        <HistoryHeader open={open} handleClickArrow={handleClickArrow} />
+        <HistoryBody open={open} />
       </HistoryListItemBox>
     </HistoryTabContainer>
   );
