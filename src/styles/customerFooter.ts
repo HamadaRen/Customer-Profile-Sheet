@@ -31,9 +31,7 @@ export const CustomerFooterButtonLine = styled.div`
 
 export const CustomerFooterButton = styled.div`
   display: flex;
-  width: 0.5rem;
-  height: 1rem;
-  padding: 0.375rem 0.6875rem;
+  padding: 0.25rem 0.45rem 0.25rem 0.45rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -45,11 +43,10 @@ export const CustomerFooterButton = styled.div`
     opacity: 0.5;
   }
 `;
+
 export const CustomerFooterButtonNumber = styled.div<{ $selected?: boolean }>`
   display: flex;
-  width: 0.5rem;
-  height: 1rem;
-  padding: 0.375rem 0.6875rem;
+  padding: 0.3rem 0.8rem 0.4rem 0.8rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -61,7 +58,7 @@ export const CustomerFooterButtonNumber = styled.div<{ $selected?: boolean }>`
   font-weight: 900;
   line-height: normal;
   cursor: pointer;
-  background-color: ${({ $selected }) => ($selected ? '#756c62' : 'f3e6da')};
+  background-color: ${({ $selected }) => ($selected ? '#756c62' : '#f3e6da')};
   color: ${({ $selected }) => ($selected ? '#fff' : '#756c62')};
   &:hover {
     opacity: 0.5;

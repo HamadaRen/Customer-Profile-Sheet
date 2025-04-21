@@ -66,7 +66,6 @@ export const StyledRow = styled.div<{ $selected?: boolean }>`
   background-color: ${({ $selected }) => ($selected ? '#393b2e' : 'transparent')};
   color: ${({ $selected }) => ($selected ? '#c8d5ad' : '#DCCEC1')};
   border-left: ${({ $selected }) => ($selected ? '0.375rem solid #c8d5ad' : '0.375rem solid #393b2e')};
-
   &:hover {
     background-color: #393b2e;
   }
@@ -83,8 +82,8 @@ export const StyledRowManagement = styled.div<{ $selected?: boolean }>`
   font-size: 0.9rem;
   font-weight: 500;
   line-height: normal;
-  background-color: ${({ $selected }) => ($selected ? '#454137' : 'transparent')};
-  
+  text-decoration: dashed;
+  background-color: ${({ $selected }) => ($selected ? '#393B2E' : 'transparent')};
   &:hover {
     background-color: #393b2e;
   }
