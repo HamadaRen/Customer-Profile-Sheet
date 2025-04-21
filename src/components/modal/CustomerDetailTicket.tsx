@@ -3,9 +3,12 @@ import {
   CustomerTicketListContainer,
   CustomerTicketListItemBox,
   CustomerTicketListItem,
+  CustomerTicketListItemBoxExpired,
 } from '../../styles/customerDetailTicket';
 import TicketDetail from './modalItem/ticket/CustomerDetailTicketDetail';
+import TicketDetailExpired from './modalItem/ticket/CustomerDetailTicketDetailExpired';
 import TicketUsage from './modalItem/ticket/CustomerDetailTicketUsage';
+import TicketUsageExpired from './modalItem/ticket/CustomerDetailTicketUsageExpired';
 
 type TicketDataType = {
   id: string;
@@ -28,6 +31,14 @@ const CustomerDetailTicket = () => {
             <TicketUsage />
           </CustomerTicketListItem>
         </CustomerTicketListItemBox>
+        {/* この下は期限切れ用 */}
+        <CustomerTicketListItemBoxExpired>
+          <CustomerTicketListItem>
+            <TicketDetailExpired />
+            <TicketUsageExpired />
+          </CustomerTicketListItem>
+        </CustomerTicketListItemBoxExpired>
+
       </CustomerTicketListContainer>
     </CustomerTicketContainer>
   );
