@@ -1,40 +1,57 @@
 import {
-  HistoryCounselingTag,
+  HistoryTabContainer,
   HistoryListItemBox,
   HistoryListItemHeaderBox,
-  HistoryPurchasedProductsTag,
-  HistoryStatus,
-  HistoryStatusBody,
-  HistoryStatusBodyBox,
-  HistoryStatusBodyContent,
-  HistoryStatusBodyTitle,
-  HistoryTabContainer,
-  HistoryTreatmentTag,
-  HistoryTriangle,
-  HistoryVisitDate,
   HistoryVisitInformation,
+  HistoryVisitDate,
   HistoryVisitTime,
-} from '../../styles/application';
+  HistoryStatus,
+  HistoryTreatmentTag,
+  HistoryCounselingTag,
+  HistoryPurchasedProductsTag,
+  HistoryStatusBodyBox,
+  HistoryTriangle,
+  HistoryStatusBody,
+  HistoryStatusBodyTitle,
+  HistoryStatusBodyContent,
+} from '../../styles/customerDetailHistory';
+
+type HistoryType = {
+  visitFlg: string;
+  created_at: string;
+  updated_at: string;
+};
+
+type TicketDataType = {
+  id: string;
+  name: string;
+  counseling: string;
+};
+
+type MerchandiseType = {
+  id: string;
+  name: string;
+};
 
 const CustomerDetailHistory = () => {
   return (
     <HistoryTabContainer>
       <HistoryListItemBox>
         <HistoryListItemHeaderBox>
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                alignItems: 'center',
-                gap: '0.5rem',
-                justifyContent: 'flex-start',
-              }}
-            >
-              <img src="/svg/icon_arrow_878787.svg" alt="" style={{ width: '1.5rem', height: '1.5rem' }} />
-              <HistoryVisitInformation>来店済</HistoryVisitInformation>
-              <HistoryVisitDate>2025/1/11（土）</HistoryVisitDate>
-              <HistoryVisitTime>12:00~13:40</HistoryVisitTime>
-            </div>
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              alignItems: 'center',
+              gap: '0.5rem',
+              justifyContent: 'flex-start',
+            }}
+          >
+            <img src="/svg/icon_arrow_878787.svg" alt="" style={{ width: '1.5rem', height: '1.5rem' }} />
+            <HistoryVisitInformation>来店済</HistoryVisitInformation>
+            <HistoryVisitDate>2025/1/11（土）</HistoryVisitDate>
+            <HistoryVisitTime>12:00~13:40</HistoryVisitTime>
+          </div>
           <HistoryStatus>
             <HistoryTreatmentTag>施術</HistoryTreatmentTag>
             <HistoryCounselingTag>カウンセリング</HistoryCounselingTag>

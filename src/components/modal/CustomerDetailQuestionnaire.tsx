@@ -1,21 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
 import {
-  CustomerBasicInformationBox,
-  CustomerDetailItem,
-  CustomerDetailItemBox,
-  CustomerDetailItemLong,
-  CustomerDetailItemRight,
-  CustomerDetailItemTitle,
-  CustomerDetailItemTitleRight,
-  CustomerInformationEditButton,
   CustomerInformationEditButtonBox,
-} from '../../styles/application';
+  CustomerInformationEditButton,
+  CustomerBasicInformationBox,
+  CustomerDetailItemBox,
+  CustomerDetailItemTitle,
+  CustomerDetailItem,
+  CustomerDetailItemTitleRight,
+  CustomerDetailItemRight,
+  CustomerDetailItemLong,
+  QuestionnaireContainer,
+} from '../../styles/customerDetailInformation';
+
+type QuestionnaireType = {
+  id: string;
+  height: number;
+  weight: number;
+  pregnancy: string;
+  medicine: string;
+  surgery: string;
+  allergy: string;
+  purpose: string;
+  pointsOfConcern: string;
+};
 
 const CustomerDetailQuestionnaire = () => {
   return (
     <QuestionnaireContainer>
-      <CustomerInformationEditButtonBox style={{padding: '0 2.4rem'}}>
+      <CustomerInformationEditButtonBox style={{ padding: '0 2.4rem' }}>
         <CustomerInformationEditButton>
           情報を編集する
           <img src="/svg/icon_pen.svg" alt="" style={{ width: '0.8rem', height: '0.8rem' }} />
@@ -75,13 +86,6 @@ const CustomerDetailQuestionnaire = () => {
   );
 };
 
-const QuestionnaireContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: 0.5rem 0.5rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-`;
+
 
 export default CustomerDetailQuestionnaire;

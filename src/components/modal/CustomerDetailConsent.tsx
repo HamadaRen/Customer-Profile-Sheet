@@ -1,9 +1,35 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { ButtonHoverThinner, ConfirmationButton, CustomerConsentAttachedBox, CustomerConsentBodyBox, CustomerConsentCheckBox, CustomerConsentContractDate, CustomerConsentContractDateBox, CustomerConsentDataContainer, CustomerConsentDisplayContainer, CustomerConsentListHeader, CustomerConsentListHeaderItem, CustomerConsentListItemBox, CustomerConsentListItemContainer, CustomerConsentTitle, CustomerConsentTitleBox } from '../../styles/application';
+import { useState } from 'react';
+import { ButtonHoverThinner } from '../../styles/application';
+import {
+  CustomerConsentDisplayContainer,
+  CustomerConsentTitleBox,
+  CustomerConsentTitle,
+  CustomerConsentAttachedBox,
+  CustomerConsentContractDateBox,
+  CustomerConsentContractDate,
+  CustomerConsentDataContainer,
+  ConfirmationButton,
+  CustomerConsentListHeader,
+  CustomerConsentListHeaderItem,
+  CustomerConsentListItemContainer,
+  CustomerConsentListItemBox,
+  CustomerConsentCheckBox,
+  CustomerConsentBodyBox,
+} from '../../styles/customerDetailConsent';
+
+type ConcentDataType = {
+  id: string;
+  name: string;
+  created_at: string;
+};
+
+type StaffDataType = {
+  id: string;
+  name: string;
+};
 
 const CustomerDetailConsent = () => {
-  const [selectedId, setSelectedId] = useState<'1' | '2'>('1')
+  const [selectedId, setSelectedId] = useState<'1' | '2'>('1');
   return (
     <>
       <CustomerConsentDisplayContainer>
@@ -58,58 +84,45 @@ const CustomerDetailConsent = () => {
         </CustomerConsentListHeaderItem>
       </CustomerConsentListHeader>
 
-      <CustomerConsentListItemContainer
-      $selected={selectedId === '1'}
-      onClick={() => setSelectedId('1')}
-      >
+      <CustomerConsentListItemContainer $selected={selectedId === '1'} onClick={() => setSelectedId('1')}>
         <CustomerConsentListItemBox>
           <CustomerConsentCheckBox type="checkbox" />
           <CustomerConsentBodyBox>
-            <div style={{textDecorationLine: 'underline'}}>
-            プラピール体験
-            </div>
+            <div style={{ textDecorationLine: 'underline' }}>プラピール体験</div>
             <CustomerConsentAttachedBox>
-            <CustomerConsentContractDateBox >
-              契約日
-              <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-            <CustomerConsentContractDateBox>
-              担当者
-              <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-          </CustomerConsentAttachedBox>
-            </CustomerConsentBodyBox>
-          
+              <CustomerConsentContractDateBox>
+                契約日
+                <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
+              </CustomerConsentContractDateBox>
+              <CustomerConsentContractDateBox>
+                担当者
+                <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
+              </CustomerConsentContractDateBox>
+            </CustomerConsentAttachedBox>
+          </CustomerConsentBodyBox>
         </CustomerConsentListItemBox>
       </CustomerConsentListItemContainer>
 
-      <CustomerConsentListItemContainer
-      $selected={selectedId === '2'}
-      onClick={() => setSelectedId('2')}
-      >
+      <CustomerConsentListItemContainer $selected={selectedId === '2'} onClick={() => setSelectedId('2')}>
         <CustomerConsentListItemBox>
           <CustomerConsentCheckBox type="checkbox" />
           <CustomerConsentBodyBox>
-            <div style={{textDecorationLine: 'underline'}}>
-            プラピール体験
-            </div>
+            <div style={{ textDecorationLine: 'underline' }}>プラピール体験</div>
             <CustomerConsentAttachedBox>
-            <CustomerConsentContractDateBox >
-              契約日
-              <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-            <CustomerConsentContractDateBox>
-              担当者
-              <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
-            </CustomerConsentContractDateBox>
-          </CustomerConsentAttachedBox>
-            </CustomerConsentBodyBox>
-          
+              <CustomerConsentContractDateBox>
+                契約日
+                <CustomerConsentContractDate>{'2025年1月20日'}</CustomerConsentContractDate>
+              </CustomerConsentContractDateBox>
+              <CustomerConsentContractDateBox>
+                担当者
+                <CustomerConsentContractDate>{'濵田錬'}</CustomerConsentContractDate>
+              </CustomerConsentContractDateBox>
+            </CustomerConsentAttachedBox>
+          </CustomerConsentBodyBox>
         </CustomerConsentListItemBox>
       </CustomerConsentListItemContainer>
     </>
   );
 };
-
 
 export default CustomerDetailConsent;

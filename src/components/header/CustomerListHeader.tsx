@@ -1,9 +1,9 @@
-import styled from 'styled-components';
 import {
   Contact,
   CustomerName,
   CustomerNumber,
   FirstVisit,
+  GridHeader,
   LastVisit,
   NumberOfVisitors,
   PersonInCharged,
@@ -11,7 +11,7 @@ import {
   SHeaderGradient,
   TicketInformation,
   UsedPeriod,
-} from '../../styles/application';
+} from '../../styles/customerListHeader';
 
 const CustomerListHeader = () => {
   return (
@@ -35,27 +35,3 @@ const CustomerListHeader = () => {
 };
 
 export default CustomerListHeader;
-
-// const SHeader = styled.div`
-//   display: flex;
-//   padding: 4px 0px;
-//   justify-content: center;
-//   align-items: center;
-//   align-self: stretch;
-//   border-bottom: 1px solid var(--text-10, #d6d6d6);
-//   background: #443e33;
-//   color: var(--main-, #f3e6da);
-//   font-family: 'Noto Sans JP';
-//   font-size: 14px;
-//   font-style: normal;
-//   font-weight: 900;
-//   line-height: normal;
-// `;
-
-const GridHeader = styled.div`
-  display: grid;
-  width: 100%;
-  /* grid-template-columns: 2fr 2fr 3fr 3.2fr 1.5fr 2fr 2fr 2fr 2fr 4.9fr; */
-  grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
-  /* margin-right: 50rem; */
-`;

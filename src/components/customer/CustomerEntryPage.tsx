@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker, { registerLocale } from "react-datepicker"
-import {ja} from 'date-fns/locale/ja'
-import { Link } from 'react-router-dom';
-
+import DatePicker, { registerLocale } from 'react-datepicker';
+import { ja } from 'date-fns/locale/ja';
 
 const NEW_DATE = new Date();
 
@@ -20,18 +18,18 @@ type UserDetailsType = {
 };
 
 const CustomerEntryPage = () => {
-    const  [ birthday ,  setBirthday ]  = useState<Date | null>(new Date('2001-12-04')) ;
-    const [userDetails, setUserDetails] = useState<UserDetailsType>({
-      name: '',
-      nameKana: '',
-      birthday: birthday || new Date(),
-      gender: '男性',
-      tel: '',
-      email: '',
-      address: '',
-    });
-    
-    registerLocale('ja', ja)
+  const [birthday, setBirthday] = useState<Date | null>(new Date('2001-12-04'));
+  const [userDetails, setUserDetails] = useState<UserDetailsType>({
+    name: '',
+    nameKana: '',
+    birthday: birthday || new Date(),
+    gender: '男性',
+    tel: '',
+    email: '',
+    address: '',
+  });
+
+  registerLocale('ja', ja);
 
   const genderItems = [
     {
@@ -47,7 +45,6 @@ const CustomerEntryPage = () => {
       value: 'その他',
     },
   ];
-
 
   //userDetailsを登録欄に表示したい
   const handleRegistration = async (e: { preventDefault: () => void }) => {
@@ -67,8 +64,9 @@ const CustomerEntryPage = () => {
     }
     //ここまでオッケーこの下をAPIに修正
 
-    await axios.post('http://localhost:3010/customer/add', { userDetails })
-    .then(() => window.location.replace(`http://localhost:3000/`));
+    await axios
+      .post('http://localhost:3010/customer/add', { userDetails })
+      .then(() => window.location.replace(`http://localhost:3000/`));
 
     setUserDetails({
       name: '',
@@ -79,32 +77,32 @@ const CustomerEntryPage = () => {
       email: '',
       address: '',
     });
-    const genderCheckBox = document.querySelectorAll('genderChecked')
+    const genderCheckBox = document.querySelectorAll('genderChecked');
   };
 
   const handleRawChange = (e: any) => {
     const target = e.target as HTMLInputElement; // 型をアサーション(as)で修正
     const rawValue = target.value;
-    if(!rawValue){
+    if (!rawValue) {
       return;
     }
-    console.log('ろーばりゅー', rawValue)
-    
+    console.log('ろーばりゅー', rawValue);
+
     const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
-    console.log('まっち', match)
+    console.log('まっち', match);
     if (match) {
       const year = parseInt(match[1]);
       const month = parseInt(match[2]) - 1;
       const day = parseInt(match[3]);
       const newDate = new Date(year, month, day);
-  
+
       if (!isNaN(newDate.getTime())) {
         setBirthday(newDate);
       }
     }
   };
 
-  console.log('選択した日にち', userDetails)
+  console.log('選択した日にち', userDetails);
 
   return (
     <Container>
@@ -139,15 +137,15 @@ const CustomerEntryPage = () => {
           <label>
             生年月日：
             <DatePicker
-            locale="ja"
-            selected={birthday}
-            dateFormat="yyyy年MM月dd日"
-            onChange={(date) => setBirthday(date)}
-            //onChangeRawで手入力時の処理を走らせる関数を呼び出す
-            onChangeRaw={handleRawChange}
-            // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
-            maxDate={NEW_DATE}
-              />
+              locale="ja"
+              selected={birthday}
+              dateFormat="yyyy年MM月dd日"
+              onChange={(date) => setBirthday(date)}
+              //onChangeRawで手入力時の処理を走らせる関数を呼び出す
+              onChangeRaw={handleRawChange}
+              // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
+              maxDate={NEW_DATE}
+            />
           </label>
         </BirthdayForm>
 
@@ -158,12 +156,12 @@ const CustomerEntryPage = () => {
               <label key={item.label}>
                 <input
                   type="radio"
-                  name='genderChecked'
+                  name="genderChecked"
                   // onChange={(e) => setUserDetails((prev) => ({ ...prev, gender: e.target.value }))}
                   value={item.value}
                   onChange={() => setUserDetails((prev) => ({ ...prev, gender: item.value }))}
                   style={{ width: 43, height: 28 }}
-                  defaultChecked={item.value==="男性"}
+                  defaultChecked={item.value === '男性'}
                 />
                 {item.label}
               </label>
@@ -210,7 +208,7 @@ const CustomerEntryPage = () => {
           </label>
         </AddressForm>
       </form>
-        <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
+      <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
     </Container>
   );
 };

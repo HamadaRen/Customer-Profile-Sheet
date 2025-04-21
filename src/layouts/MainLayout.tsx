@@ -5,7 +5,7 @@ import {
   sideBarAnimationTypeAtom,
   visibleSideBarAtom,
 } from "../state/application";
-import { MainContainer, SBody, RightContainer } from "../styles/application";
+import { MainContainer, SBody, RightContainer } from "../styles/mainLayout";
 import Header from "./Header";
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {

@@ -21,7 +21,22 @@ import {
   CustomerDetailFixedMemoPerson,
   CustomerDetailDateMemoBox,
   CustomerDetailMemoTime,
-} from '../../styles/application';
+} from '../../styles/customerDetailInformation';
+
+type CustomerDetailType = {
+  id: string;
+  birthday: Date;
+  age: number;
+  address: string;
+  tel: string;
+  email: string;
+}
+
+type SharedMatterType = {
+  id: string;
+  name: string;
+  memo: string;
+}
 
 const CustomerDetailInformation = () => {
   return (

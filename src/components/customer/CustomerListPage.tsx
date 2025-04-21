@@ -1,8 +1,6 @@
-import styled from 'styled-components';
 import CustomerListHeader from '../header/CustomerListHeader';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
 import { useLocation } from 'react-router-dom';
 import CustomerHeader from '../header/CustomerHeader';
 import CustomerFooter from '../footer/CustomerFooter';
@@ -20,21 +18,40 @@ import {
   Remarks,
   ListHeaderContact,
   ListHeaderCustomerName,
-} from '../../styles/application';
+  GridContainer,
+} from '../../styles/customerListPage';
 import CustomerDetailModal from '../modal/CustomerDetailModal';
 
 type UserDetailsType = {
   id: string;
   name: string;
-  nameKana: string;
-  birthday: string;
-  gender: string;
   tel: string;
-  email: string;
-  address: string;
+  line: string;
+  instagram: string;
   created_at: string;
   update_at: string;
-  delete_at: string;
+};
+
+type TicketDataType = {
+  id: string;
+  name: string;
+};
+
+type VisitorsDataType = {
+  id: string;
+  visitedTimes: number;
+  created_at: string;
+  updated_at: string;
+};
+
+type SharedMatters = {
+  id: string;
+  memo: string;
+};
+
+type StaffDataType = {
+  id: string;
+  name: string;
 };
 
 const CustomerListPage = () => {
@@ -252,7 +269,7 @@ const CustomerListPage = () => {
               >
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.125rem' }}>
                   <TicketName>{userData.ticket}</TicketName>
-                  <TicketTime>仕様数(2/5)</TicketTime>
+                  <TicketTime>使用数(2/5)</TicketTime>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     <TicketKinds>その他チケット</TicketKinds>
                     <TicketKindsTime>+8</TicketKindsTime>
@@ -330,15 +347,5 @@ const CustomerListPage = () => {
     </div>
   );
 };
-
-const GridContainer = styled.div<{ $listColor?: boolean }>`
-  display: grid;
-  width: 100%;
-  grid-template-columns: 7.3% 7.3% 12.2% 12.2% 6.7% 7.3% 7.3% 7.3% 7.3% 1fr;
-  align-items: center;
-  align-self: stretch;
-  border-bottom: 1px solid #b0a396;
-  overflow-y: scroll;
-`;
 
 export default CustomerListPage;

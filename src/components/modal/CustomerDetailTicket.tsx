@@ -1,6 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CustomerTicketContainer, CustomerTicketListContainer, CustomerTicketListItemBox, CustomerTicketListItem, CustomerTicketBodyDetailBox, CustomerTicketBodyDetailTitle, CustomerTicketDetail, CustomerTicketFooterBox, CustomerTicketFooter } from '../../styles/application';
+import {
+  CustomerTicketContainer,
+  CustomerTicketListContainer,
+  CustomerTicketListItemBox,
+  CustomerTicketListItem,
+  CustomerTicketBodyDetailBox,
+  CustomerTicketBodyDetailTitle,
+  CustomerTicketDetail,
+  CustomerTicketFooterBox,
+  CustomerTicketFooter,
+} from '../../styles/customerDetailTicket';
+
+type TicketDataType = {
+  id: string;
+  name: string;
+};
+
+type NumberOfTimesType = {
+  id: string;
+  created_at: string;
+  updated_at: string;
+};
 
 const CustomerDetailTicket = () => {
   return (
@@ -90,6 +109,5 @@ const CustomerDetailTicket = () => {
     </CustomerTicketContainer>
   );
 };
-
 
 export default CustomerDetailTicket;

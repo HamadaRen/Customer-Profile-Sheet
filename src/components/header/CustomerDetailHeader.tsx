@@ -6,7 +6,7 @@ import {
   TelIcon,
   IconPhoto,
   ManagerName,
-} from '../../styles/application';
+} from '../../styles/customerDetailHeader';
 
 const ICON_STYLES = { width: '1.25rem', height: '1rem' };
 

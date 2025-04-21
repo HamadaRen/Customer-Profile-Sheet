@@ -1,7 +1,5 @@
-import { Box, Tabs, Tab, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { CustomerDetailHeaderContainer, CustomerDetailHeaderTab } from '../../styles/application';
+import React from 'react';
+import { CustomerDetailHeaderContainer, CustomerDetailHeaderTab } from '../../styles/customerDetailTab';
 
 type CustomerDetailTabType = {
   selected: "customerInformation" | "questionnaire" | "history" | "consent" | "ticket";

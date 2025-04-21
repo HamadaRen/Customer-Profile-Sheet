@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { ja } from 'date-fns/locale/ja';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 type UserDetailsType = {
   id: string;
@@ -17,7 +17,7 @@ type UserDetailsType = {
   address: string;
 };
 
-const NEW_DATE = new Date()
+const NEW_DATE = new Date();
 
 const CustomerInformationDetails = () => {
   //ここからGETメソッド
@@ -48,18 +48,16 @@ const CustomerInformationDetails = () => {
     email: '',
     address: '',
   });
-  
-  const params = useParams();
-  console.log('パラムス', params)
-  const id = params.id;
 
+  const params = useParams();
+  console.log('パラムス', params);
+  const id = params.id;
 
   const location = useLocation();
 
-  
   //初期値を当日にする
   registerLocale('ja', ja);
-  
+
   const genderItems = [
     {
       label: '男性',
@@ -74,7 +72,7 @@ const CustomerInformationDetails = () => {
       value: 'その他',
     },
   ];
-  
+
   //userDetailsを登録欄に表示したい
   const handleRegistration = async () => {
     if (
@@ -88,54 +86,52 @@ const CustomerInformationDetails = () => {
       return;
     }
 
-    
     //ここまでオッケーこの下をAPIに修正
-    
+
     await axios.put('http://localhost:3010/customer/put', { userDetails });
     window.location.replace(`http://localhost:3000/`);
   };
 
-    const handleRawChange = (e: any) => {
-      const rawTarget = e.target as HTMLInputElement;
-      const rawValue = rawTarget.value;
-      if(!rawValue){
-        return;
-      }
-      console.log('hakka+ろーばりゅー', rawValue)
-      const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/)
-      console.log('まっち', match)
-      if (match) {
-        const year = parseInt(match[1]);
-        const month = parseInt(match[2]) - 1;
-        const day = parseInt(match[3]);
-        const newDate = new Date(year, month, day);
-        
-        if (!isNaN(newDate.getTime())) {
-          setBirthday(newDate);
-        }
+  const handleRawChange = (e: any) => {
+    const rawTarget = e.target as HTMLInputElement;
+    const rawValue = rawTarget.value;
+    if (!rawValue) {
+      return;
+    }
+    console.log('hakka+ろーばりゅー', rawValue);
+    const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
+    console.log('まっち', match);
+    if (match) {
+      const year = parseInt(match[1]);
+      const month = parseInt(match[2]) - 1;
+      const day = parseInt(match[3]);
+      const newDate = new Date(year, month, day);
+
+      if (!isNaN(newDate.getTime())) {
+        setBirthday(newDate);
       }
     }
-    
-    const handleDelete = async (e: { preventDefault: () => void }) => {
-      e.preventDefault();
-      await axios.put(`http://localhost:3010/customer/delete/${id}`, {id});
-    };
+  };
 
-    useEffect(() => {
-      getCustomerData();
-    }, []);
-  
-    //birthdayの値が変わったときに発火するuseEffect
-    useEffect(() => {
-      if(birthday===null){
-        return;
-      }
-        setUserDetails((prev) => ({ ...prev, birthday: birthday }))
-    }, [birthday]);
+  const handleDelete = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    await axios.put(`http://localhost:3010/customer/delete/${id}`, { id });
+  };
 
-    
-    return (
-      <Container>
+  useEffect(() => {
+    getCustomerData();
+  }, []);
+
+  //birthdayの値が変わったときに発火するuseEffect
+  useEffect(() => {
+    if (birthday === null) {
+      return;
+    }
+    setUserDetails((prev) => ({ ...prev, birthday: birthday }));
+  }, [birthday]);
+
+  return (
+    <Container>
       <form>
         <NameForm>
           <label>
@@ -236,16 +232,12 @@ const CustomerInformationDetails = () => {
         </AddressForm>
       </form>
       <div>
-      <div >
-        <RegistrationButton onClick={handleRegistration}>
-          内容を確定する
-        </RegistrationButton>
-      </div>
-      <div onClick={handleDelete}>
-        <DeleteButton onClick={handleDelete}>
-          顧客情報を削除する
-        </DeleteButton>
-      </div>
+        <div>
+          <RegistrationButton onClick={handleRegistration}>内容を確定する</RegistrationButton>
+        </div>
+        <div onClick={handleDelete}>
+          <DeleteButton onClick={handleDelete}>顧客情報を削除する</DeleteButton>
+        </div>
       </div>
     </Container>
   );
