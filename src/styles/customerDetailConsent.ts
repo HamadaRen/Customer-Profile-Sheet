@@ -126,7 +126,7 @@ export const CustomerConsentListItemContainer = styled.div<{ $selected?: boolean
   display: flex;
   width: calc(100% - 4rem);
   height: 3.5rem;
-  padding: 0.3rem 2rem;
+  padding: 0.5rem 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
