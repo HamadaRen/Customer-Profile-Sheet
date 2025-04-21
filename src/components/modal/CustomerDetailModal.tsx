@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import CustomerDetailHeader from '../header/CustomerDetailHeader';
-import {
-  CustomerInformationContainer,
-  ModalContainer,
-  ModalGrayContainer,
-} from '../../styles/customerDetailModal';
+import { CustomerInformationContainer, ModalContainer, ModalGrayContainer } from '../../styles/customerDetailModal';
 import CustomerDetailTab from './CustomerDetailTab';
 import CustomerDetailInformation from './CustomerDetailInformation';
 import CustomerDetailQuestionnaire from './CustomerDetailQuestionnaire';

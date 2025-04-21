@@ -2,12 +2,13 @@ import React from 'react';
 import { CustomerDetailHeaderContainer, CustomerDetailHeaderTab } from '../../styles/customerDetailTab';
 
 type CustomerDetailTabType = {
-  selected: "customerInformation" | "questionnaire" | "history" | "consent" | "ticket";
-  setSelected: React.Dispatch<React.SetStateAction<"customerInformation" | "questionnaire" | "history" | "consent" | "ticket">>
-}
+  selected: 'customerInformation' | 'questionnaire' | 'history' | 'consent' | 'ticket';
+  setSelected: React.Dispatch<
+    React.SetStateAction<'customerInformation' | 'questionnaire' | 'history' | 'consent' | 'ticket'>
+  >;
+};
 
-const CustomerDetailTab = ({selected, setSelected}: CustomerDetailTabType) => {
-
+const CustomerDetailTab = ({ selected, setSelected }: CustomerDetailTabType) => {
   return (
     <CustomerDetailHeaderContainer>
       <CustomerDetailHeaderTab
@@ -16,33 +17,20 @@ const CustomerDetailTab = ({selected, setSelected}: CustomerDetailTabType) => {
       >
         顧客情報
       </CustomerDetailHeaderTab>
-      <CustomerDetailHeaderTab
-        $selected={selected === 'questionnaire'}
-        onClick={() => setSelected('questionnaire')}
-      >
+      <CustomerDetailHeaderTab $selected={selected === 'questionnaire'} onClick={() => setSelected('questionnaire')}>
         問診表
       </CustomerDetailHeaderTab>
-      <CustomerDetailHeaderTab
-        $selected={selected === 'history'}
-        onClick={() => setSelected('history')}
-      >
+      <CustomerDetailHeaderTab $selected={selected === 'history'} onClick={() => setSelected('history')}>
         来店・施術履歴
       </CustomerDetailHeaderTab>
-      <CustomerDetailHeaderTab
-        $selected={selected === 'consent'}
-        onClick={() => setSelected('consent')}
-      >
+      <CustomerDetailHeaderTab $selected={selected === 'consent'} onClick={() => setSelected('consent')}>
         同意書
       </CustomerDetailHeaderTab>
-      <CustomerDetailHeaderTab
-        $selected={selected === 'ticket'}
-        onClick={() => setSelected('ticket')}
-      >
+      <CustomerDetailHeaderTab $selected={selected === 'ticket'} onClick={() => setSelected('ticket')}>
         チケット情報
       </CustomerDetailHeaderTab>
     </CustomerDetailHeaderContainer>
   );
 };
-
 
 export default CustomerDetailTab;

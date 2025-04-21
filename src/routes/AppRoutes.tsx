@@ -1,19 +1,16 @@
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
-import CustomerManagement from '../components/customer/Index';
 import CustomerEntryPage from '../components/customer/CustomerEntryPage';
 import CustomerListPage from '../components/customer/CustomerListPage';
 import CustomerInformationDetails from '../components/customer/CustomerInformationDetails';
 import NotFound from '../components/customer/NotFound';
 import TreatmentAddPage from '../components/treatment/TreatmentMenuEntryPage';
-import TreatmentMenuList from '../components/treatment/EstheSalonTreatmentMenuList';
 import TreatmentMenuEditPage from '../components/treatment/EstheticTreatmentMenuEditPage';
 import TreatmentTab from '../components/header/TreatmentTab';
 import Login from '../login/Login';
 import SalesManagement from '../sales/SalesManagement';
 import ReservationEntry from '../sales/ReservationEntry';
 import HairSalonTreatmentMenuEditPage from '../components/treatment/HairSalonTreatmentMenuEditPage';
-import CustomerDetailModal from '../components/modal/CustomerDetailModal';
 
 type UserDetailsType = {
   name: string;
@@ -50,7 +47,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/sales/entry" element={<ReservationEntry />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
         </Route>
-          <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </BrowserRouter>
   );
