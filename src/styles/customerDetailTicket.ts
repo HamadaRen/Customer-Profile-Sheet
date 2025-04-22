@@ -17,7 +17,7 @@ export const CustomerTicketListContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem 1rem 1rem;
   overflow-y: auto;
   overflow-x: hidden;
 `;
@@ -30,6 +30,18 @@ export const CustomerTicketListItemBox = styled.div`
   gap: 0.125rem;
   border-radius: 5px;
   border: 1px solid var(--text-10, #d6d6d6);
+  background: #fff;
+  box-shadow: 4px 4px 10px 0px rgba(157, 159, 161, 0.25);
+`;
+
+export const CustomerTicketListItemBoxExpired = styled.div`
+  display: flex;
+  width: calc(100% - 2rem);
+  padding: 0.5rem 1.06rem;
+  align-items: flex-start;
+  gap: 0.125rem;
+  border-radius: 5px;
+  border: 1px solid  #f5f5f5;
   background: #fff;
   box-shadow: 4px 4px 10px 0px rgba(157, 159, 161, 0.25);
 `;
@@ -55,6 +67,18 @@ export const CustomerTicketBodyDetailTitle = styled.div`
   align-items: center;
   gap: 0.125rem;
   color: var(--main-, #575850);
+  font-family: 'Noto Sans JP';
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+export const CustomerTicketBodyDetailTitleExpired = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  color: var(--main-, #A29B93);
   font-family: 'Noto Sans JP';
   font-size: 0.85rem;
   font-style: normal;

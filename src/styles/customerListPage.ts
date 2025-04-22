@@ -13,7 +13,7 @@ export const CustomerId = styled.div<{ $selected?: boolean; index: number }>`
   line-height: normal;
   background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   color: inherit;
-  padding: 0 0.6rem;
+  padding: 0 0 0 0.3rem;
   border-bottom: 1px solid #b0a396;
 `;
 
@@ -31,7 +31,7 @@ export const ListHeaderCustomerName = styled.div<{ $selected?: boolean; index: n
   line-height: normal;
   background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
-  padding: 0 0.74rem;
+  padding: 0 1rem;
 `;
 
 export const ListHeaderContact = styled.div<{ $selected?: boolean; index: number }>`

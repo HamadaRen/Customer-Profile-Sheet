@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HistoryTabContainer = styled.div`
   display: flex;
@@ -122,9 +122,9 @@ export const HistoryPurchasedProductsTag = styled.div`
 `;
 
 export const HistoryTriangle = styled.div`
-  position: relative;
-  bottom: 8.6%;
-  right: 6%;
+  position: absolute;
+  right: 87%;
+  top: 21%;
 `;
 
 export const HistoryStatusBodyBox = styled.div`
@@ -135,7 +135,6 @@ export const HistoryStatusBodyBox = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 0.25rem;
-  border: 1px solid var(--main-, #a29b93);
   border-radius: 3px;
   background: #fff;
 `;

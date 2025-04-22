@@ -10,9 +10,6 @@ const HistoryBody = () => {
   return (
     <>
       <HistoryStatusBodyBox>
-        <HistoryTriangle>
-          <img src="/svg/icon_triangle.svg" alt="" style={{ width: '6.18rem', height: '0.75rem' }} />
-        </HistoryTriangle>
         <HistoryTicket />
         <HistoryCounseling />
         <HistoryPurchased />
