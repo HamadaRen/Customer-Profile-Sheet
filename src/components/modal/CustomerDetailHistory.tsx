@@ -33,8 +33,9 @@ const CustomerDetailHistory = () => {
     <HistoryTabContainer>
       <HistoryListItemBox>
         <Accordion style={{ width: '100%'}}>
-          <AccordionSummary style={{borderBottom: '1px solid #000', padding: '0 0 0 0.5rem' }} onClick={handleClickArrow}>
+          <AccordionSummary style={{borderBottom: '1px solid #000', padding: '0 0 0 0.5rem'}} onClick={handleClickArrow}>
             <HistoryHeader open={open} />
+            {/* 来店履歴のヘッダーのデザインで白い三角形をつけるがまだできていない部分のコメントアウト */}
             {/* <HistoryTriangle>
               <img src="/svg/icon_triangle.svg" alt="" style={{ width: '6.18rem', height: '0.75rem' }} />
             </HistoryTriangle> */}
