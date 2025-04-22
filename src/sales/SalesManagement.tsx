@@ -50,7 +50,7 @@ type SalesAryType = {
   treatment_flag: string;
 }
 
-const SalesManagement = () => {
+const SalesManagementScreen = () => {
   const [value, setValue] = useState(0);
   const [salonValue ,setSalonValue] = useState(0)
   
@@ -159,4 +159,4 @@ const NewReserveButton = styled.div`
 }
 `
 
-export default SalesManagement
+export default SalesManagementScreen;

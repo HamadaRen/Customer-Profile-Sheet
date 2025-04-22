@@ -1,9 +1,9 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SalesListHeader from '../components/header/SalesListHeader';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { IconButton } from '@mui/material';
+import SalesListHeader from '../components/header/SalesListHeader';
 
 type SalesAryType = {
   id: string;
@@ -14,41 +14,42 @@ type SalesAryType = {
   treatment_price: number;
   quantity_id: string;
   treatment_flag: string;
-  created_at: string
+  created_at: string;
 };
 
 const HairSalonSalesList = () => {
   const [hoveredId, setHoveredId] = useState<string>('');
-  const [estheticSales, setEstheticSales] = useState<SalesAryType[]>([])
+  const [estheticSales, setEstheticSales] = useState<SalesAryType[]>([]);
 
   const getSalesId = async () => {
-    const salesData = await axios.get('http://localhost:3010/sales/hair')
-    const treatmentDetail = salesData.data
-    setEstheticSales(treatmentDetail)
-  }
+    const salesData = await axios.get('http://localhost:3010/sales/hair');
+    const treatmentDetail = salesData.data;
+    setEstheticSales(treatmentDetail);
+  };
 
-    //論理削除してリスト内をすぐに更新する関数
-//.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
-const handleDelete = async (id: string) => {
-  console.log('hakka')
-  axios.put(`http://localhost:3010/sales/deleted/${id}`)
-    .then(() => {
-      getSalesId();
-    })
-    .catch(() => {
-      console.log('キャッチエラー');
-    });
-};
+  //論理削除してリスト内をすぐに更新する関数
+  //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
+  const handleDelete = async (id: string) => {
+    console.log('hakka');
+    axios
+      .put(`http://localhost:3010/sales/deleted/${id}`)
+      .then(() => {
+        getSalesId();
+      })
+      .catch(() => {
+        console.log('キャッチエラー');
+      });
+  };
 
   useEffect(() => {
-    getSalesId()
-  },[])
+    getSalesId();
+  }, []);
 
   return (
     <GridContainer>
       <SalesListHeader />
       <>
-      {estheticSales.map((listItem) => (
+        {estheticSales.map((listItem) => (
           <>
             <ListItem
               key={listItem.id}
@@ -56,7 +57,7 @@ const handleDelete = async (id: string) => {
               onMouseLeave={() => setHoveredId('')}
               $selected={hoveredId === listItem.id}
             >
-              {listItem.created_at.substring(0,10)}
+              {listItem.created_at.substring(0, 10)}
             </ListItem>
             <ListItem
               onMouseEnter={() => setHoveredId(listItem.id)}
@@ -99,8 +100,8 @@ const handleDelete = async (id: string) => {
         ))}
       </>
     </GridContainer>
-  )
-}
+  );
+};
 
 const GridContainer = styled.div`
   display: grid;
@@ -110,19 +111,19 @@ const GridContainer = styled.div`
   grid-auto-rows: 2rem;
   border: 1px solid #000;
 `;
-const ListItem = styled.div<{$selected?: boolean}>`
+const ListItem = styled.div<{ $selected?: boolean }>`
   border: 1px solid #000;
-  background-color: ${({$selected}) => ($selected ? '#bbc8e6' : '#efefef')};
+  background-color: ${({ $selected }) => ($selected ? '#bbc8e6' : '#efefef')};
   text-align: center;
   text-decoration: dashed;
   color: inherit;
 `;
-const SButton = styled.div<{$selected?: boolean}>`
+const SButton = styled.div<{ $selected?: boolean }>`
   border: 1px solid #000;
-  background-color: ${({$selected}) => ($selected ? '#efefef' : '#efefef')};
+  background-color: ${({ $selected }) => ($selected ? '#efefef' : '#efefef')};
   text-align: center;
   padding-top: 1%;
   color: inherit;
 `;
 
-export default HairSalonSalesList
+export default HairSalonSalesList;
