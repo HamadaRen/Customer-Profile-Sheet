@@ -28,6 +28,12 @@ const CustomerListContactItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
+
+  const handleContactClick = (e: { stopPropagation: () => void; }) => {
+    e.stopPropagation()
+    alert('繋げる')
+  }
+
   return (
     <ListHeaderContact
       onMouseEnter={() => setHoveredId(userData.id)}
@@ -62,7 +68,7 @@ const CustomerListContactItem = ({
           />
           Instagram
         </Tel>
-        <ContactButton>
+        <ContactButton onClick={handleContactClick}>
           繋げる
           <img src="/svg/icon_arrow.svg" alt="" style={{ width: '1.0625rem', height: '1.125rem', flexShrink: 0 }} />
         </ContactButton>

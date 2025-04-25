@@ -49,8 +49,8 @@ const CustomerListPage = () => {
   const [managerName, setManagerName] = useState<string>('');
 
   const getCustomerData = async () => {
-    const customerData = await axios.get('http://localhost:3010/customer');
-    setCustomerDataArray(customerData.data);
+    // const customerData = await axios.get('http://localhost:3010/customer');
+    // setCustomerDataArray(customerData.data);
   };
 
   const location = useLocation();
@@ -153,6 +153,42 @@ const CustomerListPage = () => {
     },
     {
       id: '777',
+      name: '濵田 錬',
+      contact: '07012345678',
+      ticket: 'ララピール体験',
+      visit: '2',
+      firstVisit: '2025/03/03',
+      lastVisit: '2025/03/30',
+      period: '1カ月',
+      staff: '濱田 錬',
+      memo: '敏感肌のお客様です',
+    },
+    {
+      id: '888',
+      name: '濵田 錬',
+      contact: '07012345678',
+      ticket: 'ララピール体験',
+      visit: '2',
+      firstVisit: '2025/03/03',
+      lastVisit: '2025/03/30',
+      period: '1カ月',
+      staff: '濱田 錬',
+      memo: '敏感肌のお客様です',
+    },
+    {
+      id: '999',
+      name: '濵田 錬',
+      contact: '07012345678',
+      ticket: 'ララピール体験',
+      visit: '2',
+      firstVisit: '2025/03/03',
+      lastVisit: '2025/03/30',
+      period: '1カ月',
+      staff: '濱田 錬',
+      memo: '敏感肌のお客様です',
+    },
+    {
+      id: '1000',
       name: '濵田 錬',
       contact: '07012345678',
       ticket: 'ララピール体験',

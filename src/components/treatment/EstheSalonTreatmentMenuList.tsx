@@ -6,8 +6,6 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import OperationHeaderButton from '../header/EstheSalonOperationHeaderButton';
 import IconButton from '@mui/material/IconButton';
 import { Link } from 'react-router-dom';
-import { AppBar, Tab, Tabs } from '@mui/material';
-import TreatmentTab from '../header/TreatmentTab';
 import axios from 'axios';
 
 
@@ -112,7 +110,7 @@ const GridContainer = styled.div`
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-columns: 5fr 3fr 2fr;
+  grid-template-columns: 50% 30% 1fr;
   grid-auto-rows: 2rem;
   border: 1px solid #000;
 `;

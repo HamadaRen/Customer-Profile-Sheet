@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import EstheticSalonSalesList from './EstheticSalonSalesList';
 import HairSalonSalesList from './HairSalonSalesList';
-import MonthlySales from './EstheticMonthlySales';
-import WeeklySales from './EstheticWeeklySales';
 import EstheticMonthlySales from './EstheticMonthlySales';
 import HairMonthlySales from './HairMonthlySales';
 import EstheticWeeklySales from './EstheticWeeklySales';
