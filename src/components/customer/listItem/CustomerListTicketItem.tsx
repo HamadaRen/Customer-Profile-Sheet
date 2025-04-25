@@ -35,6 +35,12 @@ const CustomerListTicketItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
+
+  const handleTicketClick = (e: { stopPropagation: () => void; }) => {
+    e.stopPropagation()
+    alert('チケット情報')
+  }
+
   return (
     <Ticket
       key={userData.id}
@@ -50,7 +56,7 @@ const CustomerListTicketItem = ({
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <TicketKinds>その他チケット</TicketKinds>
           <TicketKindsTime>+8</TicketKindsTime>
-          <TicketButton>
+          <TicketButton onClick={handleTicketClick}>
             チケット情報
             <img
               src="/svg/icon_ticket_green.svg"

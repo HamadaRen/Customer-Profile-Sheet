@@ -95,6 +95,7 @@ export const ConfirmationButton = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  cursor: pointer;
   &:hover {
     opacity: 0.7;
   }

@@ -4,7 +4,6 @@ import { COLORS } from "./color";
 export const SidebarHeader = styled.div`
   display: flex;
   width: 11.25rem;
-  padding: 0.5rem 0;
   justify-content: center;
   align-items: center;
   gap: 0.25rem;

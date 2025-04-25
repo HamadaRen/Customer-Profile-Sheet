@@ -78,6 +78,7 @@ export const ContactButton = styled.div`
   line-height: normal;
   margin-left: 1.4rem;
   margin-bottom: 0.4rem;
+  cursor: pointer;
 `;
 
 export const Ticket = styled.div<{ $selected?: boolean; index: number }>`
@@ -164,6 +165,7 @@ export const TicketButton = styled.div`
   line-height: normal;
   margin-left: 1.4rem;
   margin-top: 0.2rem;
+  cursor: pointer;
 `;
 
 export const Visitors = styled.div<{ $selected?: boolean; index: number }>`

@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Box, Button, makeStyles, Paper, Tab, Tabs, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
-import TreatmentTab from './TreatmentTab';
+import { TreatmentAddButton } from '../../styles/treatmentListAddButton';
 
 
 
@@ -16,31 +13,23 @@ const OperationHeaderButton = () => {
   return (
     <>
     <AddButton>
-      <h2 style={{ display: 'inline-block', position: 'relative', left: '5%' }}>エステサロン施術リスト</h2>
-      <Button
-        variant="contained"
-        style={{
-          background: '#192f60',
-          position: 'relative',
-          right: '45%',
-          marginTop: '0.5%',
-          marginBottom: '0.5%',
-          paddingLeft: '4%',
-          paddingRight: '4%',
-          fontSize: '110%',
-        }}
+      <TreatmentAddButton
         onClick={handleClick}
         >
         施術追加
-      </Button>
+      </TreatmentAddButton>
+      <h2 style={{display: 'flex', justifyContent: 'center'}}>エステサロン施術リスト</h2>
     </AddButton>
         </>
   );
 };
 
 const AddButton = styled.div`
-  text-align: center;
+align-items: center;
+justify-content: center;
   background: #f3f3f3;
+  display: flex;
+  padding-right: 20rem;
 `;
 const SHeader = styled.div`
   text-align: center;
