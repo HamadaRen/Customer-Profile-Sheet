@@ -48,6 +48,7 @@ const CustomerListPage = () => {
   const [customerName, setCustomerName] = useState<string>('');
   const [managerName, setManagerName] = useState<string>('');
 
+  //データのget時に使うのでコメントアウト
   const getCustomerData = async () => {
     // const customerData = await axios.get('http://localhost:3010/customer');
     // setCustomerDataArray(customerData.data);
