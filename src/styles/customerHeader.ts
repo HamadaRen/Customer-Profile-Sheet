@@ -60,6 +60,7 @@ export const SearchButton = styled.div`
   font-weight: 500;
   line-height: 150%;
   letter-spacing: 0.9px;
+  cursor: pointer;
   &:hover {
     transform: translateY(1px);
     box-shadow: none;
