@@ -8,31 +8,33 @@ import { ja } from 'date-fns/locale/ja';
 const NEW_DATE = new Date();
 
 type UserDetailsType = {
-  lastName: string;
   firstName: string;
-  lastNameKana: string;
+  lastName: string;
   firstNameKana: string;
-  birthday: Date;
+  lastNameKana: string;
+  birthday: string;
   // gender: string;
   tel: string;
+  line: string;
+  instagram: string;
   email: string;
   address: string;
-  customerNote: string;
 };
 
 const CustomerEntryPage = () => {
   const [birthday, setBirthday] = useState<Date | null>(new Date('2001-12-04'));
   const [userDetails, setUserDetails] = useState<UserDetailsType>({
-    lastName: '',
     firstName: '',
-    lastNameKana: '',
+    lastName: '',
     firstNameKana: '',
-    birthday: birthday || new Date(),
+    lastNameKana: '',
+    birthday: '',
     // gender: '男性',
     tel: '',
+    line: '',
+    instagram: '',
     email: '',
     address: '',
-    customerNote: '',
   });
 
   registerLocale('ja', ja);
@@ -77,9 +79,11 @@ const CustomerEntryPage = () => {
       firstName: '',
       lastNameKana: '',
       firstNameKana: '',
-      birthday: birthday || new Date(),
+      birthday: '',
       // gender: '男性',
       tel: '',
+      line: '',
+      instagram: '',
       email: '',
       address: '',
       customerNote: '',
@@ -118,7 +122,7 @@ const CustomerEntryPage = () => {
               名前：
               <input
                 type="text"
-                onChange={(e) => setUserDetails((prev) => ({ ...prev, name: e.target.value }))}
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, lastName: e.target.value }))}
                 placeholder="山田"
                 value={userDetails.lastName}
                 style={{ width: 250, height: 30 }}
@@ -128,7 +132,7 @@ const CustomerEntryPage = () => {
           <NameForm>
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, name: e.target.value }))}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstName: e.target.value }))}
               placeholder="太郎"
               value={userDetails.firstName}
               style={{ width: 250, height: 30 }}
@@ -141,7 +145,7 @@ const CustomerEntryPage = () => {
               カナ：
               <input
                 type="text"
-                onChange={(e) => setUserDetails((prev) => ({ ...prev, nameKana: e.target.value }))}
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, lastNameKana: e.target.value }))}
                 placeholder="ヤマダ"
                 value={userDetails.lastNameKana}
                 style={{ width: 250, height: 30 }}
@@ -151,7 +155,7 @@ const CustomerEntryPage = () => {
           <KanaForm>
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, nameKana: e.target.value }))}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstNameKana: e.target.value }))}
               placeholder="タロウ"
               value={userDetails.firstNameKana}
               style={{ width: 250, height: 30 }}
@@ -208,9 +212,9 @@ const CustomerEntryPage = () => {
               Line：　　
               <input
                 type="text"
-                onChange={(e) => setUserDetails((prev) => ({ ...prev, tel: e.target.value }))}
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, line: e.target.value }))}
                 placeholder="LineID"
-                value={userDetails.tel}
+                value={userDetails.line}
                 style={{ width: 250, height: 30 }}
               />
             </label>
@@ -218,9 +222,9 @@ const CustomerEntryPage = () => {
               Instagram：
               <input
                 type="text"
-                onChange={(e) => setUserDetails((prev) => ({ ...prev, tel: e.target.value }))}
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, instagram: e.target.value }))}
                 placeholder="ユーザーID"
-                value={userDetails.tel}
+                value={userDetails.instagram}
                 style={{ width: 250, height: 30 }}
               />
             </label>
