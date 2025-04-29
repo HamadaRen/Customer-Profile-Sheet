@@ -69,15 +69,15 @@ const CustomerListPage = () => {
   };
 
   //.then + .catchでエラー確認しながら削除ボタン押した瞬間に反応してくれるようになる
-  const handleDelete = async (id: string) => {
-    console.log('id', id);
-    await axios
-      .put(`http://localhost:3010/customer/delete/${id}`)
-      .then(() => {
-        getCustomerData();
-      })
-      .catch(() => {});
-  };
+  // const handleDelete = async (id: string) => {
+  //   console.log('id', id);
+  //   await axios
+  //     .put(`http://localhost:3010/customer/delete/${id}`)
+  //     .then(() => {
+  //       getCustomerData();
+  //     })
+  //     .catch(() => {});
+  // };
 
   const fakeData = [
     {
