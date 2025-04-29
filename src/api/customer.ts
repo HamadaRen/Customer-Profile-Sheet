@@ -20,15 +20,15 @@ export const apiPostCustomer = (
 ) => {
   body.birthday = StringBirthday;
   const url = `http://localhost:3011/customer`;
-  // if (body.email === '') {
-  //   body.email = undefined;
-  // }
-  // if (body.line === '') {
-  //   body.line = undefined;
-  // }
-  // if (body.instagram === '') {
-  //   body.instagram = undefined;
-  // }
+  if (body.email === '') {
+    body.email = undefined;
+  }
+  if (body.line === '') {
+    body.line = undefined;
+  }
+  if (body.instagram === '') {
+    body.instagram = undefined;
+  }
 
   try {
     fetch(url, {
