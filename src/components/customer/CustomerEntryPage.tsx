@@ -87,7 +87,7 @@ const CustomerEntryPage = () => {
     if (!birthday) {
       return;
     }
-    // const StringBirthday = format(birthday, 'yyyy-MM-dd');
+    const StringBirthday = format(birthday, 'yyyy-MM-dd');
 
     //テスト時に空文字で送信したいのでコメントアウトしました
     // if (
@@ -103,7 +103,7 @@ const CustomerEntryPage = () => {
     //   return;
     // }
 
-    apiPostCustomer(userDetails,  () => {
+    apiPostCustomer(userDetails,StringBirthday,  () => {
       console.log('成功');
       handleReset();
     });

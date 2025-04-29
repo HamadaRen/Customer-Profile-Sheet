@@ -15,10 +15,10 @@ type UserDetailsType = {
 export const apiPostCustomer = (
   // token: string,
   body: UserDetailsType,
-  // StringBirthday: string,
+  StringBirthday: string,
   callback: () => void
 ) => {
-  // body.birthday = StringBirthday;
+  body.birthday = StringBirthday;
   const url = `http://localhost:3011/customer`;
   // if (body.email === '') {
   //   body.email = undefined;
