@@ -49,8 +49,8 @@ const CustomerListPage = () => {
   const [managerName, setManagerName] = useState<string>('');
 
   const getCustomerData = async () => {
-    // const customerData = await axios.get('http://localhost:3010/customer');
-    // setCustomerDataArray(customerData.data);
+    const customerData = await axios.get('http://localhost:3011/customer');
+    setCustomerDataArray(customerData.data);
   };
 
   const location = useLocation();
