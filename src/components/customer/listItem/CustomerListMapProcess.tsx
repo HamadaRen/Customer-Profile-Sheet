@@ -28,6 +28,7 @@ const CustomerListMapProcess = ({
   hoveredId,
   handleEditClick,
 }: CustomerListMapProcessType) => {
+  
   return (
     <>
       {fakeData.map((userData, index) => (

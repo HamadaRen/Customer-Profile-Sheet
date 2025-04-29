@@ -1,9 +1,20 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { ja } from 'date-fns/locale/ja';
+import { apiPostCustomer } from '../../api/customer';
+import { format } from 'date-fns';
+import { Container } from '@mui/material';
+import {
+  NameForm,
+  KanaForm,
+  BirthdayForm,
+  TelephoneForm,
+  EmailForm,
+  AddressForm,
+  CustomerNoteForm,
+  RegistrationButton,
+} from '../../styles/customerEntry';
 
 const NEW_DATE = new Date();
 
@@ -54,26 +65,7 @@ const CustomerEntryPage = () => {
     },
   ];
 
-  //userDetailsを登録欄に表示したい
-  const handleRegistration = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    if (
-      userDetails.lastName === '' ||
-      userDetails.firstName === '' ||
-      userDetails.lastNameKana === '' ||
-      userDetails.firstNameKana === '' ||
-      // userDetails.gender === '' ||
-      userDetails.tel === '' ||
-      userDetails.email === ''
-    ) {
-      alert('入力していない項目があります');
-      return;
-    }
-
-    await axios
-      .post('http://localhost:3010/customer/add', { userDetails })
-      .then(() => window.location.replace(`http://localhost:3000/`));
-
+  const handleReset = () => {
     setUserDetails({
       lastName: '',
       firstName: '',
@@ -86,9 +78,35 @@ const CustomerEntryPage = () => {
       instagram: '',
       email: '',
       address: '',
-      customerNote: '',
     });
-    const genderCheckBox = document.querySelectorAll('genderChecked');
+  };
+
+  //userDetailsを登録欄に表示したい
+  const handleRegistration = async (e: { preventDefault: () => void }) => {
+    // e.preventDefault();
+    if (!birthday) {
+      return;
+    }
+    // const StringBirthday = format(birthday, 'yyyy-MM-dd');
+
+    //テスト時に空文字で送信したいのでコメントアウトしました
+    // if (
+    //   userDetails.lastName === '' ||
+    //   userDetails.firstName === '' ||
+    //   userDetails.lastNameKana === '' ||
+    //   userDetails.firstNameKana === '' ||
+    //   // userDetails.gender === '' ||
+    //   userDetails.tel === '' ||
+    //   userDetails.email === ''
+    // ) {
+    //   alert('入力していない項目があります');
+    //   return;
+    // }
+
+    apiPostCustomer(userDetails,  () => {
+      console.log('成功');
+      handleReset();
+    });
   };
 
   const handleRawChange = (e: any) => {
@@ -97,10 +115,8 @@ const CustomerEntryPage = () => {
     if (!rawValue) {
       return;
     }
-    console.log('ろーばりゅー', rawValue);
 
     const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
-    console.log('まっち', match);
     if (match) {
       const year = parseInt(match[1]);
       const month = parseInt(match[2]) - 1;
@@ -266,7 +282,6 @@ const CustomerEntryPage = () => {
                 cols={50}
                 placeholder="気になる部分・聞きたいこと"
                 onChange={(e) => setUserDetails((prev) => ({ ...prev, customerNote: e.target.value }))}
-                value={userDetails.customerNote}
               />
             </div>
           </label>
@@ -279,77 +294,5 @@ const CustomerEntryPage = () => {
     </form>
   );
 };
-
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 8% 8% 17% 8% 8% 25% 1fr;
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  background: #efefef;
-`;
-
-const RegistrationButton = styled.div`
-  cursor: pointer;
-  background: #007bbb;
-  color: white;
-  display: inline-block;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  border-radius: 3px;
-  border: 0px;
-  position: relative;
-  box-shadow: 1px 1.6px 1px #000;
-  font-weight: bold;
-  &:hover {
-    transform: translateY(1px);
-    box-shadow: none;
-  }
-`;
-
-const NameForm = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const KanaForm = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const BirthdayForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const GenderForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const TelephoneForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const EmailForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const AddressForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const CustomerNoteForm = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default CustomerEntryPage;
