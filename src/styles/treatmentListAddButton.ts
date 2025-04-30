@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TreatmentAddButton = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   width: 7rem;
   height: 3rem;
