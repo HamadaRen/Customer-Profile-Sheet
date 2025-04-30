@@ -94,7 +94,7 @@ export const Ticket = styled.div<{ $selected?: boolean; index: number }>`
 
 export const TicketName = styled.div`
   display: flex;
-  padding: 0.1rem 0.5rem;
+  padding: 0 0.5rem;
   align-items: center;
   gap: 0.5rem;
   color: var(--main-, #565249);
@@ -109,7 +109,7 @@ export const TicketTime = styled.div`
   display: flex;
   padding: 0rem 0.5rem;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
@@ -120,10 +120,9 @@ export const TicketTime = styled.div`
 `;
 export const TicketKinds = styled.div`
   display: flex;
-  padding: 0.1rem;
   padding-left: 0.5rem;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
@@ -136,7 +135,7 @@ export const TicketKinds = styled.div`
 export const TicketKindsTime = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--main-, #5d8b00);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
@@ -164,7 +163,6 @@ export const TicketButton = styled.div`
   font-weight: 500;
   line-height: normal;
   margin-left: 1.4rem;
-  margin-top: 0.2rem;
   cursor: pointer;
 `;
 

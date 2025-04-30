@@ -2,6 +2,9 @@ import { useAtomValue } from 'jotai';
 import { Link, useLocation } from 'react-router-dom';
 import { sideBarAnimationTypeAtom } from '../state/application';
 import { SidebarHeader, StyledRow, StyledRowManagement, StyledSideBar } from '../styles/sideBar';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 
 export const SideBar = () => {
   const location = useLocation();
@@ -12,17 +15,20 @@ export const SideBar = () => {
   return (
     <StyledSideBar $animation={sideBarAnimationType}>
       <SidebarHeader>基本機能</SidebarHeader>
-      <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
-        <img src="/svg/icon_people.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
-        <p>顧客管理</p>
-      </StyledRow>
+          <StyledRow $selected={location.pathname === '/'} as={Link} to="/">
+            <img src="/svg/icon_people.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
+            <p>顧客管理</p>
+          </StyledRow>
+          <StyledRowManagement $selected={location.pathname === '/customer/entry'} as={Link} to="/customer/entry">
+            <p>顧客追加</p>
+          </StyledRowManagement>
       {/* <StyledRow $selected={location.pathname === '/treatmentMenu'} as={Link} to="/treatmentMenu">
         施術マスタ
       </StyledRow> */}
       {/* <StyledRow $selected={location.pathname === '/sales'} as={Link} to="/sales" style={{ marginBottom: '3.75rem' }}>
         売上マスタ
       </StyledRow> */}
-      <SidebarHeader style={{paddingTop: '3.75rem'}}>管理者機能</SidebarHeader>
+      <SidebarHeader style={{ paddingTop: '3.75rem' }}>管理者機能</SidebarHeader>
       <StyledRowManagement $selected={location.pathname === '/sales/management'} as={Link} to="/sales/management">
         <img src="/svg/icon_money.svg" alt="" style={{ width: '1.25rem', height: '1.25rem' }} />
         <p>売り上げ管理</p>

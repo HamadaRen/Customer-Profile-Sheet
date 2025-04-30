@@ -52,7 +52,7 @@ const CustomerListTicketItem = ({
       onClick={() => handleEditClick(userData.id)}
       index={index}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.125rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
         <TicketName>{userData.ticket}</TicketName>
         <TicketTime>使用数(2/5)</TicketTime>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>

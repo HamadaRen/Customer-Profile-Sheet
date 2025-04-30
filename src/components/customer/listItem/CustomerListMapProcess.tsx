@@ -39,6 +39,7 @@ const CustomerListMapProcess = ({
   hoveredId,
   handleEditClick,
 }: CustomerListMapProcessType) => {
+
   const joinCustomerDataAry = customerDataArray.map((customer, index) => {
     const AnotherData = fakeData[index];
     return {

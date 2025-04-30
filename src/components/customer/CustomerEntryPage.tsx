@@ -1,18 +1,33 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { ja } from 'date-fns/locale/ja';
+import { apiPostCustomer } from '../../api/customer';
+import { format } from 'date-fns';
+import { Container } from '@mui/material';
+import {
+  NameForm,
+  KanaForm,
+  BirthdayForm,
+  TelephoneForm,
+  EmailForm,
+  AddressForm,
+  CustomerNoteForm,
+  RegistrationButton,
+} from '../../styles/customerEntry';
 
 const NEW_DATE = new Date();
 
 type UserDetailsType = {
-  name: string;
-  nameKana: string;
-  birthday: Date;
-  gender: string;
+  firstName: string;
+  lastName: string;
+  firstNameKana: string;
+  lastNameKana: string;
+  birthday: string;
+  // gender: string;
   tel: string;
+  line: string;
+  instagram: string;
   email: string;
   address: string;
 };
@@ -20,11 +35,15 @@ type UserDetailsType = {
 const CustomerEntryPage = () => {
   const [birthday, setBirthday] = useState<Date | null>(new Date('2001-12-04'));
   const [userDetails, setUserDetails] = useState<UserDetailsType>({
-    name: '',
-    nameKana: '',
-    birthday: birthday || new Date(),
-    gender: '男性',
+    firstName: '',
+    lastName: '',
+    firstNameKana: '',
+    lastNameKana: '',
+    birthday: '',
+    // gender: '男性',
     tel: '',
+    line: '',
+    instagram: '',
     email: '',
     address: '',
   });
@@ -46,38 +65,48 @@ const CustomerEntryPage = () => {
     },
   ];
 
-  //userDetailsを登録欄に表示したい
-  const handleRegistration = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    // const getData = await axios.get('http://localhost:3010/customer/delete')
-    //   const getDataArray = getData.data
-    //   console.log('getしたデータ', getDataArray)
-    if (
-      userDetails.name === '' ||
-      userDetails.nameKana === '' ||
-      userDetails.gender === '' ||
-      userDetails.tel === '' ||
-      userDetails.email === ''
-    ) {
-      alert('入力していない項目があります');
-      return;
-    }
-    //ここまでオッケーこの下をAPIに修正
-
-    await axios
-      .post('http://localhost:3010/customer/add', { userDetails })
-      .then(() => window.location.replace(`http://localhost:3000/`));
-
+  const handleReset = () => {
     setUserDetails({
-      name: '',
-      nameKana: '',
-      birthday: birthday || new Date(),
-      gender: '男性',
+      lastName: '',
+      firstName: '',
+      lastNameKana: '',
+      firstNameKana: '',
+      birthday: '',
+      // gender: '男性',
       tel: '',
+      line: '',
+      instagram: '',
       email: '',
       address: '',
     });
-    const genderCheckBox = document.querySelectorAll('genderChecked');
+  };
+
+  //userDetailsを登録欄に表示したい
+  const handleRegistration = async (e: { preventDefault: () => void }) => {
+    // e.preventDefault();
+    if (!birthday) {
+      return;
+    }
+    const StringBirthday = format(birthday, 'yyyy-MM-dd');
+
+    //テスト時に空文字で送信したいのでコメントアウトしました
+    // if (
+    //   userDetails.lastName === '' ||
+    //   userDetails.firstName === '' ||
+    //   userDetails.lastNameKana === '' ||
+    //   userDetails.firstNameKana === '' ||
+    //   // userDetails.gender === '' ||
+    //   userDetails.tel === '' ||
+    //   userDetails.email === ''
+    // ) {
+    //   alert('入力していない項目があります');
+    //   return;
+    // }
+
+    apiPostCustomer(userDetails,StringBirthday,  () => {
+      console.log('成功');
+      handleReset();
+    });
   };
 
   const handleRawChange = (e: any) => {
@@ -86,10 +115,8 @@ const CustomerEntryPage = () => {
     if (!rawValue) {
       return;
     }
-    console.log('ろーばりゅー', rawValue);
 
     const match = rawValue.match(/(\d{4})[年\/-]?(\d{1,2})[月\/-]?(\d{1,2})/);
-    console.log('まっち', match);
     if (match) {
       const year = parseInt(match[1]);
       const month = parseInt(match[2]) - 1;
@@ -102,36 +129,55 @@ const CustomerEntryPage = () => {
     }
   };
 
-  console.log('選択した日にち', userDetails);
-
   return (
-    <Container>
-      <form>
-        <NameForm>
-          <label>
-            名前：
+    <form method="POST">
+      <Container>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
+          <NameForm>
+            <label>
+              名前：
+              <input
+                type="text"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, lastName: e.target.value }))}
+                placeholder="山田"
+                value={userDetails.lastName}
+                style={{ width: 250, height: 30 }}
+              />
+            </label>
+          </NameForm>
+          <NameForm>
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, name: e.target.value }))}
-              placeholder="山田　太郎"
-              value={userDetails.name}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstName: e.target.value }))}
+              placeholder="太郎"
+              value={userDetails.firstName}
               style={{ width: 250, height: 30 }}
             />
-          </label>
-        </NameForm>
-
-        <KanaForm>
-          <label>
-            カナ：
+          </NameForm>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
+          <KanaForm>
+            <label>
+              カナ：
+              <input
+                type="text"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, lastNameKana: e.target.value }))}
+                placeholder="ヤマダ"
+                value={userDetails.lastNameKana}
+                style={{ width: 250, height: 30 }}
+              />
+            </label>
+          </KanaForm>
+          <KanaForm>
             <input
               type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, nameKana: e.target.value }))}
-              placeholder="ヤマダ　タロウ"
-              value={userDetails.nameKana}
+              onChange={(e) => setUserDetails((prev) => ({ ...prev, firstNameKana: e.target.value }))}
+              placeholder="タロウ"
+              value={userDetails.firstNameKana}
               style={{ width: 250, height: 30 }}
             />
-          </label>
-        </KanaForm>
+          </KanaForm>
+        </div>
 
         <BirthdayForm>
           <label>
@@ -141,15 +187,13 @@ const CustomerEntryPage = () => {
               selected={birthday}
               dateFormat="yyyy年MM月dd日"
               onChange={(date) => setBirthday(date)}
-              //onChangeRawで手入力時の処理を走らせる関数を呼び出す
               onChangeRaw={handleRawChange}
-              // onChange={(e) => setUserDetails((prev) => ({ ...prev, birthday: birthday }))}
               maxDate={NEW_DATE}
             />
           </label>
         </BirthdayForm>
 
-        <GenderForm>
+        {/* <GenderForm>
           <label>
             性別：
             {genderItems.map((item, index) => (
@@ -167,19 +211,40 @@ const CustomerEntryPage = () => {
               </label>
             ))}
           </label>
-        </GenderForm>
-
+        </GenderForm> */}
         <TelephoneForm>
-          <label>
-            電話番号：
-            <input
-              type="text"
-              onChange={(e) => setUserDetails((prev) => ({ ...prev, tel: e.target.value }))}
-              placeholder="電話番号(ハイフンなし)"
-              value={userDetails.tel}
-              style={{ width: 250, height: 30 }}
-            />
-          </label>
+          <div style={{ display: 'flex', flexFlow: 'column', justifyContent: 'flex-end' }}>
+            <label>
+              電話番号：
+              <input
+                type="text"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, tel: e.target.value }))}
+                placeholder="電話番号(ハイフンなし)"
+                value={userDetails.tel}
+                style={{ width: 250, height: 30 }}
+              />
+            </label>
+            <label>
+              Line：　　
+              <input
+                type="text"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, line: e.target.value }))}
+                placeholder="LineID"
+                value={userDetails.line}
+                style={{ width: 250, height: 30 }}
+              />
+            </label>
+            <label>
+              Instagram：
+              <input
+                type="text"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, instagram: e.target.value }))}
+                placeholder="ユーザーID"
+                value={userDetails.instagram}
+                style={{ width: 250, height: 30 }}
+              />
+            </label>
+          </div>
         </TelephoneForm>
 
         <EmailForm>
@@ -207,71 +272,27 @@ const CustomerEntryPage = () => {
             />
           </label>
         </AddressForm>
-      </form>
-      <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
-    </Container>
+
+        <CustomerNoteForm>
+          <label>
+            <div style={{ display: 'flex' }}>
+              <div>備考欄：</div>
+              <textarea
+                rows={10}
+                cols={50}
+                placeholder="気になる部分・聞きたいこと"
+                onChange={(e) => setUserDetails((prev) => ({ ...prev, customerNote: e.target.value }))}
+              />
+            </div>
+          </label>
+        </CustomerNoteForm>
+
+        <div>
+          <RegistrationButton onClick={handleRegistration}>この内容で登録する</RegistrationButton>
+        </div>
+      </Container>
+    </form>
   );
 };
-
-const Container = styled.div`
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  background: #efefef;
-`;
-
-const RegistrationButton = styled.div`
-  cursor: pointer;
-  background: #007bbb;
-  color: white;
-  display: inline-block;
-  padding: 0.8rem 1.5rem 0.5rem 1.5rem;
-  border-radius: 3px;
-  border: 0px;
-  position: relative;
-  top: 22rem;
-  height: 35px;
-  box-shadow: 1px 1.6px 1px #000;
-  font-weight: bold;
-  &:hover {
-    transform: translateY(1px);
-    box-shadow: none;
-  }
-`;
-
-const NameForm = styled.div`
-  position: relative;
-  top: 2rem;
-`;
-
-const KanaForm = styled.div`
-  position: relative;
-  top: 4.5rem;
-`;
-
-const BirthdayForm = styled.div`
-  position: relative;
-  top: 7rem;
-`;
-
-const GenderForm = styled.div`
-  position: relative;
-  top: 10rem;
-`;
-
-const TelephoneForm = styled.div`
-  position: relative;
-  top: 13rem;
-`;
-
-const EmailForm = styled.div`
-  position: relative;
-  top: 16rem;
-`;
-
-const AddressForm = styled.div`
-  position: relative;
-  top: 19rem;
-`;
 
 export default CustomerEntryPage;
