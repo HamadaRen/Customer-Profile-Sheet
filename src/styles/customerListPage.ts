@@ -38,7 +38,7 @@ export const ListHeaderContact = styled.div<{ $selected?: boolean; index: number
   display: flex;
   height: calc(100% - 1px);
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   background-color: ${({ $selected, index }) => ($selected ? '#c0c6c9' : index % 2 === 0 ? '#f3f0ec' : '#EEE6DF')};
   border-bottom: 1px solid #b0a396;
@@ -47,7 +47,7 @@ export const ListHeaderContact = styled.div<{ $selected?: boolean; index: number
 
 export const Tel = styled.div`
   display: flex;
-  padding: 0.1rem 0 0 2.5rem;
+  padding: 0.1rem 0 0.1rem 2.5rem;
   align-items: center;
   gap: 0.5rem;
   color: var(--main-, #565249);
@@ -77,7 +77,7 @@ export const ContactButton = styled.div`
   font-weight: 500;
   line-height: normal;
   margin-left: 1.4rem;
-  margin-bottom: 0.4rem;
+  /* margin-bottom: 0.4rem; */
   cursor: pointer;
 `;
 
@@ -96,7 +96,7 @@ export const TicketName = styled.div`
   display: flex;
   padding: 0.1rem 0.5rem;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--main-, #565249);
   font-family: 'Noto Sans JP';
   font-size: 0.7rem;
