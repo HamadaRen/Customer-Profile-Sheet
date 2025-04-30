@@ -10,8 +10,11 @@ type CustomerListContactItemType = {
 
 type UserDataType = {
   id: string;
-  name: string;
-  contact: string;
+  lastName: string;
+  firstName: string;
+  tel: string;
+  line: string;
+  instagram: string;
   ticket: string;
   visit: string;
   firstVisit: string;
@@ -28,11 +31,10 @@ const CustomerListContactItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
-
-  const handleContactClick = (e: { stopPropagation: () => void; }) => {
-    e.stopPropagation()
-    alert('繋げる')
-  }
+  const handleContactClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    alert('繋げる');
+  };
 
   return (
     <ListHeaderContact
@@ -42,31 +44,31 @@ const CustomerListContactItem = ({
       onClick={() => handleEditClick(userData.id)}
       index={index}
     >
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <Tel>
-          <img src="/svg/icon_tel.svg" alt="" style={{ width: '1.0625rem', height: '1rem', flexShrink: 0 }} />
-          {userData.contact}
+          <img src="/svg/icon_tel.svg" alt="" style={{ width: '0.8rem', height: '0.9rem', flexShrink: 0 }} />
+          {!userData.tel ? 'tel：' + '-' : 'tel：' + userData.tel}
         </Tel>
         <Tel>
           <img
             src="/svg/icon_line.svg"
             alt=""
-            style={{ width: '1.0625rem', height: '1rem', flexShrink: 0, aspectRatio: 17 / 18 }}
+            style={{ width: '0.8rem', height: '0.9rem', flexShrink: 0, aspectRatio: 17 / 18 }}
           />
-          LINE
+          {!userData.line ? 'Line：' + '-' : 'Line：' + userData.line}
         </Tel>
-        <Tel>
+        <Tel style={{ paddingBottom: '0.3rem' }}>
           <img
             src="/svg/icon_instagram.svg"
             alt=""
             style={{
-              width: '1.0625rem',
-              height: '1rem',
+              width: '0.8rem',
+              height: '0.9rem',
               display: 'flex',
               flexDirection: 'column',
             }}
           />
-          Instagram
+          {!userData.instagram ? 'Instagram：' + '-' : 'Instagram：' + userData.instagram}
         </Tel>
         <ContactButton onClick={handleContactClick}>
           繋げる

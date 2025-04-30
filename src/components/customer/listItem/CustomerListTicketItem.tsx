@@ -17,8 +17,11 @@ type CustomerListContactItemType = {
 
 type UserDataType = {
   id: string;
-  name: string;
-  contact: string;
+  lastName: string;
+  firstName: string;
+  tel: string;
+  line: string;
+  instagram: string;
   ticket: string;
   visit: string;
   firstVisit: string;
@@ -35,11 +38,10 @@ const CustomerListTicketItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
-
-  const handleTicketClick = (e: { stopPropagation: () => void; }) => {
-    e.stopPropagation()
-    alert('チケット情報')
-  }
+  const handleTicketClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    alert('チケット情報');
+  };
 
   return (
     <Ticket
