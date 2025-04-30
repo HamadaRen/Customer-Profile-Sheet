@@ -10,7 +10,8 @@ import CustomerListMapProcess from './listItem/CustomerListMapProcess';
 
 type UserDetailsType = {
   id: string;
-  name: string;
+  lastName: string;
+  firstName: string;
   tel: string;
   line: string;
   instagram: string;
@@ -81,8 +82,6 @@ const CustomerListPage = () => {
   const fakeData = [
     {
       id: '111',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -93,8 +92,6 @@ const CustomerListPage = () => {
     },
     {
       id: '222',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -105,8 +102,6 @@ const CustomerListPage = () => {
     },
     {
       id: '333',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -117,8 +112,6 @@ const CustomerListPage = () => {
     },
     {
       id: '444',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -129,8 +122,6 @@ const CustomerListPage = () => {
     },
     {
       id: '555',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -141,8 +132,6 @@ const CustomerListPage = () => {
     },
     {
       id: '666',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -153,8 +142,6 @@ const CustomerListPage = () => {
     },
     {
       id: '777',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -165,8 +152,6 @@ const CustomerListPage = () => {
     },
     {
       id: '888',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -177,8 +162,6 @@ const CustomerListPage = () => {
     },
     {
       id: '999',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -189,8 +172,6 @@ const CustomerListPage = () => {
     },
     {
       id: '1000',
-      name: '濵田 錬',
-      contact: '07012345678',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -215,6 +196,7 @@ const CustomerListPage = () => {
       <CustomerListHeader />
       <GridContainer>
         <CustomerListMapProcess
+          customerDataArray={customerDataArray}
           fakeData={fakeData}
           hoveredId={hoveredId}
           setHoveredId={setHoveredId}
