@@ -38,11 +38,10 @@ const CustomerListTicketItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
-
-  const handleTicketClick = (e: { stopPropagation: () => void; }) => {
-    e.stopPropagation()
-    alert('チケット情報')
-  }
+  const handleTicketClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    alert('チケット情報');
+  };
 
   return (
     <Ticket

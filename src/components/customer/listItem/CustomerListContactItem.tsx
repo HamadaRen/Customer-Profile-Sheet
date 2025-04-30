@@ -31,11 +31,10 @@ const CustomerListContactItem = ({
   handleEditClick,
   index,
 }: CustomerListContactItemType) => {
-
-  const handleContactClick = (e: { stopPropagation: () => void; }) => {
-    e.stopPropagation()
-    alert('繋げる')
-  }
+  const handleContactClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    alert('繋げる');
+  };
 
   return (
     <ListHeaderContact
@@ -48,7 +47,7 @@ const CustomerListContactItem = ({
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
         <Tel>
           <img src="/svg/icon_tel.svg" alt="" style={{ width: '1.0625rem', height: '1rem', flexShrink: 0 }} />
-          {userData.contact}
+          {!userData.tel ? 'tel：' + '-' : 'tel：' + userData.tel}
         </Tel>
         <Tel>
           <img
@@ -56,7 +55,7 @@ const CustomerListContactItem = ({
             alt=""
             style={{ width: '1.0625rem', height: '1rem', flexShrink: 0, aspectRatio: 17 / 18 }}
           />
-          LINE
+          {!userData.line ? 'Line：' + '-' : 'Line：' + userData.line}
         </Tel>
         <Tel>
           <img
@@ -69,7 +68,7 @@ const CustomerListContactItem = ({
               flexDirection: 'column',
             }}
           />
-          Instagram
+          {!userData.instagram ? 'Instagram：' + '-' : 'Instagram：' + userData.instagram}
         </Tel>
         <ContactButton onClick={handleContactClick}>
           繋げる
