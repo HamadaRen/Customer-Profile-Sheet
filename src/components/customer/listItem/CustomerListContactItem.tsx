@@ -10,8 +10,7 @@ type CustomerListContactItemType = {
 
 type UserDataType = {
   id: string;
-  lastName: string;
-  firstName: string;
+  name: string;
   tel: string;
   line: string;
   instagram: string;
