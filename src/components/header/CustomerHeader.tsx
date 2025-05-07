@@ -34,7 +34,7 @@ const CustomerHeader = ({
     const value = e.target.value;
     setCustomerId(value);
   };
-  const handleCustomerChange = (e: { target: { value: any } }) => {
+  const handleCustomerChange = (e: { target: { value: any; }; }) => {
     const value = e.target.value;
     setCustomerName(value);
   };

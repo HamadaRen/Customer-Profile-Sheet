@@ -1,12 +1,9 @@
-import { useRef } from "react";
-import { SideBar } from "./Sidebar";
-import { useAtomValue } from "jotai";
-import {
-  sideBarAnimationTypeAtom,
-  visibleSideBarAtom,
-} from "../state/application";
-import { MainContainer, SBody, RightContainer } from "../styles/mainLayout";
-import Header from "./Header";
+import { useRef } from 'react';
+import { SideBar } from './Sidebar';
+import { useAtomValue } from 'jotai';
+import { sideBarAnimationTypeAtom, visibleSideBarAtom } from '../state/application';
+import { MainContainer, SBody, RightContainer } from '../styles/mainLayout';
+import Header from './Header';
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const toaster = useRef<HTMLDivElement>(null);
@@ -21,9 +18,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <SBody>
         {visibleSideBar && <SideBar />}
-        <RightContainer $visibleSidebar={sideBarAnimationType === "open"}>
-          {children}
-        </RightContainer>
+        <RightContainer $visibleSidebar={sideBarAnimationType === 'open'}>{children}</RightContainer>
       </SBody>
     </MainContainer>
   );

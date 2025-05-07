@@ -8,41 +8,40 @@ import { GridContainer } from '../../styles/customerListPage';
 import CustomerDetailModal from '../modal/CustomerDetailModal';
 import CustomerListMapProcess from './listItem/CustomerListMapProcess';
 
-type UserDetailsType = {
-  id: string;
-  lastName: string;
-  firstName: string;
-  tel: string;
-  line: string;
-  instagram: string;
-  created_at: string;
-  update_at: string;
-};
+// type UserDetailsType = {
+//   id: string;
+//   name: string
+//   tel: string;
+//   line: string;
+//   instagram: string;
+//   created_at: string;
+//   update_at: string;
+// };
 
-type TicketDataType = {
-  id: string;
-  name: string;
-};
+// type TicketDataType = {
+//   id: string;
+//   name: string;
+// };
 
-type VisitorsDataType = {
-  id: string;
-  visitedTimes: number;
-  created_at: string;
-  updated_at: string;
-};
+// type VisitorsDataType = {
+//   id: string;
+//   visitedTimes: number;
+//   created_at: string;
+//   updated_at: string;
+// };
 
-type SharedMatters = {
-  id: string;
-  memo: string;
-};
+// type SharedMatters = {
+//   id: string;
+//   memo: string;
+// };
 
-type StaffDataType = {
-  id: string;
-  name: string;
-};
+// type StaffDataType = {
+//   id: string;
+//   name: string;
+// };
 
 const CustomerListPage = () => {
-  const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([]);
+  // const [customerDataArray, setCustomerDataArray] = useState<UserDetailsType[]>([]);
   const [hoveredId, setHoveredId] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
   const [customerId, setCustomerId] = useState<string>('');
@@ -50,16 +49,16 @@ const CustomerListPage = () => {
   const [managerName, setManagerName] = useState<string>('');
 
   //データのget時に使うのでコメントアウト
-  const getCustomerData = async () => {
-    const customerData = await axios.get('http://localhost:3011/customer');
-    setCustomerDataArray(customerData.data);
-  };
+  // const getCustomerData = async () => {
+  //   const customerData = await axios.get('http://localhost:3011/customer');
+  //   setCustomerDataArray(customerData.data);
+  // };
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  useEffect(() => {
-    getCustomerData();
-  }, []);
+  // useEffect(() => {
+  //   getCustomerData();
+  // }, []);
 
   const handleEditClick = (id: string) => {
     setShowModal(true);
@@ -83,6 +82,10 @@ const CustomerListPage = () => {
   const fakeData = [
     {
       id: '111',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -93,6 +96,10 @@ const CustomerListPage = () => {
     },
     {
       id: '222',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: '',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -103,6 +110,10 @@ const CustomerListPage = () => {
     },
     {
       id: '333',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -113,6 +124,10 @@ const CustomerListPage = () => {
     },
     {
       id: '444',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: '',
+      instagram: '',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -123,6 +138,10 @@ const CustomerListPage = () => {
     },
     {
       id: '555',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -133,6 +152,10 @@ const CustomerListPage = () => {
     },
     {
       id: '666',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: '',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -143,6 +166,10 @@ const CustomerListPage = () => {
     },
     {
       id: '777',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -153,6 +180,10 @@ const CustomerListPage = () => {
     },
     {
       id: '888',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: '',
+      instagram: '',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -163,6 +194,10 @@ const CustomerListPage = () => {
     },
     {
       id: '999',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -173,6 +208,10 @@ const CustomerListPage = () => {
     },
     {
       id: '1000',
+      name: '濵田錬',
+      tel: '07012345678',
+      line: 'aaaa',
+      instagram: '0000',
       ticket: 'ララピール体験',
       visit: '2',
       firstVisit: '2025/03/03',
@@ -197,7 +236,7 @@ const CustomerListPage = () => {
       <CustomerListHeader />
       <GridContainer>
         <CustomerListMapProcess
-          customerDataArray={customerDataArray}
+          // customerDataArray={customerDataArray}
           fakeData={fakeData}
           hoveredId={hoveredId}
           setHoveredId={setHoveredId}

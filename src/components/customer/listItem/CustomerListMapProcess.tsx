@@ -3,26 +3,30 @@ import CustomerListContactItem from './CustomerListContactItem';
 import CustomerListTicketItem from './CustomerListTicketItem';
 
 type CustomerListMapProcessType = {
-  customerDataArray: UserDetailsType[];
+  // customerDataArray: UserDetailsType[];
   fakeData: UserDataType[];
   setHoveredId: React.Dispatch<React.SetStateAction<string>>;
   hoveredId: string;
   handleEditClick: (id: string) => void;
 };
 
-type UserDetailsType = {
-  id: string;
-  lastName: string;
-  firstName: string;
-  tel: string;
-  line: string;
-  instagram: string;
-  created_at: string;
-  update_at: string;
-};
+// type UserDetailsType = {
+//   id: string;
+//   lastName: string;
+//   firstName: string;
+//   tel: string;
+//   line: string;
+//   instagram: string;
+//   created_at: string;
+//   update_at: string;
+// };
 
 type UserDataType = {
   id: string;
+  name: string;
+  tel: string;
+  line: string;
+  instagram: string;
   ticket: string;
   visit: string;
   firstVisit: string;
@@ -33,35 +37,35 @@ type UserDataType = {
 };
 
 const CustomerListMapProcess = ({
-  customerDataArray,
+  // customerDataArray,
   fakeData,
   setHoveredId,
   hoveredId,
   handleEditClick,
 }: CustomerListMapProcessType) => {
 
-  const joinCustomerDataAry = customerDataArray.map((customer, index) => {
-    const AnotherData = fakeData[index];
-    return {
-      id: customer.id,
-      lastName: customer.lastName,
-      firstName: customer.firstName,
-      tel: customer.tel,
-      line: customer.line,
-      instagram: customer.instagram,
-      ticket: AnotherData.ticket,
-      visit: AnotherData.visit,
-      firstVisit: AnotherData.firstVisit,
-      lastVisit: AnotherData.lastVisit,
-      period: AnotherData.period,
-      staff: AnotherData.period,
-      memo: AnotherData.memo,
-    };
-  });
+  // const joinCustomerDataAry = customerDataArray.map((customer, index) => {
+  //   const AnotherData = fakeData[index];
+  //   return {
+  //     id: customer.id,
+  //     lastName: customer.lastName,
+  //     firstName: customer.firstName,
+  //     tel: customer.tel,
+  //     line: customer.line,
+  //     instagram: customer.instagram,
+  //     ticket: AnotherData.ticket,
+  //     visit: AnotherData.visit,
+  //     firstVisit: AnotherData.firstVisit,
+  //     lastVisit: AnotherData.lastVisit,
+  //     period: AnotherData.period,
+  //     staff: AnotherData.period,
+  //     memo: AnotherData.memo,
+  //   };
+  // });
 
   return (
     <>
-      {joinCustomerDataAry.map((userData, index) => (
+      {fakeData.map((userData, index) => (
         <>
           <CustomerId
             key={userData.id}
@@ -81,7 +85,7 @@ const CustomerListMapProcess = ({
             index={index}
           >
             <div style={{ display: 'flex', width: '7rem', justifyContent: 'center', alignItems: 'center' }}>
-              {userData.lastName} {userData.firstName}
+              {userData.name}
             </div>
           </ListHeaderCustomerName>
           <CustomerListContactItem
